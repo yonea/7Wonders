@@ -1,8 +1,7 @@
-# SURVIVOR
-
-Version finale : VersionFinale > index.html
-https://yonibaroukh.000webhostapp.com/survivor/index.html
+# 7 Wonders
 
 ## Créateurs : 
 * BAROUKH Yoni
+* BOURGEAT Killian
 * PANZERA Alexis
+* REJNERI Clément
