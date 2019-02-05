@@ -4,12 +4,13 @@
   * : lancement du jeu
   * : distirbution d'une carte à chaque joueur du premier age
   * : gestion d'un tour
-  * : gestion de fin de partie avec comptage des points (conflits militaire, contenu du tresor, merveilles, batiments civiles et scientifiques)
+  
  
 * 2 : deuxième livraison
   * : distribution du nombre total de cartes (7 cartes)
   * : choix d'une carte
   * : gestion des ages
+  * : gestion de fin de partie avec comptage des points (conflits militaire, contenu du tresor, merveilles, batiments civiles et scientifiques)
   
 * 3 : troisième livraison
  * : creation des plateaux avec les merveilles
