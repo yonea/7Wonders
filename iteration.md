@@ -1,31 +1,25 @@
-7 livraisons
-
-* 1 : première livraison
-  * : lancement du jeu
-  * : distirbution d'une carte à chaque joueur du premier age
-  * : gestion d'un tour
-  
+Première itération
+ - Création d'un tour de jeu avec un seul âge
+ - Il y aura 3 joueurs
  
-* 2 : deuxième livraison
-  * : distribution du nombre total de cartes (7 cartes)
-  * : choix d'une carte
-  * : gestion des ages
-  * : gestion de fin de partie avec comptage des points (conflits militaire, contenu du tresor, merveilles, batiments civiles et scientifiques)
-  
-* 3 : troisième livraison
- * : creation des plateaux avec les merveilles
-  
-* 4 : quatirème livraison
- * : gestion des pièces pour chaque joueur
+Deuxième itération
+ - Chaque joueur se voit attribuer une merveille
+ - Distribution d'une carte aux joueurs
  
-* 5 : cinquième livraison
- * : construire un batiment, ou une étape de sa merveille ou bien défausser pour obtenir 3 passes --> passage tour suivant)
+Troisième itération
+ - Créer une partie avec au plus 8 joueurs
+ - Décompte des points
 
-* 6 : sixième livraison
- * : 
+Quatrième itération
+ - Créer trois tours de jeu
+ - Créer les différents ages (3)
 
-* 7 : septième livraison
- * : test au client
+Cinquième itération
+ - Ajout des différentes cartes correspondant aux ages
 
+Sixième itération
+ - Ajout des ressources
+ - Ajout cartes "bâtiments militaires"
 
-
+Septième itération
+ - Decompte des points
