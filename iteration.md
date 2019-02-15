@@ -4,23 +4,22 @@ Première itération
  
 Deuxième itération
  - Chaque joueur se voit attribuer une merveille
- - Décompte des points
  - Distribution d'une carte aux joueurs
  
 Troisième itération
  - Créer une partie avec au plus 8 joueurs
- - Créer trois tours de jeu
+ - Décompte des points
 
 Quatrième itération
+ - Créer trois tours de jeu
  - Créer les différents ages (3)
- - Ajout des différentes cartes correspondant aux ages
- 
+
 Cinquième itération
- - Ajout des ressources
- 
+ - Ajout des différentes cartes correspondant aux ages
+
 Sixième itération
+ - Ajout des ressources
  - Ajout cartes "bâtiments militaires"
- - Decompte des points
- 
+
 Septième itération
- - 
+ - Decompte des points
