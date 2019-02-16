@@ -1,5 +1,5 @@
 Première itération
- - Il y aura 3 joueurs
+ - Lancement d'une partie avec 3 joueurs
  - Chaque joueur se voit attribuer une merveille
  
 Deuxième itération
