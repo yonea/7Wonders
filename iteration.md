@@ -1,9 +1,9 @@
 Première itération
- - Création d'un tour de jeu avec un seul âge
  - Il y aura 3 joueurs
+ - Chaque joueur se voit attribuer une merveille
  
 Deuxième itération
- - Chaque joueur se voit attribuer une merveille
+ - Création d'un tour de jeu avec un seul âge
  - Distribution d'une carte aux joueurs
  
 Troisième itération
