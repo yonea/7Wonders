@@ -1,4 +1,4 @@
-# 7 Wonders
+# Jeu 7 Wonders
 
 ## Créateurs : 
 * BAROUKH Yoni

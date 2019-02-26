@@ -2,13 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/7w" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/donnees" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/joueur" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lanceur" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/moteur" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/donnees" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/joueur" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/lanceur" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/moteur" charset="UTF-8" />
   </component>
 </project>

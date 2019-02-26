@@ -6,18 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="7w-lanceur" />
         <module name="donnees" />
         <module name="joueur" />
-        <module name="lanceur" />
         <module name="moteur" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="7Wonders" target="1.8" />
-      <module name="donnees" target="6" />
-      <module name="joueur" target="6" />
-      <module name="lanceur" target="6" />
-      <module name="moteur" target="6" />
+      <module name="7w" target="1.8" />
+      <module name="7w-lanceur" target="1.8" />
+      <module name="donnees" target="1.8" />
+      <module name="joueur" target="1.8" />
+      <module name="moteur" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

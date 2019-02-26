@@ -1,24 +1,30 @@
 package donnees;
 
 public class Merveille {
-    private String nom;
+    private String nom ;
+    private String ressource;
+
+    public String getRessource() {
+        return ressource;
+    }
+
+    public void setRessource(String ressource) {
+        this.ressource = ressource;
+    }
 
     public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom){
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public Merveille(){}
+    public Merveille() { setRessource("-vide-");}
+    public Merveille(String n) { this(); setNom(n);}
 
-    public Merveille(String n) {
-        setNom(n);
-    }
 
-    @Override
     public String toString() {
-        return "Merveille " + getNom();
+        return "Merveille "+getNom();
     }
 }

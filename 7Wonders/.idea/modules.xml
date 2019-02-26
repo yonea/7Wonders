@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/7Wonders.iml" filepath="$PROJECT_DIR$/7Wonders.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7w.iml" filepath="$PROJECT_DIR$/7w.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7w/7w-lanceur.iml" filepath="$PROJECT_DIR$/7w/7w-lanceur.iml" />
       <module fileurl="file://$PROJECT_DIR$/donnees/donnees.iml" filepath="$PROJECT_DIR$/donnees/donnees.iml" />
       <module fileurl="file://$PROJECT_DIR$/joueur/joueur.iml" filepath="$PROJECT_DIR$/joueur/joueur.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lanceur/lanceur.iml" filepath="$PROJECT_DIR$/lanceur/lanceur.iml" />
       <module fileurl="file://$PROJECT_DIR$/moteur/moteur.iml" filepath="$PROJECT_DIR$/moteur/moteur.iml" />
     </modules>
   </component>

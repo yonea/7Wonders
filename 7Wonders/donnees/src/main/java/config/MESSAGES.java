@@ -1,8 +1,16 @@
 package config;
 
+/**
+ * les messages échangés
+ */
 public class MESSAGES {
 
-    public static final String MERVEILLE = "Merveille";
-    public static final String MAIN = "MAIN";
-    public static final String LE_JOUEUR_JOUE = "LE JOUEUR JOUE";
+
+    public static final String MON_NOM = "UN CLIENT DONNE SON NOM";
+
+    public static final String ENVOI_DE_MERVEILLE = "VOICI TA MERVEILLE";
+    public static final String ENVOI_DE_MAIN = "A TOI DE JOUER AVEC CES CARTES";
+
+    public static final String JE_JOUE = "JE JOUE CETTE CARTE";
+
 }
