@@ -22,9 +22,13 @@ Quatrième itération
 
 Cinquième itération
  - Ajout des différentes cartes correspondant aux ages
+ - Ajout des ressources en or, 
+ - Ajout des bâtiments commerciaux
 
 Sixième itération
- - Ajout des ressources
+ - Ajout des guildes
+ - Gestion de la défausse pour chaque tour
 
 Septième itération
- - Decompte des points
+ - Gestion des intelligences
+ - Sorties textuelles
