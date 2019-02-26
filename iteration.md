@@ -1,17 +1,23 @@
 Première itération
  - Lancement d'une partie avec 3 joueurs
  - Chaque joueur se voit attribuer une merveille
+ - Mise en place de la boucle de jeu, les 7 tours du premier ages
  
 Deuxième itération
- - Création d'un tour de jeu avec un seul âge
+ - Ajouter les points de victoires
+ - Ajouter les bâtiments civils
  - Distribution d'une carte aux joueurs
  
 Troisième itération
  - Créer une partie avec au plus 8 joueurs
- - Décompte des points
+ - Ajouter les bâtiments militaires
+ - Gestion des conflits avec les voisins immédiats
+ - AJouter les bâtiments scientifiques
 
 Quatrième itération
- - Créer trois tours de jeu
+ - Ajouter les matières premières
+ - Ajouter les produits manufacturées
+ - Gestion des couts de constructions
  - Créer les différents ages (3)
 
 Cinquième itération
@@ -19,7 +25,6 @@ Cinquième itération
 
 Sixième itération
  - Ajout des ressources
- - Ajout cartes "bâtiments militaires"
 
 Septième itération
  - Decompte des points
