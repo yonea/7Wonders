@@ -9,10 +9,10 @@ Deuxième itération
  - Distribution d'une carte aux joueurs
  
 Troisième itération
- - Créer une partie avec au plus 8 joueurs
+ - Le joueur joue une carte (défausssé)
  - Ajouter les bâtiments militaires
  - Gestion des conflits avec les voisins immédiats
- - AJouter les bâtiments scientifiques
+ - Ajouter les bâtiments scientifiques
 
 Quatrième itération
  - Ajouter les matières premières
@@ -22,12 +22,14 @@ Quatrième itération
 
 Cinquième itération
  - Ajout des différentes cartes correspondant aux ages
- - Ajout des ressources en or, 
  - Ajout des bâtiments commerciaux
+ - Gestion des intelligences
 
 Sixième itération
+ - Le joueur joue une carte (placer en face cachée)
  - Ajout des guildes
  - Gestion de la défausse pour chaque tour
+ - Gestion des intelligences
 
 Septième itération
  - Gestion des intelligences
