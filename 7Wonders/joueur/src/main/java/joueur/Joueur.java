@@ -34,7 +34,7 @@ public class Joueur {
                 @Override
                 public void call(Object... objects) {
                     System.out.println(getNom() + " > connecte");
-                    System.out.println(getNom()+" > envoi de mon nom");
+                    //System.out.println(getNom()+" > envoi de mon nom");
                     connexion.emit(MESSAGES.MON_NOM, getNom());
                 }
             });
@@ -63,6 +63,24 @@ public class Joueur {
                 }
             });
 
+            // réception du score
+            connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
+                @Override
+                public void call(Object... objects) {
+                    // réception du JSON
+                    JSONObject scoreJSON = (JSONObject)objects[0];
+                    // conversion du JSON en Merveille
+                    // String n = scoreJSON.getString("nom");
+                    // les merveilles ont toutes une ressource vide, pour illustrer avec un objet avec plus qu'une seule propriété
+                    // String ressource = scoreJSON.getString("ressource");
+
+
+                    // affichage du score
+                    System.out.println(nom+" > ---------------- j'ai"+ scoreJSON);
+
+                }
+            });
+
             // réception de la main
             connexion.on(MESSAGES.ENVOI_DE_MAIN, new Emitter.Listener() {
                 @Override
@@ -76,13 +94,16 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            Carte c = new Carte(carteJSON.getString("name"));
+                            Carte c = new Carte(carteJSON.getString("name"),2);
                             m.ajouterCarte(c);
                         }
+
                         System.out.println(nom+" > j'ai recu "+m);
 
                         // le joueur a reçu, il joue
-                        jouer(m);
+                        for(int i=1; i<7; i++) {
+                            jouer(m,i);
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -96,18 +117,21 @@ public class Joueur {
     }
 
 
-    private void jouer(Main m) {
+    private void jouer(Main m, int tour) {
         // ne fonctionne pas dans Android
-        JSONObject pieceJointe = new JSONObject(m.getCartes().get(0)) ;
+        int nbCarteAleatoire = (int) (Math.random() * 6);
+        JSONObject pieceJointe = new JSONObject(m.getCartes().get(nbCarteAleatoire)) ;
 
         // dans Android, il faudrait faire :
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
 
-        System.out.println(nom + " > je joue "+m.getCartes().get(0));
+        System.out.println("tour n°" + tour + " : " + nom + " > je joue "+m.getCartes().get(nbCarteAleatoire));
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
+
+
 
     public void démarrer() {
         // connexion effective

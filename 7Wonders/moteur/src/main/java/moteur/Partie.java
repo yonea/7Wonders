@@ -34,8 +34,8 @@ public class Partie {
         serveur.addConnectListener(new ConnectListener() {
             @Override
             public void onConnect(SocketIOClient socketIOClient) {
-                System.out.println("serveur > connexion de "+socketIOClient.getRemoteAddress());
-                System.out.println("serveur > connexion de "+socketIOClient);
+                //System.out.println("serveur > connexion de "+socketIOClient.getRemoteAddress());
+                //System.out.println("serveur > connexion de "+socketIOClient);
 
                 // mémorisation du participant
                 // ajout d'une limitation sur le nombre de joueur
@@ -55,10 +55,16 @@ public class Partie {
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
                     p.setNom(s);
-                    System.out.println("serveur > identification de "+p.getNom()+" ("+socketIOClient.getRemoteAddress()+")");
+                    //System.out.println("serveur > identification de "+p.getNom()+" ("+socketIOClient.getRemoteAddress()+")");
 
                     if (tousIndentifiés()) {
                         débuterLeJeu();
+                        //for(int i=1; i<4; i++) {
+                        distributionCartes(1);
+                        deroulementTour(1);
+                        //totalScore();
+                        //}
+
                     }
                 }
             }
@@ -72,10 +78,11 @@ public class Partie {
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
-                    System.out.println("serveur > "+p+" a joue "+carte);
+                    System.out.println("serveur > " + p + " a joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
-                    System.out.println("serveur > il reste a "+p+" les cartes "+p.getMain().getCartes());
+                    System.out.println(carte + " supprimé");
+                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
 
                     // etc.
                 }
@@ -84,26 +91,62 @@ public class Partie {
     }
 
     private void débuterLeJeu() {
-        // création des merveilles, au début de simple nom
-        Merveille[] merveilles = new Merveille[CONFIG.NB_JOUEURS];
+        Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
+        Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);
+        Merveille m3 = new Merveille("Le temple d’Artémis à Ephèse","a",false);
+        Merveille m4 = new Merveille("Les jardins suspendus de Babylone","a",false);
+        Merveille m5 = new Merveille("La statue de Zeus à Olympie","a",false);
+        Merveille m6 = new Merveille("Le mausolée d’Halicarnasse","a",false);
+        Merveille m7 = new Merveille("La grande pyramide de Gizeh","a",false);
+
+        ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
+        merveilles.add(m1);
+        merveilles.add(m2);
+        merveilles.add(m3);
+        merveilles.add(m4);
+        merveilles.add(m5);
+        merveilles.add(m6);
+        merveilles.add(m7);
 
         for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            merveilles[i] = new Merveille("merveille"+i);
+            if (!merveilles.get(i).isEstPris()) {
+                int indiceAuHasard = (int) (Math.random() * (merveilles.size() - 1));
+                merveilles.get(indiceAuHasard).setEstPris(true);
+                // association joueur - merveille
+                participants.get(i).setMerveille(merveilles.get(i));
+                System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(i));
+                // envoi de la merveille au joueur
+                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(i));
+            }
+        }
+
+        // création des merveilles, au début de simple nom
+        /*
+        Merveille[] merveilles = new Merveille[CONFIG.NB_JOUEURS];
+
+
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            merveilles[i] = new Merveille("merveille" + i);
             // association joueur - merveille
             participants.get(i).setMerveille(merveilles[i]);
-            System.out.println("serveur > envoie a "+participants.get(i)+" sa merveille "+merveilles[i]);
+            System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles[i]);
 
             // envoi de la merveille au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles[i]);
         }
+        */
 
-        // création des cartes initiales
+
+    }
+
+    private void distributionCartes(int age){
+
         Main[] mains = new Main[CONFIG.NB_JOUEURS];
 
-        for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
-            for(int j = 0 ; j < 7; j++) {
-                mains[i].ajouterCarte(new Carte(i+"-"+j));
+            for (int j = 0; j < 7; j++) {
+                mains[i].ajouterCarte(new Carte(i + "-" + j));
             }
             // association main initiale - joueur
             participants.get(i).setMain(mains[i]);
@@ -111,7 +154,23 @@ public class Partie {
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
 
         }
+    }
+    private void deroulementTour(int age){
+        System.out.println("Nous sommes dans l'Age " + age);
+        // création des cartes initiales
+        for(int j = 1 ; j < 8; j++) {
+            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+               // System.out.println("tour de jeu n° " + j + " c'est au tour du joueur " + i);
+            }
+        }
+    }
 
+    private void totalScore(){
+
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            // envoi de la main au joueur
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getMain().calculScore(participants.get(i).getMain().getCartes()));
+        }
     }
 
     private boolean tousIndentifiés() {
