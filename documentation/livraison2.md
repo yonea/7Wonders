@@ -24,4 +24,4 @@ la 3) est faite, chaque joueur se voit distribuer 7 cartes après avoir reçu le
 
 Aucun test n'a été réalise jusqu'à présent. (nous rencontrons des difficultées à comprendre comment les faires (en premier lieu pour vérifier la communication client/server)
 
-Le code le plus avancé présentant les itérations citées précedemment se trouve dans la branche 
+Le code le plus avancé présentant les itérations citées précedemment se trouve dans la branche tour-de-jeu
