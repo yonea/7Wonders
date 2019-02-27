@@ -13,6 +13,7 @@ L'itération 1 comprend le développement de 2 fonctionnalités :
  - chaque joueur se voit distribuer une merveille choisie aléatoirement en début de partie.
 
 Pour l'itération 2 :
+
   la 1) est en cours de développement : 
   Chaque joueur à 7 cartes contenant 2 points de victoires et en joue une alétoirement chaque tour.
   Les cartes jouées permettent d'incrémenter le score du joueur de 2.
