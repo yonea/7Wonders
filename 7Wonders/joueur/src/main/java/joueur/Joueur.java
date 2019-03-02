@@ -63,6 +63,7 @@ public class Joueur {
                 }
             });
 
+
             // réception du score
             connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
                 @Override
@@ -94,6 +95,7 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
+                            System.out.println("---------------------" +mainJSON);
                             Carte c = new Carte(carteJSON.getString("name"),2);
                             m.ajouterCarte(c);
                         }

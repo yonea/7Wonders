@@ -6,6 +6,7 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class Partie {
     SocketIOServer serveur;
     private ArrayList<Participant> participants;
+    ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
 
 
     public Partie() {
@@ -58,6 +60,7 @@ public class Partie {
                     //System.out.println("serveur > identification de "+p.getNom()+" ("+socketIOClient.getRemoteAddress()+")");
 
                     if (tousIndentifiés()) {
+                        creationMerveille();
                         débuterLeJeu();
                         //for(int i=1; i<4; i++) {
                         distributionCartes(1);
@@ -90,7 +93,7 @@ public class Partie {
         });
     }
 
-    private void débuterLeJeu() {
+    private void creationMerveille(){
         Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
         Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);
         Merveille m3 = new Merveille("Le temple d’Artémis à Ephèse","a",false);
@@ -99,7 +102,6 @@ public class Partie {
         Merveille m6 = new Merveille("Le mausolée d’Halicarnasse","a",false);
         Merveille m7 = new Merveille("La grande pyramide de Gizeh","a",false);
 
-        ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
         merveilles.add(m1);
         merveilles.add(m2);
         merveilles.add(m3);
@@ -107,36 +109,28 @@ public class Partie {
         merveilles.add(m5);
         merveilles.add(m6);
         merveilles.add(m7);
+    }
 
-        for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            if (!merveilles.get(i).isEstPris()) {
-                int indiceAuHasard = (int) (Math.random() * (merveilles.size() - 1));
-                merveilles.get(indiceAuHasard).setEstPris(true);
-                // association joueur - merveille
-                participants.get(i).setMerveille(merveilles.get(i));
-                System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(i));
-                // envoi de la merveille au joueur
-                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(i));
-            }
+    private int merveilleDisponible(){
+        int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
+        while(merveilles.get(indiceAuHasard).isEstPris()){
+            indiceAuHasard = (int) (Math.random() * (merveilles.size()));
         }
+        return indiceAuHasard;
+    }
 
+    private void débuterLeJeu() {
         // création des merveilles, au début de simple nom
-        /*
-        Merveille[] merveilles = new Merveille[CONFIG.NB_JOUEURS];
-
-
-        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            merveilles[i] = new Merveille("merveille" + i);
+        for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            int indiceMerveilleDisponible = merveilleDisponible();
+            merveilles.get(indiceMerveilleDisponible).setEstPris(true);
             // association joueur - merveille
-            participants.get(i).setMerveille(merveilles[i]);
-            System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles[i]);
-
+            participants.get(i).setMerveille(merveilles.get(indiceMerveilleDisponible));
+            System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
             // envoi de la merveille au joueur
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles[i]);
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
+
         }
-        */
-
-
     }
 
     private void distributionCartes(int age){
@@ -146,15 +140,15 @@ public class Partie {
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
             for (int j = 0; j < 7; j++) {
-                mains[i].ajouterCarte(new Carte(i + "-" + j));
+                mains[i].ajouterCarte(new Carte(i + "-" + j,2));
             }
             // association main initiale - joueur
             participants.get(i).setMain(mains[i]);
             // envoi de la main au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
-
         }
     }
+
     private void deroulementTour(int age){
         System.out.println("Nous sommes dans l'Age " + age);
         // création des cartes initiales
@@ -166,7 +160,6 @@ public class Partie {
     }
 
     private void totalScore(){
-
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getMain().calculScore(participants.get(i).getMain().getCartes()));
@@ -182,7 +175,6 @@ public class Partie {
                 break;
             }
         }
-
         return resultat;
     }
 
@@ -209,8 +201,6 @@ public class Partie {
         }
         return p;
     }
-
-
 
     public static final void main(String  [] args) {
         Partie p = new Partie();

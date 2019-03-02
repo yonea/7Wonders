@@ -26,11 +26,14 @@ public class Participant {
     }
 
 
-
+/*
     public String toString() {
         return "[Joueur "+getNom()+" : "+getSocket().getRemoteAddress()+"]";
     }
-
+*/
+    public String toString() {
+        return "[Joueur "+getNom() + " ]";
+    }
 
     public void setNom(String nom) {
         this.nom = nom;

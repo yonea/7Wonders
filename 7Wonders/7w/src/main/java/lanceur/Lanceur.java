@@ -21,5 +21,6 @@ public class Lanceur {
         for(int i = 0 ; i < CONFIG.NB_JOUEURS; i++) {
             joueurs[i].démarrer();
         }
+
     }
 }
