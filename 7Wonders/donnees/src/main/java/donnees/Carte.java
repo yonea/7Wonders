@@ -6,7 +6,6 @@ public class Carte {
 
     private String name;
     private int pointDeVictoire;
-    private boolean estJoue;
     private ArrayList<Carte> cartes = new ArrayList<>();
 
 

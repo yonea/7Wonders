@@ -21,6 +21,7 @@ public class Partie {
     ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
 
 
+
     public Partie() {
 
         // création du serveur (peut-être externalisée)
@@ -65,7 +66,8 @@ public class Partie {
                         //for(int i=1; i<4; i++) {
                         distributionCartes(1);
                         deroulementTour(1);
-                        //totalScore();
+                        Thread.sleep( 2 * 1000);
+                        totalScore();
                         //}
 
                     }
@@ -84,13 +86,47 @@ public class Partie {
                     System.out.println("serveur > " + p + " a joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
+                    //on met a jour le score du joueur
+                    p.setPoint(carte.getPointDeVictoire());
                     System.out.println(carte + " supprimé");
                     System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
-
                     // etc.
                 }
             }
         });
+    }
+
+    private void distributionCartes(int age){
+
+        Main[] mains = new Main[CONFIG.NB_JOUEURS];
+
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            mains[i] = new Main();
+            for (int j = 0; j < 7; j++) {
+                mains[i].ajouterCarte(new Carte(i + "-" + j,2));
+            }
+            // association main initiale - joueur
+            participants.get(i).setMain(mains[i]);
+            // envoi de la main au joueur
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+        }
+    }
+
+    private void deroulementTour(int age){
+        System.out.println("Nous sommes dans l'Age " + age);
+        // création des cartes initiales
+        for(int j = 1 ; j < 8; j++) {
+            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+                // System.out.println("tour de jeu n° " + j + " c'est au tour du joueur " + i);
+            }
+        }
+    }
+
+    private void totalScore(){
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            // envoi de la main au joueur
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
+        }
     }
 
     private void creationMerveille(){
@@ -133,38 +169,7 @@ public class Partie {
         }
     }
 
-    private void distributionCartes(int age){
 
-        Main[] mains = new Main[CONFIG.NB_JOUEURS];
-
-        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            mains[i] = new Main();
-            for (int j = 0; j < 7; j++) {
-                mains[i].ajouterCarte(new Carte(i + "-" + j,2));
-            }
-            // association main initiale - joueur
-            participants.get(i).setMain(mains[i]);
-            // envoi de la main au joueur
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
-        }
-    }
-
-    private void deroulementTour(int age){
-        System.out.println("Nous sommes dans l'Age " + age);
-        // création des cartes initiales
-        for(int j = 1 ; j < 8; j++) {
-            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-               // System.out.println("tour de jeu n° " + j + " c'est au tour du joueur " + i);
-            }
-        }
-    }
-
-    private void totalScore(){
-        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            // envoi de la main au joueur
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getMain().calculScore(participants.get(i).getMain().getCartes()));
-        }
-    }
 
     private boolean tousIndentifiés() {
         boolean resultat = true;

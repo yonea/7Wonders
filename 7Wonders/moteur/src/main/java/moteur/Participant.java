@@ -1,6 +1,7 @@
 package moteur;
 
 import com.corundumstudio.socketio.SocketIOClient;
+import donnees.Carte;
 import donnees.Main;
 import donnees.Merveille;
 
@@ -9,6 +10,7 @@ public class Participant {
 
     private SocketIOClient socket;
     private String nom;
+    private int point;
     private Merveille merveille;
     private Main main;
 
@@ -57,5 +59,13 @@ public class Participant {
 
     public Main getMain() {
         return main;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int pt) {
+        this.point += pt;
     }
 }
