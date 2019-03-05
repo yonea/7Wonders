@@ -17,11 +17,11 @@ Troisième itération
 Quatrième itération
  - Ajouter les matières premières
  - Ajouter les produits manufacturées
- - Gestion des couts de constructions
  - Créer les différents ages (3)
+ - Ajout des bâtiments commerciaux
 
 Cinquième itération
- - Ajout des bâtiments commerciaux
+ - Gestion des couts de constructions
 
 Sixième itération
  - Le joueur joue une carte (placer en face cachée)
