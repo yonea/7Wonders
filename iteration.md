@@ -12,7 +12,7 @@ Troisième itération
 
 Quatrième itération
  - Le joueur joue une carte (défausssé, recuperer les pieces d'or)
- - Création des resources du joueur
+ - Création des resources du joueur (ajout des cartes jouées par le joueur dans une hashmap)
  - Changement de main des joueurs à chaque tour de jeu
  
 Cinquième itération
@@ -24,4 +24,4 @@ Sixième itération
  - Conflits militaires
  
 Septième itération
- - Sorties textuelles
+ - Compter les points de chaque joueur en fonction des cartes et des conflits militaires
