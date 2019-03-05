@@ -21,16 +21,12 @@ Quatrième itération
  - Créer les différents ages (3)
 
 Cinquième itération
- - Ajout des différentes cartes correspondant aux ages
  - Ajout des bâtiments commerciaux
- - Gestion des intelligences
 
 Sixième itération
  - Le joueur joue une carte (placer en face cachée)
  - Ajout des guildes
  - Gestion de la défausse pour chaque tour
- - Gestion des intelligences
 
 Septième itération
- - Gestion des intelligences
  - Sorties textuelles
