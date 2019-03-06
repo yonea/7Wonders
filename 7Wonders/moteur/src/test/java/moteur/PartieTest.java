@@ -11,10 +11,7 @@ class PartieTest {
     @BeforeEach
     public void setUp() {
         ptest = new Partie();
-<<<<<<< HEAD
         //ptest.démarrer();
-=======
->>>>>>> panzera
 
     }
 
