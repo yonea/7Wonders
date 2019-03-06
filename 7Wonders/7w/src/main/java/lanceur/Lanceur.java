@@ -13,7 +13,7 @@ public class Lanceur {
 
         // création des 4 joueurs
         for(int i = 0 ; i < CONFIG.NB_JOUEURS; i++) {
-            joueurs[i] = new Joueur("Joueur"+(i+1));
+            joueurs[i] = new Joueur("Joueur"+(i+1),0);
         }
 
         // démarrage du jeu
@@ -21,5 +21,6 @@ public class Lanceur {
         for(int i = 0 ; i < CONFIG.NB_JOUEURS; i++) {
             joueurs[i].démarrer();
         }
+
     }
 }
