@@ -24,7 +24,11 @@ class JoueurTest {
 
     @Test
     void montrerMerveille() {
+<<<<<<< HEAD
         System.out.println("test d'attribution d'une merveille \n");
+=======
+        System.out.println("test attribution d'une merveille \n");
+>>>>>>> panzera
         joueurt1.setMerveille(m1);
         assertEquals("Le Colosse de Rhodes",joueurt1.getMerveille().getNom(), "nom merveille : " + m1.getNom());
     }

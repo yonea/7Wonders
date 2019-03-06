@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e12fe36-3a9d-453f-88ad-f85389a15554" name="Default" comment="" />
+    <list default="true" id="9e12fe36-3a9d-453f-88ad-f85389a15554" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/7w/target/" />
     <ignored path="$PROJECT_DIR$/moteur/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,6 +22,7 @@
     <SUITE FILE_PATH="coverage/7w$JoueurTest.ic" NAME="JoueurTest Coverage Results" MODIFIED="1551797005901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>joueur.*</FILTER>
     </SUITE>
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/7w$MerveilleTest.ic" NAME="MerveilleTest Coverage Results" MODIFIED="1551813089400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>donnees.*</FILTER>
     </SUITE>
@@ -29,19 +32,30 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myElementSize" value="83" />
+=======
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="130" />
+>>>>>>> panzera
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="323">
               <caret line="27" column="49" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="49" />
+=======
+            <state relative-caret-position="136">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+>>>>>>> panzera
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/CarteTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
@@ -53,24 +67,59 @@
                 <element signature="e#661#662#0" expanded="true" />
                 <element signature="e#731#732#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+=======
         <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+>>>>>>> panzera
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+=======
+        <entry file="file://$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> panzera
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="29" selection-start-line="28" selection-start-column="8" selection-end-line="29" />
+=======
+        <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Merveille.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="26" column="64" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="64" />
+              <folding>
+                <element signature="e#835#836#0" expanded="true" />
+                <element signature="e#873#874#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,6 +127,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+>>>>>>> panzera
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Main.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -117,11 +180,28 @@
               <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Participant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="17" column="52" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="52" />
+              <folding>
+                <element signature="e#713#714#0" expanded="true" />
+                <element signature="e#762#763#0" expanded="true" />
+                <element signature="e#1090#1091#0" expanded="true" />
+                <element signature="e#1122#1123#0" expanded="true" />
+                <element signature="e#1207#1208#0" expanded="true" />
+                <element signature="e#1235#1236#0" expanded="true" />
+                <element signature="e#1271#1272#0" expanded="true" />
+                <element signature="e#1303#1304#0" expanded="true" />
+>>>>>>> panzera
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -161,6 +241,25 @@
                 <element signature="e#1271#1272#0" expanded="true" />
                 <element signature="e#1303#1304#0" expanded="true" />
               </folding>
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/moteur/src/test/java/moteur/ParticipantTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/7w/src/main/java/lanceur/Lanceur.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="32" />
+>>>>>>> panzera
             </state>
           </provider>
         </entry>
@@ -181,7 +280,10 @@
       <find>setMerveille</find>
       <find>merveille</find>
       <find>débuterLeJeu</find>
+<<<<<<< HEAD
       <find>+</find>
+=======
+>>>>>>> panzera
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,11 +301,18 @@
         <option value="$PROJECT_DIR$/moteur/src/main/java/moteur/Participant.java" />
         <option value="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" />
         <option value="$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" />
         <option value="$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java" />
         <option value="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" />
         <option value="$PROJECT_DIR$/donnees/src/test/java/donnees/MerveilleTest.java" />
         <option value="$PROJECT_DIR$/donnees/src/test/java/donnees/CarteTest.java" />
+=======
+        <option value="$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java" />
+        <option value="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" />
+        <option value="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" />
+        <option value="$PROJECT_DIR$/moteur/src/test/java/moteur/ParticipantTest.java" />
+>>>>>>> panzera
       </list>
     </option>
   </component>
@@ -225,8 +334,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="PackagesPane" />
+=======
+>>>>>>> panzera
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -342,6 +454,30 @@
             <path>
               <item name="7w" type="b2602c69:ProjectViewProjectNode" />
               <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
               <item name="moteur" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -381,16 +517,45 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> panzera
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+>>>>>>> panzera
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551858812109" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551867037532" />
+>>>>>>> panzera
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -401,7 +566,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+<<<<<<< HEAD
       <recent name="donnees" />
+=======
+>>>>>>> panzera
       <recent name="moteur" />
       <recent name="joueur" />
     </key>
@@ -421,7 +589,11 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.CarteTest">
+=======
+  <component name="RunManager" selected="JUnit.JoueurTest">
+>>>>>>> panzera
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -448,6 +620,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="CarteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="donnees" />
       <extension name="coverage">
@@ -458,12 +631,25 @@
       </extension>
       <option name="PACKAGE_NAME" value="donnees" />
       <option name="MAIN_CLASS_NAME" value="donnees.CarteTest" />
+=======
+    <configuration name="JoueurTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="joueur" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="joueur.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="joueur" />
+      <option name="MAIN_CLASS_NAME" value="joueur.JoueurTest" />
+>>>>>>> panzera
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="JoueurTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="joueur" />
       <extension name="coverage">
@@ -490,12 +676,16 @@
       </extension>
       <option name="PACKAGE_NAME" value="donnees" />
       <option name="MAIN_CLASS_NAME" value="donnees.MerveilleTest" />
+=======
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+>>>>>>> panzera
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -503,6 +693,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+>>>>>>> panzera
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -523,8 +715,11 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="JUnit.CarteTest" />
         <item itemvalue="JUnit.MerveilleTest" />
+=======
+>>>>>>> panzera
         <item itemvalue="JUnit.JoueurTest" />
         <item itemvalue="Application.Lanceur" />
       </list>
@@ -563,6 +758,15 @@
     <servers />
   </component>
   <component name="TestHistory">
+<<<<<<< HEAD
+=======
+    <history-entry file="JoueurTest - 2019.03.05 at 15h 36m 35s.xml">
+      <configuration name="JoueurTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JoueurTest - 2019.03.05 at 15h 38m 03s.xml">
+      <configuration name="JoueurTest" configurationId="JUnit" />
+    </history-entry>
+>>>>>>> panzera
     <history-entry file="JoueurTest - 2019.03.05 at 15h 38m 50s.xml">
       <configuration name="JoueurTest" configurationId="JUnit" />
     </history-entry>
@@ -581,6 +785,7 @@
     <history-entry file="JoueurTest - 2019.03.05 at 16h 14m 16s.xml">
       <configuration name="JoueurTest" configurationId="JUnit" />
     </history-entry>
+<<<<<<< HEAD
     <history-entry file="JoueurTest - 2019.03.05 at 19h 27m 04s.xml">
       <configuration name="JoueurTest" configurationId="JUnit" />
     </history-entry>
@@ -593,6 +798,8 @@
     <history-entry file="CarteTest - 2019.03.06 at 08h 47m 21s.xml">
       <configuration name="CarteTest" configurationId="JUnit" />
     </history-entry>
+=======
+>>>>>>> panzera
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="48157000" />
@@ -601,7 +808,11 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20067114" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18993288" />
+>>>>>>> panzera
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -610,7 +821,11 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+=======
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+>>>>>>> panzera
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39955848" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -628,7 +843,11 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.25167784" />
+=======
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.1590604" />
+>>>>>>> panzera
       <window_info anchor="right" id="Maven" order="10" />
     </layout>
   </component>
@@ -638,6 +857,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/BatimentsCivils.java" />
     <entry file="file://$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
@@ -656,11 +876,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="32" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="e#147#148#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+            <element signature="e#726#727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/config/CONFIG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+>>>>>>> panzera
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/moteur/src/test/java/PartieTest.java" />
     <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="323">
           <caret line="27" column="49" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="49" />
         </state>
@@ -670,6 +921,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+=======
+        <state relative-caret-position="136">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Merveille.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="64" />
+          <folding>
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#873#874#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> panzera
         </state>
       </provider>
     </entry>
@@ -716,6 +1002,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Participant.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="680">
           <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
@@ -737,10 +1024,48 @@
           <caret line="29" selection-start-line="28" selection-start-column="8" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
+=======
+        <state relative-caret-position="136">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Participant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1271#1272#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+>>>>>>> panzera
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/CarteTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -768,6 +1093,14 @@
             <element signature="e#409#410#0" expanded="true" />
             <element signature="e#692#693#0" expanded="true" />
             <element signature="e#726#727#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/moteur/src/test/java/moteur/ParticipantTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> panzera
           </folding>
         </state>
       </provider>
