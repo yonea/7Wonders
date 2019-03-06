@@ -6,6 +6,7 @@ public class Carte {
 
     private String name;
     private int pointDeVictoire;
+    private int coutConstruction;
     //private ArrayList<Carte> cartes = new ArrayList<>();
 
 
@@ -21,6 +22,7 @@ public class Carte {
     }
 
     public Carte() {}
+
     public Carte(String name) {
         this.name = name;
     }
@@ -30,7 +32,11 @@ public class Carte {
         this.pointDeVictoire = pointDeVictoire;
     }
 
-
+    public Carte(String name, int pointDeVictoire, int coutConstruction) {
+        this.name = name;
+        this.pointDeVictoire = pointDeVictoire;
+        this.coutConstruction = coutConstruction;
+    }
 
     public String toString() {
         return "[carte - "+getName()+" - " + getPointDeVictoire() +" ]";
