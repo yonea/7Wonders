@@ -6,23 +6,25 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
+import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Partie {
+
     SocketIOServer serveur;
 
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
-    private ArrayList<Carte> cartes = new ArrayList<Carte>();
-
-
+    Deck deck;
+    Deck deckMelange ;
     public Partie() {
 
         // création du serveur (peut-être externalisée)
@@ -65,12 +67,20 @@ public class Partie {
                         creationMerveille();
                         débuterLeJeu();
                         //for(int i=1; i<4; i++) {
+                        System.out.println("Nous sommes dans l'Age 1");
+                        //creation du deck à distribuer
+                        creationDeck(1);
+                        //on melange le deck
+                        melangerDeck(deck);
+                        //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
                         distributionCartes(1);
-                        deroulementTour(1);
-                        Thread.sleep( 2 * 1000);
-                        totalScore();
-                        //}
+                        //Thread.sleep(1000);
+                        //deroulementTour(1);
+                        Thread.sleep( 5 * 1000);
+                        //calcul du score en fin de partie
 
+                        //}
+                        totalScore();
                     }
                 }
             }
@@ -101,11 +111,11 @@ public class Partie {
     private void distributionCartes(int age){
 
         Main[] mains = new Main[CONFIG.NB_JOUEURS];
-
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
-            for (int j = 0; j < 7; j++) {
-                mains[i].ajouterCarte(new Carte(i + "-" + j,2));
+            for (int j = 7*i; j < 7*(i+1); j++) {
+                //mains[i].ajouterCarte(new Carte(i + "-" + j,2));
+                mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
             }
             // association main initiale - joueur
             participants.get(i).setMain(mains[i]);
@@ -149,11 +159,17 @@ public class Partie {
         merveilles.add(m7);
     }
 
-    private void creationDeck(){
-
-        //Carte c1 = new Carte("")
-
+    private void creationDeck(int age){
+        deck = new Deck(1);
+        //System.out.println("DECK AGE 1 " + deck.getDeck1());
     }
+
+    private void melangerDeck(Deck d) {
+        deckMelange = deck;
+        Collections.shuffle(deckMelange.getDeck1());
+        System.out.println("melange" + deckMelange.getDeck1());
+    }
+
 
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));

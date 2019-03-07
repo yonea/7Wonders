@@ -28,11 +28,11 @@ public class Participant {
     }
 
 
-/*
-    public String toString() {
-        return "[Joueur "+getNom()+" : "+getSocket().getRemoteAddress()+"]";
-    }
-*/
+    /*
+        public String toString() {
+            return "[Joueur "+getNom()+" : "+getSocket().getRemoteAddress()+"]";
+        }
+    */
     public String toString() {
         return "[Joueur "+getNom() + " ]";
     }
