@@ -1,7 +1,7 @@
 Première itération
  - Lancement d'une partie avec 4 joueurs
  - Chaque joueur se voit attribuer une merveille
- - Mise en place de la boucle de jeu, les 7 tours du premier ages
+ - Mise en place de la boucle de jeu, les 7 tours du premier age
  
 Deuxième itération
  - Ajouter les points de victoires
