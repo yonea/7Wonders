@@ -1,11 +1,20 @@
 package donnees;
 
+import java.util.ArrayList;
+
 public class Carte {
 
     private String name;
+    private int pointDeVictoire;
+    private int coutConstruction;
+    //private ArrayList<Carte> cartes = new ArrayList<>();
+
 
     public String getName() {
         return name;
+    }
+    public int getPointDeVictoire() {
+        return pointDeVictoire;
     }
 
     public void setName(String name) {
@@ -13,13 +22,24 @@ public class Carte {
     }
 
     public Carte() {}
+
     public Carte(String name) {
         this.name = name;
     }
 
+    public Carte(String name, int pointDeVictoire) {
+        this.name = name;
+        this.pointDeVictoire = pointDeVictoire;
+    }
+
+    public Carte(String name, int pointDeVictoire, int coutConstruction) {
+        this.name = name;
+        this.pointDeVictoire = pointDeVictoire;
+        this.coutConstruction = coutConstruction;
+    }
 
     public String toString() {
-        return "[carte - "+getName()+" -]";
+        return "[carte - "+getName()+" - " + getPointDeVictoire() +" ]";
     }
 
     public boolean equals(Object o) {

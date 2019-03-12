@@ -1,5 +1,6 @@
 package joueur;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
@@ -18,12 +19,15 @@ public class Joueur {
 
 
     private String nom;
+    private int point;
     Socket connexion ;
     private Merveille merveille;
+    private Main main;
 
-    public Joueur(String un_joueur) {
+
+    public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
-
+        setPt(pt);
         System.out.println(nom +" > creation");
         try {
             // préparation de la connexion
@@ -34,7 +38,7 @@ public class Joueur {
                 @Override
                 public void call(Object... objects) {
                     System.out.println(getNom() + " > connecte");
-                    System.out.println(getNom()+" > envoi de mon nom");
+                    //System.out.println(getNom()+" > envoi de mon nom");
                     connexion.emit(MESSAGES.MON_NOM, getNom());
                 }
             });
@@ -63,6 +67,19 @@ public class Joueur {
                 }
             });
 
+
+            // réception du score
+            connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
+                @Override
+                public void call(Object... objects) {
+                    // réception du JSON
+                    int n = (int) objects[0];
+                    setPt(n);
+                    // affichage du score
+                    System.out.println(nom+"  ---SCORE---  "+ point + " points");
+                }
+            });
+
             // réception de la main
             connexion.on(MESSAGES.ENVOI_DE_MAIN, new Emitter.Listener() {
                 @Override
@@ -76,13 +93,17 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            Carte c = new Carte(carteJSON.getString("name"));
+                            // System.out.println("---------------------" +mainJSON);
+                            Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
                             m.ajouterCarte(c);
                         }
+
                         System.out.println(nom+" > j'ai recu "+m);
 
                         // le joueur a reçu, il joue
-                        jouer(m);
+                        for(int i=1; i<7; i++) {
+                            jouer(m,i);
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -90,24 +111,28 @@ public class Joueur {
                 }
             });
         } catch (
-        URISyntaxException e) {
+                URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
 
-    private void jouer(Main m) {
-        // ne fonctionne pas dans Android
-        JSONObject pieceJointe = new JSONObject(m.getCartes().get(0)) ;
+    private void jouer(Main m, int tour) {
+
+        int indiceCarte = tour-1;
+        //System.out.println("taille de la main >>>" + m.getCartes().size());
+        JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
 
         // dans Android, il faudrait faire :
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
-
-        System.out.println(nom + " > je joue "+m.getCartes().get(0));
+        System.out.println("pjointe " + pieceJointe);
+        System.out.println("tour n°" + tour + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
+
+
 
     public void démarrer() {
         // connexion effective
@@ -122,9 +147,16 @@ public class Joueur {
         return nom;
     }
 
+    public void setPt(int pt) {
+        this.point += pt;
+    }
+
+    public int getPoint() {
+        return point;
+    }
 
     public static final void main(String  [] args) {
-        Joueur j = new Joueur("toto");
+        Joueur j = new Joueur("toto",0);
         j.démarrer();
     }
 

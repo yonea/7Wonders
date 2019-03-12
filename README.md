@@ -1,7 +1,9 @@
 # Jeu 7 Wonders
 
-## Créateurs : 
+## CrÃ©ateurs : 
 * BAROUKH Yoni
 * BOURGEAT Killian
 * PANZERA Alexis
-* REJNERI Clément
+* REJNERI ClÃ©ment
+
+
