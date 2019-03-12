@@ -1,25 +1,27 @@
 Première itération
- - Lancement d'une partie avec 3 joueurs
+ - Lancement d'une partie avec 4 joueurs
  - Chaque joueur se voit attribuer une merveille
+ - Mise en place de la boucle de jeu, les 7 tours du premier age
  
 Deuxième itération
- - Création d'un tour de jeu avec un seul âge
+ - Ajouter les points de victoire
  - Distribution d'une carte aux joueurs
  
 Troisième itération
- - Créer une partie avec au plus 8 joueurs
- - Décompte des points
+ - Création du paquet de cartes de l'age 1 (batiments civils, scientifique, commerciaux et militaires, produits manufacturés et matières premières)
 
 Quatrième itération
- - Créer trois tours de jeu
- - Créer les différents ages (3)
-
+ - Le joueur joue une carte produit manufacturés et garde en mémoire les ressources contenues dans la carte.
+ - Création des resources du joueur (ajout des cartes jouées par le joueur dans une hashmap)
+ - Changement de main des joueurs à chaque tour de jeu
+ 
 Cinquième itération
- - Ajout des différentes cartes correspondant aux ages
+ - Gestion des coûts de construction
+ - Achat des ressources aux joueurs voisins
 
 Sixième itération
- - Ajout des ressources
- - Ajout cartes "bâtiments militaires"
-
+ - Gestion des cartes batîments scientifiques (calcul du score en fonction du nombre de cartes bâtiments scientifiques indentiques
+ - Conflits militaires
+ 
 Septième itération
- - Decompte des points
+ - Gestion de la construction de la merveille
