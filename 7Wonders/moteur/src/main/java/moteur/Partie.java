@@ -23,8 +23,8 @@ public class Partie {
 
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
-    Deck deck;
-    Deck deckMelange ;
+    private Main[] mains = new Main[CONFIG.NB_JOUEURS];
+    private Deck deck;
     public Partie() {
 
         // création du serveur (peut-être externalisée)
@@ -67,24 +67,22 @@ public class Partie {
                         creationMerveille();
                         débuterLeJeu();
                         //for(int i=1; i<4; i++) {
+                            System.out.println("\nNous sommes dans l'Age 1");
                             //creation du deck à distribuer
                             creationDeck(1);
                             //on melange le deck
-                            melangerDeck(deck);
+                            melangerDeck();
                             //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
-                            distributionCartes(1);
-                            Thread.sleep(1000);
-                            deroulementTour(1);
+                            distributionCartes();
+                            deroulementAge();
                             Thread.sleep( 5 * 1000);
                             //calcul du score en fin de partie
-
                         //}
                         totalScore();
                     }
                 }
             }
         });
-
 
         // réception de la carte jouée
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
@@ -96,50 +94,54 @@ public class Partie {
                     System.out.println("serveur > " + p + " a joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
-                    System.out.println("----SIZE----" + p.getMain().getCartes().size());
                     //on met a jour le score du joueur
                     p.setPoint(carte.getPointDeVictoire());
                     System.out.println(carte + " supprimé");
                     System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
-                    // etc.
                 }
             }
         });
     }
 
-    private void distributionCartes(int age){
+    private void distributionCartes() {
 
-        Main[] mains = new Main[CONFIG.NB_JOUEURS];
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
-            for (int j = 7*i; j < 7*(i+1); j++) {
-                //mains[i].ajouterCarte(new Carte(i + "-" + j,2));
-                mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
+            for (int j = 7 * i; j < 7 * (i + 1); j++) {
+                mains[i].ajouterCarte(deck.getDeck1().get(j));
             }
             // association main initiale - joueur
             participants.get(i).setMain(mains[i]);
-            // envoi de la main au joueur
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
         }
     }
-
-    private void deroulementTour(int age){
-        System.out.println("Nous sommes dans l'Age " + age);
-        // création des cartes initiales
-        for(int j = 1 ; j < 8; j++) {
+    private void deroulementAge() throws InterruptedException {
+        for(int t = 1; t<7; t++){
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                // System.out.println("tour de jeu n° " + j + " c'est au tour du joueur " + i);
+                // envoi de la main au joueur
+                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+                System.out.println("\n");
+                Thread.sleep(1000);
             }
+            echangeDeMain();
         }
     }
-
+    private void echangeDeMain(){
+        Main main0, main1, main2, main3;
+        main0 = mains[0];
+        main1 = mains[1];
+        main2 = mains[2];
+        main3 = mains[3];
+        mains[0] = main3;
+        mains[1] = main0;
+        mains[2] = main1;
+        mains[3] = main2;
+    }
     private void totalScore(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }
     }
-
     private void creationMerveille(){
         Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
         Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);
@@ -159,16 +161,11 @@ public class Partie {
     }
 
     private void creationDeck(int age){
-        deck = new Deck(1);
-        System.out.println("DECK AGE 1 " + deck.getDeck1());
+        deck = new Deck(age);
     }
-
-    private void melangerDeck(Deck d) {
-        deckMelange = deck;
-        Collections.shuffle(deckMelange.getDeck1());
+    private void melangerDeck() {
+        Collections.shuffle(deck.getDeck1());
     }
-
-
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
         while(merveilles.get(indiceAuHasard).isEstPris()){
@@ -176,7 +173,6 @@ public class Partie {
         }
         return indiceAuHasard;
     }
-
     private void débuterLeJeu() {
         // création des merveilles, au début de simple nom
         for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -187,11 +183,8 @@ public class Partie {
             System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
             // envoi de la merveille au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
-
         }
     }
-
-
 
     private boolean tousIndentifiés() {
         boolean resultat = true;
@@ -204,14 +197,10 @@ public class Partie {
         }
         return resultat;
     }
-
-
     public void démarrer() {
         // démarrage du serveur
         serveur.start();
     }
-
-
     /**
      * méthode pour retrouver un participant à partir de la socket cliente (disponible à la réception d'un message)
      * @param socketIOClient le client qui vient d'envoyer un message au serveur
@@ -219,7 +208,6 @@ public class Partie {
      */
     private Participant retrouveParticipant(SocketIOClient socketIOClient) {
         Participant p = null;
-
         for(Participant part : participants) {
             if (part.getSocket().equals(socketIOClient)) {
                 p = part;

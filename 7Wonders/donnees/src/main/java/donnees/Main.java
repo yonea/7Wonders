@@ -22,14 +22,6 @@ public class Main {
         this.cartes = cartes;
     }
 
-    public int calculScore(ArrayList<Carte> cartes){
-        int score = 0;
-        for(int i = 0; i<cartes.size(); i++){
-            Carte c = cartes.get(i);
-            score += c.getPointDeVictoire();
-        }
-        return score;
-    }
     public void ajouterCarte(Carte c) {
         getCartes().add(c);
     }

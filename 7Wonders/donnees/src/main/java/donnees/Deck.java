@@ -16,12 +16,12 @@ public class Deck {
     Carte c6 = new Carte("Bassin Argileux",0,0);
     Carte c7 = new Carte("Filon",0,0);
     Carte c8 = new Carte("Filon",0,0);
-    Carte c9 = new Carte("Friche",1,0);
-    Carte c10 = new Carte("Excavation",1,0);
-    Carte c11 = new Carte("Fosse Argileuse",1,0);
-    Carte c12 = new Carte("Exploitation Forestiere",1,0);
-    Carte c13 = new Carte("Gisement",1,0);
-    Carte c14 = new Carte("Mine",1,0);
+    Carte c9 = new Carte("Friche",0,1);
+    Carte c10 = new Carte("Excavation",0,1);
+    Carte c11 = new Carte("Fosse Argileuse",0,1);
+    Carte c12 = new Carte("Exploitation Forestiere",1,1);
+    Carte c13 = new Carte("Gisement",0,1);
+    Carte c14 = new Carte("Mine",0,1);
 
     //Produits Manufacturés
     Carte c15 = new Carte("Metier A Tisser",0,0);
@@ -42,15 +42,15 @@ public class Deck {
     Carte c28 = new Carte("Theatre",2,0);
 
     // Batiments commerciaux
-    Carte c29 = new Carte("Taverne",5,0);
-    Carte c30 = new Carte("Taverne",5,0);
-    Carte c31 = new Carte("Taverne",5,0);
-    Carte c32 = new Carte("Comptoir Est",1,0);
-    Carte c33 = new Carte("Comptoir Est",1,0);
-    Carte c34 = new Carte("Comptoir Ouest",1,0);
-    Carte c35 = new Carte("Comptoir Ouest",1,0);
-    Carte c36 = new Carte("Marche",1,0);
-    Carte c37 = new Carte("Marche",1,0);
+    Carte c29 = new Carte("Taverne",0,0);//Rapporte 5 pieces
+    Carte c30 = new Carte("Taverne",0,0);//Rapporte 5 pieces
+    Carte c31 = new Carte("Taverne",0,0);//Rapporte 5 pieces
+    Carte c32 = new Carte("Comptoir Est",1,0);//Rapporte 1 pieces
+    Carte c33 = new Carte("Comptoir Est",1,0);//Rapporte 1 pieces
+    Carte c34 = new Carte("Comptoir Ouest",1,0);//Rapporte 1 pieces
+    Carte c35 = new Carte("Comptoir Ouest",1,0);//Rapporte 1 pieces
+    Carte c36 = new Carte("Marche",1,0);//Rapporte 1 pieces
+    Carte c37 = new Carte("Marche",1,0);//Rapporte 1 pieces
 
     //Batiments militaires
     Carte c38 = new Carte("Palissade",0,0);
@@ -152,10 +152,10 @@ public class Deck {
             case 3:
                 creerDeckAge3();
                 break;
-                default:
-                    System.out.println("Il existe seulement 3 ages");
+            default:
+                System.out.println("Il existe seulement 3 ages");
         }
-    return deck1;
+        return deck1;
     }
 
 }
