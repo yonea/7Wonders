@@ -76,7 +76,7 @@ public class Joueur {
                     int n = (int) objects[0];
                     setPt(n);
                     // affichage du score
-                    System.out.println(nom+"  ---SCORE---  "+ point + " points");
+                    System.out.println("\n" + nom + "  ---SCORE---  " + point + " points");
                 }
             });
 
@@ -93,18 +93,12 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            // System.out.println("---------------------" +mainJSON);
                             Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
                             m.ajouterCarte(c);
                         }
-
                         System.out.println(nom+" > j'ai recu "+m);
-
                         // le joueur a reçu, il joue
-                        for(int i=1; i<7; i++) {
-                            jouer(m,i);
-                        }
-
+                        jouer(m);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -115,20 +109,15 @@ public class Joueur {
             e.printStackTrace();
         }
     }
-
-
-    private void jouer(Main m, int tour) {
-
-        int indiceCarte = tour-1;
-        //System.out.println("taille de la main >>>" + m.getCartes().size());
+    int tour = 1;
+    private void jouer(Main m) {
+        int indiceCarte = 0;
         JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
-
         // dans Android, il faudrait faire :
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
-        System.out.println("pjointe " + pieceJointe);
-        System.out.println("tour n°" + tour + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
+        System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
 

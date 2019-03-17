@@ -67,25 +67,21 @@ public class Partie {
                         creationMerveille();
                         débuterLeJeu();
                         //for(int i=1; i<4; i++) {
-                        System.out.println("Nous sommes dans l'Age 1");
-                        //creation du deck à distribuer
-                        creationDeck(1);
-                        //on melange le deck
-                        melangerDeck(deck);
-                        //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
-                        distributionCartes(1);
-                        //Thread.sleep(1000);
-                        //deroulementTour(1);
-                        Thread.sleep( 5 * 1000);
-                        //calcul du score en fin de partie
-
+                            System.out.println("\nNous sommes dans l'Age 1");
+                            //creation du deck à distribuer
+                            creationDeck(1);
+                            //on melange le deck
+                            melangerDeck(deck);
+                            //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
+                            distributionCartes();
+                            Thread.sleep( 5 * 1000);
+                            //calcul du score en fin de partie
                         //}
                         totalScore();
                     }
                 }
             }
         });
-
 
         // réception de la carte jouée
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
@@ -97,39 +93,33 @@ public class Partie {
                     System.out.println("serveur > " + p + " a joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
-                    System.out.println("----SIZE----" + p.getMain().getCartes().size());
                     //on met a jour le score du joueur
                     p.setPoint(carte.getPointDeVictoire());
                     System.out.println(carte + " supprimé");
                     System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
-                    // etc.
                 }
             }
         });
     }
 
-    private void distributionCartes(int age){
-
+    private void distributionCartes() throws InterruptedException {
         Main[] mains = new Main[CONFIG.NB_JOUEURS];
-        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            mains[i] = new Main();
-            for (int j = 7*i; j < 7*(i+1); j++) {
-                //mains[i].ajouterCarte(new Carte(i + "-" + j,2));
-                mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
-            }
-            // association main initiale - joueur
-            participants.get(i).setMain(mains[i]);
-            // envoi de la main au joueur
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
-        }
-    }
-
-    private void deroulementTour(int age){
-        System.out.println("Nous sommes dans l'Age " + age);
-        // création des cartes initiales
-        for(int j = 1 ; j < 8; j++) {
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                // System.out.println("tour de jeu n° " + j + " c'est au tour du joueur " + i);
+                mains[i] = new Main();
+                for (int j = 7*i; j < 7*(i+1); j++) {
+                    mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
+                }
+                // association main initiale - joueur
+                participants.get(i).setMain(mains[i]);
+                // envoi de la main au joueur
+                //participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+
+            }
+        for(int t = 1; t<7; t++){
+            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+                System.out.println("\n");
+                Thread.sleep(1000);
             }
         }
     }
@@ -160,14 +150,12 @@ public class Partie {
     }
 
     private void creationDeck(int age){
-        deck = new Deck(1);
-        //System.out.println("DECK AGE 1 " + deck.getDeck1());
+        deck = new Deck(age);
     }
 
     private void melangerDeck(Deck d) {
-        deckMelange = deck;
+        deckMelange = d;
         Collections.shuffle(deckMelange.getDeck1());
-        System.out.println("melange" + deckMelange.getDeck1());
     }
 
 
