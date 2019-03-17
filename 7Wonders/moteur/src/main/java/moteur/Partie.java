@@ -23,9 +23,8 @@ public class Partie {
 
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
-    Main[] mains = new Main[CONFIG.NB_JOUEURS];
-    Deck deck;
-    Deck deckMelange ;
+    private Main[] mains = new Main[CONFIG.NB_JOUEURS];
+    private Deck deck;
     public Partie() {
 
         // création du serveur (peut-être externalisée)
@@ -72,7 +71,7 @@ public class Partie {
                             //creation du deck à distribuer
                             creationDeck(1);
                             //on melange le deck
-                            melangerDeck(deck);
+                            melangerDeck();
                             //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
                             distributionCartes();
                             deroulementAge();
@@ -109,7 +108,7 @@ public class Partie {
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
             for (int j = 7 * i; j < 7 * (i + 1); j++) {
-                mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
+                mains[i].ajouterCarte(deck.getDeck1().get(j));
             }
             // association main initiale - joueur
             participants.get(i).setMain(mains[i]);
@@ -164,9 +163,8 @@ public class Partie {
     private void creationDeck(int age){
         deck = new Deck(age);
     }
-    private void melangerDeck(Deck d) {
-        deckMelange = d;
-        Collections.shuffle(deckMelange.getDeck1());
+    private void melangerDeck() {
+        Collections.shuffle(deck.getDeck1());
     }
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
