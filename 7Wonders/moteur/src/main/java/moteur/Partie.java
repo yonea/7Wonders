@@ -23,6 +23,7 @@ public class Partie {
 
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
+    Main[] mains = new Main[CONFIG.NB_JOUEURS];
     Deck deck;
     Deck deckMelange ;
     public Partie() {
@@ -74,6 +75,7 @@ public class Partie {
                             melangerDeck(deck);
                             //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
                             distributionCartes();
+                            deroulementAge();
                             Thread.sleep( 5 * 1000);
                             //calcul du score en fin de partie
                         //}
@@ -102,35 +104,45 @@ public class Partie {
         });
     }
 
-    private void distributionCartes() throws InterruptedException {
-        Main[] mains = new Main[CONFIG.NB_JOUEURS];
-            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                mains[i] = new Main();
-                for (int j = 7*i; j < 7*(i+1); j++) {
-                    mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
-                }
-                // association main initiale - joueur
-                participants.get(i).setMain(mains[i]);
-                // envoi de la main au joueur
-                //participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+    private void distributionCartes() {
 
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            mains[i] = new Main();
+            for (int j = 7 * i; j < 7 * (i + 1); j++) {
+                mains[i].ajouterCarte(deckMelange.getDeck1().get(j));
             }
+            // association main initiale - joueur
+            participants.get(i).setMain(mains[i]);
+        }
+    }
+    private void deroulementAge() throws InterruptedException {
         for(int t = 1; t<7; t++){
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+                // envoi de la main au joueur
                 participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
                 System.out.println("\n");
                 Thread.sleep(1000);
             }
+            echangeDeMain();
         }
     }
-
+    private void echangeDeMain(){
+        Main main0, main1, main2, main3;
+        main0 = mains[0];
+        main1 = mains[1];
+        main2 = mains[2];
+        main3 = mains[3];
+        mains[0] = main3;
+        mains[1] = main0;
+        mains[2] = main1;
+        mains[3] = main2;
+    }
     private void totalScore(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }
     }
-
     private void creationMerveille(){
         Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
         Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);
@@ -152,13 +164,10 @@ public class Partie {
     private void creationDeck(int age){
         deck = new Deck(age);
     }
-
     private void melangerDeck(Deck d) {
         deckMelange = d;
         Collections.shuffle(deckMelange.getDeck1());
     }
-
-
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
         while(merveilles.get(indiceAuHasard).isEstPris()){
@@ -166,7 +175,6 @@ public class Partie {
         }
         return indiceAuHasard;
     }
-
     private void débuterLeJeu() {
         // création des merveilles, au début de simple nom
         for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -177,11 +185,8 @@ public class Partie {
             System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
             // envoi de la merveille au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
-
         }
     }
-
-
 
     private boolean tousIndentifiés() {
         boolean resultat = true;
@@ -194,14 +199,10 @@ public class Partie {
         }
         return resultat;
     }
-
-
     public void démarrer() {
         // démarrage du serveur
         serveur.start();
     }
-
-
     /**
      * méthode pour retrouver un participant à partir de la socket cliente (disponible à la réception d'un message)
      * @param socketIOClient le client qui vient d'envoyer un message au serveur
@@ -209,7 +210,6 @@ public class Partie {
      */
     private Participant retrouveParticipant(SocketIOClient socketIOClient) {
         Participant p = null;
-
         for(Participant part : participants) {
             if (part.getSocket().equals(socketIOClient)) {
                 p = part;

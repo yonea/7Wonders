@@ -96,6 +96,7 @@ public class Joueur {
                             Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
                             m.ajouterCarte(c);
                         }
+                        setMain(m);
                         System.out.println(nom+" > j'ai recu "+m);
                         // le joueur a reçu, il joue
                         jouer(m);
@@ -152,7 +153,9 @@ public class Joueur {
     public void setMerveille(Merveille merveille) {
         this.merveille = merveille;
     }
-
+    public void setMain(Main main) {
+        this.main = main;
+    }
     public Merveille getMerveille() {
         return merveille;
     }
