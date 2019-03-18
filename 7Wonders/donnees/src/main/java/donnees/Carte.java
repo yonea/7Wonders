@@ -1,53 +1,29 @@
 package donnees;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+public abstract class Carte {
 
-public class Carte {
-    private String name;
-    private int pointDeVictoire;
-    private int coutConstruction;
-    //private ArrayList<Carte> cartes = new ArrayList<>();
+    private String nomCarte;
+    private int coupConstruction;
 
-
-    public String getName() {
-        return name;
-    }
-    public int getPointDeVictoire() {
-        return pointDeVictoire;
+    public Carte(String nomCarte, int coupConstruction) {
+        this.nomCarte = nomCarte;
+        this.coupConstruction = coupConstruction;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNomCarte() {
+        return nomCarte;
     }
 
-    public Carte() {}
-
-    public Carte(String name) {
-        this.name = name;
+    public void setNomCarte(String nomCarte) {
+        this.nomCarte = nomCarte;
     }
 
-    public Carte(String name, int pointDeVictoire) {
-        this.name = name;
-        this.pointDeVictoire = pointDeVictoire;
+    public int getCoupConstruction() {
+        return coupConstruction;
     }
 
-    public Carte(String name, int pointDeVictoire, int coutConstruction) {
-        this.name = name;
-        this.pointDeVictoire = pointDeVictoire;
-        this.coutConstruction = coutConstruction;
+    public void setCoupConstruction(int coupConstruction) {
+        this.coupConstruction = coupConstruction;
     }
-
-    public String toString() {
-        return "[carte - "+getName()+" - " + getPointDeVictoire() +" ]";
-    }
-
-    public boolean equals(Object o) {
-        if ((o != null) && (o instanceof Carte)) {
-            return getName().equals(((Carte) o).getName());
-        }
-        else return false;
-    }
-
 
 }

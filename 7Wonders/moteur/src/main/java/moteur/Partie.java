@@ -8,14 +8,12 @@ import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import config.CONFIG;
 import config.MESSAGES;
-import donnees.Carte;
 import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Partie {
 
@@ -88,9 +86,6 @@ public class Partie {
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
             @Override
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
-                for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                    participants.get(i).setMain(mains[i]);
-                }
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
