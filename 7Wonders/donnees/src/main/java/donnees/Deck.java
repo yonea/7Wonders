@@ -8,38 +8,38 @@ public class Deck {
 
     //Age 1
     //Matieres Premieres
-    MatierePremiere c1 = new MatierePremiere("Chantier",0,0);
-    MatierePremiere c2 = new MatierePremiere("Chantier",0,0);
-    MatierePremiere c3 = new MatierePremiere("Cavite",0,0);
-    MatierePremiere c4 = new MatierePremiere("Cavite",0,0);
-    MatierePremiere c5 = new MatierePremiere("Bassin Argileux",0,0);
-    MatierePremiere c6 = new MatierePremiere("Bassin Argileux",0,0);
-    MatierePremiere c7 = new MatierePremiere("Filon",0,0);
-    MatierePremiere c8 = new MatierePremiere("Filon",0,0);
-    MatierePremiere c9 = new MatierePremiere("Friche",0,1);
-    MatierePremiere c10 = new MatierePremiere("Excavation",0,1);
-    MatierePremiere c11 = new MatierePremiere("Fosse Argileuse",0,1);
+    MatierePremiere c1 = new MatierePremiere("Chantier",0,1);
+    MatierePremiere c2 = new MatierePremiere("Chantier",0,1);
+    MatierePremiere c3 = new MatierePremiere("Cavite",0,1);
+    MatierePremiere c4 = new MatierePremiere("Cavite",0,1);
+    MatierePremiere c5 = new MatierePremiere("Bassin Argileux",0,1);
+    MatierePremiere c6 = new MatierePremiere("Bassin Argileux",0,1);
+    MatierePremiere c7 = new MatierePremiere("Filon",0,1);
+    MatierePremiere c8 = new MatierePremiere("Filon",0,1);
+    MatierePremiere c9 = new MatierePremiere("Friche",1,1);
+    MatierePremiere c10 = new MatierePremiere("Excavation",1,1);
+    MatierePremiere c11 = new MatierePremiere("Fosse Argileuse",1,1);
     MatierePremiere c12 = new MatierePremiere("Exploitation Forestiere",1,1);
-    MatierePremiere c13 = new MatierePremiere("Gisement",0,1);
-    MatierePremiere c14 = new MatierePremiere("Mine",0,1);
+    MatierePremiere c13 = new MatierePremiere("Gisement",1,1);
+    MatierePremiere c14 = new MatierePremiere("Mine",1,1);
 
     //Produits Manufacturés
-    ProduitManufacture c15 = new ProduitManufacture("Metier A Tisser",0,0);
-    ProduitManufacture c16 = new ProduitManufacture("Metier A Tisser",0,0);
-    ProduitManufacture c17 = new ProduitManufacture("Verrerie",0,0);
-    ProduitManufacture c18 = new ProduitManufacture("Verrerie",0,0);
-    ProduitManufacture c19 = new ProduitManufacture("Presse",0,0);
-    ProduitManufacture c20 = new ProduitManufacture("Presse",0,0);
+    ProduitManufacture c15 = new ProduitManufacture("Metier A Tisser",0,1);
+    ProduitManufacture c16 = new ProduitManufacture("Metier A Tisser",0,1);
+    ProduitManufacture c17 = new ProduitManufacture("Verrerie",0,1);
+    ProduitManufacture c18 = new ProduitManufacture("Verrerie",0,1);
+    ProduitManufacture c19 = new ProduitManufacture("Presse",0,1);
+    ProduitManufacture c20 = new ProduitManufacture("Presse",0,1);
 
     //Batiments civils
-    BatimentCivil c21 = new BatimentCivil("Preteur Sur Gages",3,0);
-    BatimentCivil c22 = new BatimentCivil("Preteur Sur Gages",3,0);
-    BatimentCivil c23 = new BatimentCivil("Bains",3,0);
-    BatimentCivil c24 = new BatimentCivil("Bains",3,0);
-    BatimentCivil c25 = new BatimentCivil("Autel",2,0);
-    BatimentCivil c26 = new BatimentCivil("Autel",2,0);
-    BatimentCivil c27 = new BatimentCivil("Theatre",2,0);
-    BatimentCivil c28 = new BatimentCivil("Theatre",2,0);
+    BatimentCivil c21 = new BatimentCivil("Preteur Sur Gages",0,3);
+    BatimentCivil c22 = new BatimentCivil("Preteur Sur Gages",0,3);
+    BatimentCivil c23 = new BatimentCivil("Bains",1,3);
+    BatimentCivil c24 = new BatimentCivil("Bains",1,3);
+    BatimentCivil c25 = new BatimentCivil("Autel",0,2);
+    BatimentCivil c26 = new BatimentCivil("Autel",0,2);
+    BatimentCivil c27 = new BatimentCivil("Theatre",0,2);
+    BatimentCivil c28 = new BatimentCivil("Theatre",0,2);
 
     // Batiments commerciaux
     BatimentCommercial c29 = new BatimentCommercial("Taverne",0,0,0,0);//Rapporte 0 piece
@@ -53,12 +53,12 @@ public class Deck {
     BatimentCommercial c37 = new BatimentCommercial("Marche",1,0,0,0);
 
     //Batiments militaires
-    BatimentMilitaire c38 = new BatimentMilitaire("Palissade",0);
-    BatimentMilitaire c39 = new BatimentMilitaire("Palissade",0);
-    BatimentMilitaire c40 = new BatimentMilitaire("Caserne",0);
-    BatimentMilitaire c41 = new BatimentMilitaire("Caserne",0);
-    BatimentMilitaire c42 = new BatimentMilitaire("Tour De Garde",0);
-    BatimentMilitaire c43 = new BatimentMilitaire("Tour De Garde",0);
+    BatimentMilitaire c38 = new BatimentMilitaire("Palissade",1);
+    BatimentMilitaire c39 = new BatimentMilitaire("Palissade",1);
+    BatimentMilitaire c40 = new BatimentMilitaire("Caserne",1);
+    BatimentMilitaire c41 = new BatimentMilitaire("Caserne",1);
+    BatimentMilitaire c42 = new BatimentMilitaire("Tour De Garde",1);
+    BatimentMilitaire c43 = new BatimentMilitaire("Tour De Garde",1);
 
     //Batiments scientifiques
     BatimentScientifique c44 = new BatimentScientifique("Officine",0,0,"");

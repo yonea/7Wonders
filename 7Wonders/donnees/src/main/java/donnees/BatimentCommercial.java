@@ -5,12 +5,18 @@ public class BatimentCommercial extends Carte {
     private int pieceMonnaie;
     private int ressourceCree;
     private int pointVictoire;
+    private CouleurCarte couleurCarte = CouleurCarte.JAUNE;
 
     public BatimentCommercial(String nomcarte, int coupConstruction, int pieceMonnaie, int ressourceCree, int pointVictoire) {
         super(nomcarte,coupConstruction);
         this.pieceMonnaie = pieceMonnaie;
         this.ressourceCree = ressourceCree;
         this.pointVictoire = pointVictoire;
+    }
+
+    @Override
+    public CouleurCarte getCouleurCarte() {
+        return couleurCarte;
     }
 
     void ajouterEffet(){
