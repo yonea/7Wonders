@@ -4,8 +4,8 @@ public class MatierePremiere extends Carte {
 
     private int ressourceCree;
 
-    public MatierePremiere(int ressourceCree) {
-        super();
+    public MatierePremiere(String nomcarte, int coupConstruction, int ressourceCree) {
+        super(nomcarte,coupConstruction);
         this.ressourceCree = ressourceCree;
     }
 

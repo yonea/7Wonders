@@ -6,8 +6,8 @@ public class BatimentCommercial extends Carte {
     private int ressourceCree;
     private int pointVictoire;
 
-    public BatimentCommercial(int pieceMonnaie, int ressourceCree, int pointVictoire) {
-        super();
+    public BatimentCommercial(String nomcarte, int coupConstruction, int pieceMonnaie, int ressourceCree, int pointVictoire) {
+        super(nomcarte,coupConstruction);
         this.pieceMonnaie = pieceMonnaie;
         this.ressourceCree = ressourceCree;
         this.pointVictoire = pointVictoire;

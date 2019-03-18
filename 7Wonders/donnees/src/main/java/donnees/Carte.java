@@ -5,6 +5,11 @@ public abstract class Carte {
     private String nomCarte;
     private int coupConstruction;
 
+    public Carte(String nomCarte, int coupConstruction) {
+        this.nomCarte = nomCarte;
+        this.coupConstruction = coupConstruction;
+    }
+
     public String getNomCarte() {
         return nomCarte;
     }

@@ -4,8 +4,8 @@ public class BatimentCivil extends Carte {
 
     private int pointVictoire;
 
-    public BatimentCivil(int pointVictoire) {
-        super();
+    public BatimentCivil(String nomcarte, int coupConstruction, int pointVictoire) {
+        super(nomcarte,coupConstruction);
         this.pointVictoire = pointVictoire;
     }
 

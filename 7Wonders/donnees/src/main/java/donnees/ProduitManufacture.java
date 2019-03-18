@@ -4,8 +4,8 @@ public class ProduitManufacture extends Carte {
 
     private int ressourceCree;
 
-    public ProduitManufacture(int ressourceCree) {
-        super();
+    public ProduitManufacture(String nomcarte, int coupConstruction, int ressourceCree) {
+        super(nomcarte,coupConstruction);
         this.ressourceCree = ressourceCree;
     }
 

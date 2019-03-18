@@ -5,8 +5,8 @@ public class BatimentScientifique extends Carte {
     private int pointVictoire;
     private String icone;
 
-    public BatimentScientifique(int pointVictoire, String icone) {
-        super();
+    public BatimentScientifique(String nomcarte, int coupConstruction, int pointVictoire, String icone) {
+        super(nomcarte,coupConstruction);
         this.pointVictoire = pointVictoire;
         this.icone = icone;
     }
