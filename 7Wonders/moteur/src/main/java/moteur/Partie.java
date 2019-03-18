@@ -92,7 +92,7 @@ public class Partie {
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
-                    System.out.println("serveur > " + p + " a joue " + carte);
+                    System.out.println("serveur > " + p + " a joue " + carte.getNomCarte());
                     // puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
                     //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE

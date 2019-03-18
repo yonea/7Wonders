@@ -92,29 +92,28 @@ public class Joueur {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
                             System.out.println("JSON ---------------" + carteJSON);
                             Carte c = null;
+
                             switch (carteJSON.getString("couleurCarte")) {
                                 case "BLEUE":
                                     c = new BatimentCivil(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pointVictoire"));
                                     break;
                                 case "MARRON":
-                                    c = new MatierePremiere(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),1);
+                                    c = new MatierePremiere(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("ressourceCree"));
                                     break;
                                 case "GRISE":
-                                    c = new ProduitManufacture(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),1);
+                                    c = new ProduitManufacture(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("ressourceCree"));
                                     break;
                                 case "VERTE":
-                                    c = new BatimentScientifique(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pointVictoire"),"");
+                                    c = new BatimentScientifique(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pointVictoire"),carteJSON.getString("icone"));
                                     break;
                                 case "JAUNE":
-                                    c = new BatimentCommercial(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),1,1,1);
+                                    c = new BatimentCommercial(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pieceMonnaie"),carteJSON.getInt("ressourceCree"),carteJSON.getInt("pointVictoire"));
                                     break;
                                 case "ROUGE":
                                     c = new BatimentMilitaire(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"));
                                     break;
                                     default:
                                         System.out.println("carte inconnue");
-
-
                             }
                             //Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
                             m.ajouterCarte(c);

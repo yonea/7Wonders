@@ -1,6 +1,6 @@
 package donnees;
 
-public abstract class Carte {
+public class Carte {
 
     private String nomCarte;
     private int coupConstruction;
@@ -12,8 +12,8 @@ public abstract class Carte {
     }
 
     public Carte() {
-
     }
+
 
 
     public CouleurCarte getCouleurCarte() {
@@ -34,6 +34,7 @@ public abstract class Carte {
     public void setCoupConstruction(int coupConstruction) {
         this.coupConstruction = coupConstruction;
     }
+
 
 
 }
