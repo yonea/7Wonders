@@ -5,10 +5,11 @@ public class MatierePremiere extends Carte {
     private int ressourceCree;
 
     public MatierePremiere(int ressourceCree) {
+        super();
         this.ressourceCree = ressourceCree;
     }
 
-    void ajouterCarte(){
+    void ajouterRessource(){
 
     }
 

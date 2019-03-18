@@ -5,10 +5,11 @@ public class ProduitManufacture extends Carte {
     private int ressourceCree;
 
     public ProduitManufacture(int ressourceCree) {
+        super();
         this.ressourceCree = ressourceCree;
     }
 
-    void ajouterCarte(){
+    void ajouterRessource(){
 
     }
 

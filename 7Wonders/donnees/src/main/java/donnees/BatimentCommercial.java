@@ -1,19 +1,20 @@
 package donnees;
 
-public class BatimentCommercial {
+public class BatimentCommercial extends Carte {
 
     private int pieceMonnaie;
     private int ressourceCree;
     private int pointVictoire;
 
     public BatimentCommercial(int pieceMonnaie, int ressourceCree, int pointVictoire) {
+        super();
         this.pieceMonnaie = pieceMonnaie;
         this.ressourceCree = ressourceCree;
         this.pointVictoire = pointVictoire;
     }
 
     void ajouterEffet(){
-        
+
     }
 
     void modifierRegle(){

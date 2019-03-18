@@ -1,12 +1,18 @@
 package donnees;
 
-public class BatimentCivil extends Carte {
+public class BatimentScientifique extends Carte {
 
     private int pointVictoire;
+    private String icone;
 
-    public BatimentCivil(int pointVictoire) {
+    public BatimentScientifique(int pointVictoire, String icone) {
         super();
         this.pointVictoire = pointVictoire;
+        this.icone = icone;
+    }
+
+    void calculerPointVictoire(String icone){
+
     }
 
     void ajouterPointVictoire(){
@@ -21,10 +27,19 @@ public class BatimentCivil extends Carte {
         this.pointVictoire = pointVictoire;
     }
 
+    public String getIcone() {
+        return icone;
+    }
+
+    public void setIcone(String icone) {
+        this.icone = icone;
+    }
+
     @Override
     public String toString() {
-        return "BatimentCivil{" +
+        return "BatimentScientifique{" +
                 "pointVictoire=" + pointVictoire +
+                ", icone='" + icone + '\'' +
                 '}';
     }
 
