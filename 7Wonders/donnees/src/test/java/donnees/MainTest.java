@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     Carte c1, c2, c3, c4, c5;
-
+/*
     @BeforeEach
     public void setUp(){
         c1 = new Carte("carteTest1", 2);
@@ -25,5 +25,5 @@ class MainTest {
     public void test1(){
 
     }
-
+*/
 }

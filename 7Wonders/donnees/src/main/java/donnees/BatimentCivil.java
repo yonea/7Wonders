@@ -10,6 +10,10 @@ public class BatimentCivil extends Carte {
         this.pointVictoire = pointVictoire;
     }
 
+    public BatimentCivil(){
+        super();
+
+    }
     void ajouterPointVictoire(){
 
     }

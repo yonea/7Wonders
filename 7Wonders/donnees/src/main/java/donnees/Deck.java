@@ -8,65 +8,65 @@ public class Deck {
 
     //Age 1
     //Matieres Premieres
-    MatierePremiere c1 = new MatierePremiere("Chantier",0,1);
-    MatierePremiere c2 = new MatierePremiere("Chantier",0,1);
-    MatierePremiere c3 = new MatierePremiere("Cavite",0,1);
-    MatierePremiere c4 = new MatierePremiere("Cavite",0,1);
-    MatierePremiere c5 = new MatierePremiere("Bassin Argileux",0,1);
-    MatierePremiere c6 = new MatierePremiere("Bassin Argileux",0,1);
-    MatierePremiere c7 = new MatierePremiere("Filon",0,1);
-    MatierePremiere c8 = new MatierePremiere("Filon",0,1);
-    MatierePremiere c9 = new MatierePremiere("Friche",1,1);
-    MatierePremiere c10 = new MatierePremiere("Excavation",1,1);
-    MatierePremiere c11 = new MatierePremiere("Fosse Argileuse",1,1);
-    MatierePremiere c12 = new MatierePremiere("Exploitation Forestiere",1,1);
-    MatierePremiere c13 = new MatierePremiere("Gisement",1,1);
-    MatierePremiere c14 = new MatierePremiere("Mine",1,1);
+    Carte c1 = new MatierePremiere("Chantier",0,1);
+    Carte c2 = new MatierePremiere("Chantier",0,1);
+    Carte c3 = new MatierePremiere("Cavite",0,1);
+    Carte c4 = new MatierePremiere("Cavite",0,1);
+    Carte c5 = new MatierePremiere("Bassin Argileux",0,1);
+    Carte c6 = new MatierePremiere("Bassin Argileux",0,1);
+    Carte c7 = new MatierePremiere("Filon",0,1);
+    Carte c8 = new MatierePremiere("Filon",0,1);
+    Carte c9 = new MatierePremiere("Friche",1,1);
+    Carte c10 = new MatierePremiere("Excavation",1,1);
+    Carte c11 = new MatierePremiere("Fosse Argileuse",1,1);
+    Carte c12 = new MatierePremiere("Exploitation Forestiere",1,1);
+    Carte c13 = new MatierePremiere("Gisement",1,1);
+    Carte c14 = new MatierePremiere("Mine",1,1);
 
     //Produits Manufacturés
-    ProduitManufacture c15 = new ProduitManufacture("Metier A Tisser",0,1);
-    ProduitManufacture c16 = new ProduitManufacture("Metier A Tisser",0,1);
-    ProduitManufacture c17 = new ProduitManufacture("Verrerie",0,1);
-    ProduitManufacture c18 = new ProduitManufacture("Verrerie",0,1);
-    ProduitManufacture c19 = new ProduitManufacture("Presse",0,1);
-    ProduitManufacture c20 = new ProduitManufacture("Presse",0,1);
+    Carte c15 = new ProduitManufacture("Metier A Tisser",0,1);
+    Carte c16 = new ProduitManufacture("Metier A Tisser",0,1);
+    Carte c17 = new ProduitManufacture("Verrerie",0,1);
+    Carte c18 = new ProduitManufacture("Verrerie",0,1);
+    Carte c19 = new ProduitManufacture("Presse",0,1);
+    Carte c20 = new ProduitManufacture("Presse",0,1);
 
     //Batiments civils
-    BatimentCivil c21 = new BatimentCivil("Preteur Sur Gages",0,3);
-    BatimentCivil c22 = new BatimentCivil("Preteur Sur Gages",0,3);
-    BatimentCivil c23 = new BatimentCivil("Bains",1,3);
-    BatimentCivil c24 = new BatimentCivil("Bains",1,3);
-    BatimentCivil c25 = new BatimentCivil("Autel",0,2);
-    BatimentCivil c26 = new BatimentCivil("Autel",0,2);
-    BatimentCivil c27 = new BatimentCivil("Theatre",0,2);
-    BatimentCivil c28 = new BatimentCivil("Theatre",0,2);
+    Carte c21 = new BatimentCivil("Preteur Sur Gages",0,3);
+    Carte c22 = new BatimentCivil("Preteur Sur Gages",0,3);
+    Carte c23 = new BatimentCivil("Bains",1,3);
+    Carte c24 = new BatimentCivil("Bains",1,3);
+    Carte c25 = new BatimentCivil("Autel",0,2);
+    Carte c26 = new BatimentCivil("Autel",0,2);
+    Carte c27 = new BatimentCivil("Theatre",0,2);
+    Carte c28 = new BatimentCivil("Theatre",0,2);
 
     // Batiments commerciaux
-    BatimentCommercial c29 = new BatimentCommercial("Taverne",0,0,0,0);//Rapporte 0 piece
-    BatimentCommercial c30 = new BatimentCommercial("Taverne",0,0,0,0);
-    BatimentCommercial c31 = new BatimentCommercial("Taverne",0,0,0,0);
-    BatimentCommercial c32 = new BatimentCommercial("Comptoir Est",1,0,0,0);
-    BatimentCommercial c33 = new BatimentCommercial("Comptoir Est",1,0,0,0);
-    BatimentCommercial c34 = new BatimentCommercial("Comptoir Ouest",1,0,0,0);
-    BatimentCommercial c35 = new BatimentCommercial("Comptoir Ouest",1,0,0,0);
-    BatimentCommercial c36 = new BatimentCommercial("Marche",1,0,0,0);
-    BatimentCommercial c37 = new BatimentCommercial("Marche",1,0,0,0);
+    Carte c29 = new BatimentCommercial("Taverne",0,0,0,0);//Rapporte 0 piece
+    Carte c30 = new BatimentCommercial("Taverne",0,0,0,0);
+    Carte c31 = new BatimentCommercial("Taverne",0,0,0,0);
+    Carte c32 = new BatimentCommercial("Comptoir Est",1,0,0,0);
+    Carte c33 = new BatimentCommercial("Comptoir Est",1,0,0,0);
+    Carte c34 = new BatimentCommercial("Comptoir Ouest",1,0,0,0);
+    Carte c35 = new BatimentCommercial("Comptoir Ouest",1,0,0,0);
+    Carte c36 = new BatimentCommercial("Marche",1,0,0,0);
+    Carte c37 = new BatimentCommercial("Marche",1,0,0,0);
 
     //Batiments militaires
-    BatimentMilitaire c38 = new BatimentMilitaire("Palissade",1);
-    BatimentMilitaire c39 = new BatimentMilitaire("Palissade",1);
-    BatimentMilitaire c40 = new BatimentMilitaire("Caserne",1);
-    BatimentMilitaire c41 = new BatimentMilitaire("Caserne",1);
-    BatimentMilitaire c42 = new BatimentMilitaire("Tour De Garde",1);
-    BatimentMilitaire c43 = new BatimentMilitaire("Tour De Garde",1);
+    Carte c38 = new BatimentMilitaire("Palissade",1);
+    Carte c39 = new BatimentMilitaire("Palissade",1);
+    Carte c40 = new BatimentMilitaire("Caserne",1);
+    Carte c41 = new BatimentMilitaire("Caserne",1);
+    Carte c42 = new BatimentMilitaire("Tour De Garde",1);
+    Carte c43 = new BatimentMilitaire("Tour De Garde",1);
 
     //Batiments scientifiques
-    BatimentScientifique c44 = new BatimentScientifique("Officine",0,0,"");
-    BatimentScientifique c45 = new BatimentScientifique("Officine",0,0,"");
-    BatimentScientifique c46 = new BatimentScientifique("Atelier",0,0,"");
-    BatimentScientifique c47 = new BatimentScientifique("Atelier",0,0,"");
-    BatimentScientifique c48 = new BatimentScientifique("Scriptorium",0,0,"");
-    BatimentScientifique c49 = new BatimentScientifique("Scriptorium",0,0,"");
+    Carte c44 = new BatimentScientifique("Officine",0,0,"");
+    Carte c45 = new BatimentScientifique("Officine",0,0,"");
+    Carte c46 = new BatimentScientifique("Atelier",0,0,"");
+    Carte c47 = new BatimentScientifique("Atelier",0,0,"");
+    Carte c48 = new BatimentScientifique("Scriptorium",0,0,"");
+    Carte c49 = new BatimentScientifique("Scriptorium",0,0,"");
 
     private void creerDeckAge1(){
 

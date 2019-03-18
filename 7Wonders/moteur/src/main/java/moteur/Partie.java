@@ -8,6 +8,7 @@ import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import config.CONFIG;
 import config.MESSAGES;
+import donnees.Carte;
 import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
@@ -86,14 +87,16 @@ public class Partie {
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
             @Override
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
+                System.out.println("CARTE -------" + carte);
+                miseAJourMain();
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
                     System.out.println("serveur > " + p + " a joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
-                    //on met a jour le score du joueur
-                    p.setPoint(carte.getPointDeVictoire());
+                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
+                    // p.setPoint(carte.getPointDeVictoire());
                     System.out.println(carte + " supprimé");
                     System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
                 }
@@ -101,6 +104,12 @@ public class Partie {
         });
     }
 
+    private void miseAJourMain() {
+
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            participants.get(i).setMain(mains[i]);
+        }
+    }
     private void distributionCartes() {
 
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {

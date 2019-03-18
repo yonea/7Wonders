@@ -30,7 +30,7 @@ public class Main {
     public String toString()  {
         String texte = "[";
 
-        for(Carte c : cartes) texte += c +" ; ";
+        for(Carte c : cartes) texte += " couleurCarte " + c.getCouleurCarte() + ", nomCarte : " + c.getNomCarte() +" ; ";
 
         if (texte.length() > 4)
             texte = texte.substring(0, texte.length()-3);

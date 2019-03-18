@@ -11,6 +11,10 @@ public abstract class Carte {
         this.coupConstruction = coupConstruction;
     }
 
+    public Carte() {
+
+    }
+
 
     public CouleurCarte getCouleurCarte() {
         return couleurCarte;
@@ -30,5 +34,6 @@ public abstract class Carte {
     public void setCoupConstruction(int coupConstruction) {
         this.coupConstruction = coupConstruction;
     }
+
 
 }
