@@ -1,6 +1,6 @@
 package donnees;
 
-public class BatimentMilitaire extends Batiments {
+public class BatimentMilitaire {
     public BatimentMilitaire(){
 
     }
