@@ -8,14 +8,12 @@ import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import config.CONFIG;
 import config.MESSAGES;
-import donnees.Carte;
 import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class Partie {
 
