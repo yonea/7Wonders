@@ -1,9 +1,9 @@
 package donnees;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Carte {
-
     private String name;
     private int pointDeVictoire;
     private int coutConstruction;
