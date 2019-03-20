@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Joueur {
@@ -90,7 +92,7 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            System.out.println("JSON ---------------" + carteJSON);
+                            //System.out.println("JSON ---------------" + carteJSON);
                             Carte c = null;
 
                             switch (carteJSON.getString("couleurCarte")) {
@@ -142,11 +144,10 @@ public class Joueur {
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
+        Carte carteEnvoyee = m.getCartes().get(indiceCarte);
         System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte).getNomCarte());
-        connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
+        connexion.emit(MESSAGES.JE_JOUE, carteEnvoyee);
     }
-
-
 
     public void démarrer() {
         // connexion effective

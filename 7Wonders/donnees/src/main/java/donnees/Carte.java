@@ -1,6 +1,6 @@
 package donnees;
 
-public class Carte {
+public abstract class Carte {
 
     private String nomCarte;
     private int coupConstruction;
@@ -14,11 +14,10 @@ public class Carte {
     public Carte() {
     }
 
-
-
     public CouleurCarte getCouleurCarte() {
         return couleurCarte;
     }
+
     public String getNomCarte() {
         return nomCarte;
     }

@@ -84,22 +84,42 @@ public class Partie {
         });
 
         // réception de la carte jouée
-        serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
+//        serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
+//            @Override
+//            public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
+//                System.out.println("CARTE -------" + carte);
+//                miseAJourMain();
+//                // retrouver le participant
+//                Participant p = retrouveParticipant(socketIOClient);
+//                if (p != null) {
+//                    System.out.println("serveur > " + p + " a joue " + carte.getNomCarte());
+//                    // puis lui supprimer de sa main la carte jouée
+//                    p.getMain().getCartes().remove(carte);
+//                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
+//                    // p.setPoint(carte.getPointDeVictoire());
+//                    System.out.println(carte + " supprimé");
+//                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
+//                }
+//            }
+//        });
+
+        serveur.addEventListener(MESSAGES.JE_JOUE, Object.class, new DataListener<Object>() {
             @Override
-            public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
-                System.out.println("CARTE -------" + carte);
-                miseAJourMain();
-                // retrouver le participant
-                Participant p = retrouveParticipant(socketIOClient);
-                if (p != null) {
-                    System.out.println("serveur > " + p + " a joue " + carte.getNomCarte());
-                    // puis lui supprimer de sa main la carte jouée
-                    p.getMain().getCartes().remove(carte);
-                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
-                    // p.setPoint(carte.getPointDeVictoire());
-                    System.out.println(carte + " supprimé");
-                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
-                }
+            public void onData(SocketIOClient socketIOClient, Object o, AckRequest ackRequest) throws Exception {
+                System.out.println("CARTE -------" + o.getClass());
+//                miseAJourMain();
+//                // retrouver le participant
+//                Participant p = retrouveParticipant(socketIOClient);
+//                if (p != null) {
+//                    System.out.println(o.getClass().getSimpleName());
+//                    System.out.println("serveur > " + p + " a joue " + o);
+//                    // puis lui supprimer de sa main la carte jouée
+//                    p.getMain().getCartes().remove(o);
+//                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
+//                    // p.setPoint(carte.getPointDeVictoire());
+//                    System.out.println(o + " supprimé");
+//                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
+//                }
             }
         });
     }
