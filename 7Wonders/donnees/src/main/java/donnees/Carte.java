@@ -4,19 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Carte {
-    private CouleurCarte couleurCarte;
+    private String couleurCarte;
     private String name;
     private int pointDeVictoire;
     private int coutConstruction;
     //private ArrayList<Carte> cartes = new ArrayList<>();
-
-
-    public String getName() {
-        return name;
-    }
-    public int getPointDeVictoire() {
-        return pointDeVictoire;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -33,7 +25,7 @@ public class Carte {
         this.pointDeVictoire = pointDeVictoire;
     }
 
-    public Carte(CouleurCarte couleurCarte, String name, int pointDeVictoire, int coutConstruction) {
+    public Carte(String couleurCarte, String name, int pointDeVictoire, int coutConstruction) {
         this.couleurCarte = couleurCarte;
         this.name = name;
         this.pointDeVictoire = pointDeVictoire;
@@ -41,7 +33,7 @@ public class Carte {
     }
 
     public String toString() {
-        return "[ couleur - " + getCouleurCarte() + ", carte - " + getName() + " - " + getPointDeVictoire() + " ]";
+        return "[ couleur - " + getCouleurCarte() + ", carte - " + getName() + " - " + getPointDeVictoire() + " - " + getCoutConstruction() +" ]";
     }
 
     public boolean equals(Object o) {
@@ -50,9 +42,17 @@ public class Carte {
         }
         else return false;
     }
+    public String getName() {
+        return name;
+    }
+    public int getPointDeVictoire() {
+        return pointDeVictoire;
+    }
+    public int getCoutConstruction() {
+        return coutConstruction;
+    }
 
-
-    public CouleurCarte getCouleurCarte() {
+    public String getCouleurCarte() {
         return this.couleurCarte;
     }
 }

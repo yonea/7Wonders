@@ -8,65 +8,65 @@ public class Deck {
 
     //Age 1
     //Matieres Premieres
-    private Carte c1 = new Carte(CouleurCarte.MARRON,"Chantier",0,0);
-    private Carte c2 = new Carte(CouleurCarte.MARRON,"Chantier",0,0);
-    private Carte c3 = new Carte(CouleurCarte.MARRON,"Cavite",0,0);
-    private Carte c4 = new Carte(CouleurCarte.MARRON,"Cavite",0,0);
-    private Carte c5 = new Carte(CouleurCarte.MARRON,"Bassin Argileux",0,0);
-    private Carte c6 = new Carte(CouleurCarte.MARRON,"Bassin Argileux",0,0);
-    private Carte c7 = new Carte(CouleurCarte.MARRON,"Filon",0,0);
-    private Carte c8 = new Carte(CouleurCarte.MARRON,"Filon",0,0);
-    private Carte c9 = new Carte(CouleurCarte.MARRON,"Friche",0,1);
-    private Carte c10 = new Carte(CouleurCarte.MARRON,"Excavation",0,1);
-    private Carte c11 = new Carte(CouleurCarte.MARRON,"Fosse Argileuse",0,1);
-    private Carte c12 = new Carte(CouleurCarte.MARRON,"Exploitation Forestiere",1,1);
-    private Carte c13 = new Carte(CouleurCarte.MARRON,"Gisement",0,1);
-    private Carte c14 = new Carte(CouleurCarte.MARRON,"Mine",0,1);
+    private Carte c1 = new Carte(CouleurCarte.MARRON.couleur(),"Chantier",0,0);
+    private Carte c2 = new Carte(CouleurCarte.MARRON.couleur(),"Chantier",0,0);
+    private Carte c3 = new Carte(CouleurCarte.MARRON.couleur(),"Cavite",0,0);
+    private Carte c4 = new Carte(CouleurCarte.MARRON.couleur(),"Cavite",0,0);
+    private Carte c5 = new Carte(CouleurCarte.MARRON.couleur(),"Bassin Argileux",0,0);
+    private Carte c6 = new Carte(CouleurCarte.MARRON.couleur(),"Bassin Argileux",0,0);
+    private Carte c7 = new Carte(CouleurCarte.MARRON.couleur(),"Filon",0,0);
+    private Carte c8 = new Carte(CouleurCarte.MARRON.couleur(),"Filon",0,0);
+    private Carte c9 = new Carte(CouleurCarte.MARRON.couleur(),"Friche",0,1);
+    private Carte c10 = new Carte(CouleurCarte.MARRON.couleur(),"Excavation",0,1);
+    private Carte c11 = new Carte(CouleurCarte.MARRON.couleur(),"Fosse Argileuse",0,1);
+    private Carte c12 = new Carte(CouleurCarte.MARRON.couleur(),"Exploitation Forestiere",1,1);
+    private Carte c13 = new Carte(CouleurCarte.MARRON.couleur(),"Gisement",0,1);
+    private Carte c14 = new Carte(CouleurCarte.MARRON.couleur(),"Mine",0,1);
 
     //Produits Manufacturés
-    private Carte c15 = new Carte(CouleurCarte.GRISE,"Metier A Tisser",0,0);
-    private Carte c16 = new Carte(CouleurCarte.GRISE,"Metier A Tisser",0,0);
-    private Carte c17 = new Carte(CouleurCarte.GRISE,"Verrerie",0,0);
-    private Carte c18 = new Carte(CouleurCarte.GRISE,"Verrerie",0,0);
-    private Carte c19 = new Carte(CouleurCarte.GRISE,"Presse",0,0);
-    private Carte c20 = new Carte(CouleurCarte.GRISE,"Presse",0,0);
+    private Carte c15 = new Carte(CouleurCarte.GRISE.couleur(),"Metier A Tisser",0,0);
+    private Carte c16 = new Carte(CouleurCarte.GRISE.couleur(),"Metier A Tisser",0,0);
+    private Carte c17 = new Carte(CouleurCarte.GRISE.couleur(),"Verrerie",0,0);
+    private Carte c18 = new Carte(CouleurCarte.GRISE.couleur(),"Verrerie",0,0);
+    private Carte c19 = new Carte(CouleurCarte.GRISE.couleur(),"Presse",0,0);
+    private Carte c20 = new Carte(CouleurCarte.GRISE.couleur(),"Presse",0,0);
 
     //Batiments civils
-    private Carte c21 = new Carte(CouleurCarte.BLEUE,"Preteur Sur Gages",3,0);
-    private Carte c22 = new Carte(CouleurCarte.BLEUE,"Preteur Sur Gages",3,0);
-    private Carte c23 = new Carte(CouleurCarte.BLEUE,"Bains",3,0);
-    private Carte c24 = new Carte(CouleurCarte.BLEUE,"Bains",3,0);
-    private Carte c25 = new Carte(CouleurCarte.BLEUE,"Autel",2,0);
-    private Carte c26 = new Carte(CouleurCarte.BLEUE,"Autel",2,0);
-    private Carte c27 = new Carte(CouleurCarte.BLEUE,"Theatre",2,0);
-    private Carte c28 = new Carte(CouleurCarte.BLEUE,"Theatre",2,0);
+    private Carte c21 = new Carte(CouleurCarte.BLEUE.couleur(),"Preteur Sur Gages",3,0);
+    private Carte c22 = new Carte(CouleurCarte.BLEUE.couleur(),"Preteur Sur Gages",3,0);
+    private Carte c23 = new Carte(CouleurCarte.BLEUE.couleur(),"Bains",3,0);
+    private Carte c24 = new Carte(CouleurCarte.BLEUE.couleur(),"Bains",3,0);
+    private Carte c25 = new Carte(CouleurCarte.BLEUE.couleur(),"Autel",2,0);
+    private Carte c26 = new Carte(CouleurCarte.BLEUE.couleur(),"Autel",2,0);
+    private Carte c27 = new Carte(CouleurCarte.BLEUE.couleur(),"Theatre",2,0);
+    private Carte c28 = new Carte(CouleurCarte.BLEUE.couleur(),"Theatre",2,0);
 
     // Batiments commerciaux
-    private Carte c29 = new Carte(CouleurCarte.JAUNE,"Taverne",0,0);//Rapporte 5 pieces
-    private Carte c30 = new Carte(CouleurCarte.JAUNE,"Taverne",0,0);//Rapporte 5 pieces
-    private Carte c31 = new Carte(CouleurCarte.JAUNE,"Taverne",0,0);//Rapporte 5 pieces
-    private Carte c32 = new Carte(CouleurCarte.JAUNE,"Comptoir Est",1,0);//Rapporte 1 pieces
-    private Carte c33 = new Carte(CouleurCarte.JAUNE,"Comptoir Est",1,0);//Rapporte 1 pieces
-    private Carte c34 = new Carte(CouleurCarte.JAUNE,"Comptoir Ouest",1,0);//Rapporte 1 pieces
-    private Carte c35 = new Carte(CouleurCarte.JAUNE,"Comptoir Ouest",1,0);//Rapporte 1 pieces
-    private Carte c36 = new Carte(CouleurCarte.JAUNE,"Marche",1,0);//Rapporte 1 pieces
-    private Carte c37 = new Carte(CouleurCarte.JAUNE,"Marche",1,0);//Rapporte 1 pieces
+    private Carte c29 = new Carte(CouleurCarte.JAUNE.couleur(),"Taverne",0,0);//Rapporte 5 pieces
+    private Carte c30 = new Carte(CouleurCarte.JAUNE.couleur(),"Taverne",0,0);//Rapporte 5 pieces
+    private Carte c31 = new Carte(CouleurCarte.JAUNE.couleur(),"Taverne",0,0);//Rapporte 5 pieces
+    private Carte c32 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Est",1,0);//Rapporte 1 pieces
+    private Carte c33 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Est",1,0);//Rapporte 1 pieces
+    private Carte c34 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Ouest",1,0);//Rapporte 1 pieces
+    private Carte c35 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Ouest",1,0);//Rapporte 1 pieces
+    private Carte c36 = new Carte(CouleurCarte.JAUNE.couleur(),"Marche",1,0);//Rapporte 1 pieces
+    private Carte c37 = new Carte(CouleurCarte.JAUNE.couleur(),"Marche",1,0);//Rapporte 1 pieces
 
     //Batiments militaires
-    private Carte c38 = new Carte(CouleurCarte.ROUGE,"Palissade",0,0);
-    private Carte c39 = new Carte(CouleurCarte.ROUGE,"Palissade",0,0);
-    private Carte c40 = new Carte(CouleurCarte.ROUGE,"Caserne",0,0);
-    private Carte c41 = new Carte(CouleurCarte.ROUGE,"Caserne",0,0);
-    private Carte c42 = new Carte(CouleurCarte.ROUGE,"Tour De Garde",0,0);
-    private Carte c43 = new Carte(CouleurCarte.ROUGE,"Tour De Garde",0,0);
+    private Carte c38 = new Carte(CouleurCarte.ROUGE.couleur(),"Palissade",0,0);
+    private Carte c39 = new Carte(CouleurCarte.ROUGE.couleur(),"Palissade",0,0);
+    private Carte c40 = new Carte(CouleurCarte.ROUGE.couleur(),"Caserne",0,0);
+    private Carte c41 = new Carte(CouleurCarte.ROUGE.couleur(),"Caserne",0,0);
+    private Carte c42 = new Carte(CouleurCarte.ROUGE.couleur(),"Tour De Garde",0,0);
+    private Carte c43 = new Carte(CouleurCarte.ROUGE.couleur(),"Tour De Garde",0,0);
 
     //Batiments scientifiques
-    private Carte c44 = new Carte(CouleurCarte.VERTE,"Officine",0,0);
-    private Carte c45 = new Carte(CouleurCarte.VERTE,"Officine",0,0);
-    private Carte c46 = new Carte(CouleurCarte.VERTE,"Atelier",0,0);
-    private Carte c47 = new Carte(CouleurCarte.VERTE,"Atelier",0,0);
-    private Carte c48 = new Carte(CouleurCarte.VERTE,"Scriptorium",0,0);
-    private Carte c49 = new Carte(CouleurCarte.VERTE,"Scriptorium",0,0);
+    private Carte c44 = new Carte(CouleurCarte.VERTE.couleur(),"Officine",0,0);
+    private Carte c45 = new Carte(CouleurCarte.VERTE.couleur(),"Officine",0,0);
+    private Carte c46 = new Carte(CouleurCarte.VERTE.couleur(),"Atelier",0,0);
+    private Carte c47 = new Carte(CouleurCarte.VERTE.couleur(),"Atelier",0,0);
+    private Carte c48 = new Carte(CouleurCarte.VERTE.couleur(),"Scriptorium",0,0);
+    private Carte c49 = new Carte(CouleurCarte.VERTE.couleur(),"Scriptorium",0,0);
 
     private void creerDeckAge1(){
 

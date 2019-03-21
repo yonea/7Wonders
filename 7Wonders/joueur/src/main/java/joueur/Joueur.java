@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
+import donnees.CouleurCarte;
 import donnees.Main;
 import donnees.Merveille;
 import io.socket.client.IO;
@@ -90,10 +91,13 @@ public class Joueur {
                         Main m = new Main();
                         // la main ne contient qu'une liste de carte, c'est un JSONArray
                         JSONArray cartesJSON = mainJSON.getJSONArray("cartes");
+                        System.out.println("carte JSON " + cartesJSON);
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
+                            String JcouleurCarte = carteJSON.getString("couleurCarte");
+                            String couleurCarte = JcouleurCarte.toUpperCase();
+                            Carte c = new Carte(CouleurCarte.valueOf(couleurCarte).couleur(), carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"),carteJSON.getInt("coutConstruction"));
                             m.ajouterCarte(c);
                         }
                         setMain(m);

@@ -3,23 +3,35 @@ package donnees;
 public enum CouleurCarte {
 
     //matieres premieres
-    MARRON,
+    MARRON("marron"),
 
     //produits manufacturés
-    GRISE,
+    GRISE("grise"),
 
     //batiments civils
-    BLEUE,
+    BLEUE("bleue"),
 
     //batiments scientifiques
-    VERTE,
+    VERTE("verte"),
 
     //batiments commerciaux
-    JAUNE,
+    JAUNE("jaune"),
 
     //batiments militaires
-    ROUGE,
+    ROUGE("rouge"),
 
     //guildes
-    VIOLETTE;
+    VIOLETTE("violette");
+
+    private String couleur;
+
+
+
+    CouleurCarte(String couleur) {
+        this.couleur = couleur;
+    }
+
+    public String couleur() {
+        return couleur;
+    }
 }
