@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Carte {
+    private CouleurCarte couleurCarte;
     private String name;
     private int pointDeVictoire;
     private int coutConstruction;
@@ -32,14 +33,15 @@ public class Carte {
         this.pointDeVictoire = pointDeVictoire;
     }
 
-    public Carte(String name, int pointDeVictoire, int coutConstruction) {
+    public Carte(CouleurCarte couleurCarte, String name, int pointDeVictoire, int coutConstruction) {
+        this.couleurCarte = couleurCarte;
         this.name = name;
         this.pointDeVictoire = pointDeVictoire;
         this.coutConstruction = coutConstruction;
     }
 
     public String toString() {
-        return "[carte - "+getName()+" - " + getPointDeVictoire() +" ]";
+        return "[ couleur - " + getCouleurCarte() + ", carte - " + getName() + " - " + getPointDeVictoire() + " ]";
     }
 
     public boolean equals(Object o) {
@@ -50,4 +52,7 @@ public class Carte {
     }
 
 
+    public CouleurCarte getCouleurCarte() {
+        return this.couleurCarte;
+    }
 }

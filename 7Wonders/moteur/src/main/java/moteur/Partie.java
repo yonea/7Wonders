@@ -111,7 +111,7 @@ public class Partie {
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
             for (int j = 7 * i; j < 7 * (i + 1); j++) {
-                mains[i].ajouterCarte(deck.getDeck1().get(j));
+                mains[i].ajouterCarte(deck.getDeck().get(j));
             }
             // association main initiale - joueur
             participants.get(i).setMain(mains[i]);
@@ -167,7 +167,7 @@ public class Partie {
         deck = new Deck(age);
     }
     private void melangerDeck() {
-        Collections.shuffle(deck.getDeck1());
+        Collections.shuffle(deck.getDeck());
     }
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
