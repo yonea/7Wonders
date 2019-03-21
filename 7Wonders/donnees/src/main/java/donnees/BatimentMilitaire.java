@@ -2,7 +2,7 @@ package donnees;
 
 public class BatimentMilitaire extends Carte {
 
-    private CouleurCarte couleurCarte = CouleurCarte.ROUGE;
+    private String couleurCarte = CouleurCarte.ROUGE.couleur();
 
     public BatimentMilitaire(String nomCarte, int coupConstruction) {
         super(nomCarte, coupConstruction);
@@ -13,7 +13,7 @@ public class BatimentMilitaire extends Carte {
     }
 
     @Override
-    public CouleurCarte getCouleurCarte() {
+    public String getCouleurCarte() {
         return couleurCarte;
     }
 

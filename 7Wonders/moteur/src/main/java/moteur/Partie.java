@@ -87,7 +87,6 @@ public class Partie {
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
             @Override
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
-                System.out.println("CARTE -------" + carte);
                 miseAJourMain();
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);

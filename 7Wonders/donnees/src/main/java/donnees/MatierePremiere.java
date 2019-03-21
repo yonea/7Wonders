@@ -3,7 +3,7 @@ package donnees;
 public class MatierePremiere extends Carte {
 
     private int ressourceCree;
-    private CouleurCarte couleurCarte = CouleurCarte.MARRON;
+    private String couleurCarte = CouleurCarte.MARRON.couleur();
 
     public MatierePremiere(String nomcarte, int coupConstruction, int ressourceCree) {
         super(nomcarte,coupConstruction);
@@ -14,7 +14,7 @@ public class MatierePremiere extends Carte {
 
     }
     @Override
-    public CouleurCarte getCouleurCarte() {
+    public String getCouleurCarte() {
         return couleurCarte;
     }
     public int getRessourceCree() {

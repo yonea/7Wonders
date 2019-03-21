@@ -98,32 +98,31 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            //System.out.println("JSON ---------------" + carteJSON);
+                            System.out.println("JSON ---------------" + carteJSON);
                             Carte c = null;
 
                             switch (carteJSON.getString("couleurCarte")) {
-                                case "BLEUE":
+                                case "bleue":
                                     c = new BatimentCivil(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pointVictoire"));
                                     break;
-                                case "MARRON":
+                                case "marron":
                                     c = new MatierePremiere(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("ressourceCree"));
                                     break;
-                                case "GRISE":
+                                case "grise":
                                     c = new ProduitManufacture(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("ressourceCree"));
                                     break;
-                                case "VERTE":
+                                case "verte":
                                     c = new BatimentScientifique(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pointVictoire"),carteJSON.getString("icone"));
                                     break;
-                                case "JAUNE":
+                                case "jaune":
                                     c = new BatimentCommercial(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"),carteJSON.getInt("pieceMonnaie"),carteJSON.getInt("ressourceCree"),carteJSON.getInt("pointVictoire"));
                                     break;
-                                case "ROUGE":
+                                case "rouge":
                                     c = new BatimentMilitaire(carteJSON.getString("nomCarte"),carteJSON.getInt("coupConstruction"));
                                     break;
                                     default:
                                         System.out.println("carte inconnue");
                             }
-                            //Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
                             m.ajouterCarte(c);
                         }
                         setMain(m);
@@ -143,19 +142,13 @@ public class Joueur {
     int tour = 1;
     private void jouer(Main m) {
         int indiceCarte = 0;
-        //JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
         JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
-        System.out.println("PIECE J --------"+ pieceJointe);
+        System.out.println("PJ" + pieceJointe);
         // dans Android, il faudrait faire :
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
-        System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte).getNomCarte());
-        System.out.println("main " + m.getCartes().get(0));
-        Gson gson = new Gson();
-        Type type = new TypeToken<Carte>(){}.getType();
-        System.out.println("type " +type);
-        pieceJointe= gson.fromJson(pieceJointe.toString(), type);
+        System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
 

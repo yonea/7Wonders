@@ -4,7 +4,7 @@ public abstract class Carte {
 
     private String nomCarte;
     private int coupConstruction;
-    CouleurCarte couleurCarte;
+    String couleurCarte;
 
     public Carte(String nomCarte, int coupConstruction) {
         this.nomCarte = nomCarte;
@@ -14,7 +14,7 @@ public abstract class Carte {
     public Carte() {
     }
 
-    public CouleurCarte getCouleurCarte() {
+    public String getCouleurCarte() {
         return couleurCarte;
     }
 

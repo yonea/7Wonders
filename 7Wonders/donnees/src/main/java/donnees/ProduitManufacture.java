@@ -3,7 +3,7 @@ package donnees;
 public class ProduitManufacture extends Carte {
 
     private int ressourceCree;
-    private CouleurCarte couleurCarte = CouleurCarte.GRISE;
+    private String couleurCarte = CouleurCarte.GRISE.couleur();
 
     public ProduitManufacture(String nomcarte, int coupConstruction, int ressourceCree) {
         super(nomcarte,coupConstruction);
@@ -24,7 +24,7 @@ public class ProduitManufacture extends Carte {
 
 
     @Override
-    public CouleurCarte getCouleurCarte() {
+    public String getCouleurCarte() {
         return couleurCarte;
     }
 

@@ -4,7 +4,7 @@ public class BatimentScientifique extends Carte {
 
     private int pointVictoire;
     private String icone;
-    private CouleurCarte couleurCarte = CouleurCarte.VERTE;
+    private String couleurCarte = CouleurCarte.VERTE.couleur();
 
     public BatimentScientifique(String nomcarte, int coupConstruction, int pointVictoire, String icone) {
         super(nomcarte,coupConstruction);
@@ -20,7 +20,7 @@ public class BatimentScientifique extends Carte {
 
     }
     @Override
-    public CouleurCarte getCouleurCarte() {
+    public String getCouleurCarte() {
         return couleurCarte;
     }
 
