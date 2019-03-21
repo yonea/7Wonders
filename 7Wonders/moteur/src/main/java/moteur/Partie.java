@@ -6,13 +6,13 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import config.CONFIG;
 import config.MESSAGES;
-import donnees.Carte;
-import donnees.Deck;
-import donnees.Main;
-import donnees.Merveille;
+import donnees.*;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -84,29 +84,35 @@ public class Partie {
         });
 
         // réception de la carte jouée
-//        serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
-//            @Override
-//            public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
-//                System.out.println("CARTE -------" + carte);
-//                miseAJourMain();
-//                // retrouver le participant
-//                Participant p = retrouveParticipant(socketIOClient);
-//                if (p != null) {
-//                    System.out.println("serveur > " + p + " a joue " + carte.getNomCarte());
-//                    // puis lui supprimer de sa main la carte jouée
-//                    p.getMain().getCartes().remove(carte);
-//                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
-//                    // p.setPoint(carte.getPointDeVictoire());
-//                    System.out.println(carte + " supprimé");
-//                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
-//                }
-//            }
-//        });
-
-        serveur.addEventListener(MESSAGES.JE_JOUE, Object.class, new DataListener<Object>() {
+        serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
             @Override
-            public void onData(SocketIOClient socketIOClient, Object o, AckRequest ackRequest) throws Exception {
-                System.out.println("CARTE -------" + o.getClass());
+            public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
+                System.out.println("CARTE -------" + carte);
+                miseAJourMain();
+                // retrouver le participant
+                Participant p = retrouveParticipant(socketIOClient);
+                if (p != null) {
+                    System.out.println("serveur > " + p + " a joue " + carte.getNomCarte());
+                    // puis lui supprimer de sa main la carte jouée
+                    p.getMain().getCartes().remove(carte);
+                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
+                    // p.setPoint(carte.getPointDeVictoire());
+                    System.out.println(carte + " supprimé");
+                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
+                }
+            }
+        });
+
+//        serveur.addEventListener(MESSAGES.JE_JOUE, Object.class, new DataListener<Object>() {
+//            @Override
+//            public void onData(SocketIOClient socketIOClient, Object o, AckRequest ackRequest) throws Exception {
+//                System.out.println("CARTE -------" + o);
+//               Carte carte = m.getCartes().get(0);
+//                Gson gson = new Gson();
+//                Type type = new TypeToken<ArrayList<Carte>>(){}.getType();
+//                System.out.println("type " +type);
+//                Main main = gson.fromJson(o.toString(), type);
+//                System.out.println("MAIN "+main);
 //                miseAJourMain();
 //                // retrouver le participant
 //                Participant p = retrouveParticipant(socketIOClient);
@@ -120,8 +126,8 @@ public class Partie {
 //                    System.out.println(o + " supprimé");
 //                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
 //                }
-            }
-        });
+//            }
+//        });
     }
 
     private void miseAJourMain() {

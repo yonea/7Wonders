@@ -1,5 +1,8 @@
 package joueur;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.*;
@@ -12,7 +15,10 @@ import org.json.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URISyntaxException;
+import java.nio.file.FileSystemLoopException;
+import java.util.ArrayList;
 
 public class Joueur {
 
@@ -144,9 +150,13 @@ public class Joueur {
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
-        Carte carteEnvoyee = m.getCartes().get(indiceCarte);
         System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte).getNomCarte());
-        connexion.emit(MESSAGES.JE_JOUE, carteEnvoyee);
+        System.out.println("main " + m.getCartes().get(0));
+        Gson gson = new Gson();
+        Type type = new TypeToken<Carte>(){}.getType();
+        System.out.println("type " +type);
+        pieceJointe= gson.fromJson(pieceJointe.toString(), type);
+        connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
 
     public void démarrer() {
