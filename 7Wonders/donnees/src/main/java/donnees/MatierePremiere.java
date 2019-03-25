@@ -5,6 +5,8 @@ public class MatierePremiere extends Carte {
     private int ressourceCree;
     private String couleurCarte = CouleurCarte.MARRON.couleur();
 
+    public MatierePremiere() {}
+
     public MatierePremiere(String nomcarte, int coupConstruction, int ressourceCree) {
         super(nomcarte,coupConstruction);
         this.ressourceCree = ressourceCree;

@@ -6,7 +6,10 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import config.CONFIG;
 import config.MESSAGES;
@@ -52,7 +55,6 @@ public class Partie {
         });
 
 
-
         // réception de l'identification du joueur
         serveur.addEventListener(MESSAGES.MON_NOM, String.class, new DataListener<String>() {
             @Override
@@ -66,16 +68,16 @@ public class Partie {
                         creationMerveille();
                         débuterLeJeu();
                         //for(int i=1; i<4; i++) {
-                            System.out.println("\nNous sommes dans l'Age 1");
-                            //creation du deck à distribuer
-                            creationDeck(1);
-                            //on melange le deck
-                            melangerDeck();
-                            //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
-                            distributionCartes();
-                            deroulementAge();
-                            Thread.sleep( 5 * 1000);
-                            //calcul du score en fin de partie
+                        System.out.println("\nNous sommes dans l'Age 1");
+                        //creation du deck à distribuer
+                        creationDeck(1);
+                        //on melange le deck
+                        melangerDeck();
+                        //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
+                        distributionCartes();
+                        deroulementAge();
+                        Thread.sleep(5 * 1000);
+                        //calcul du score en fin de partie
                         //}
                         totalScore();
                     }
@@ -84,6 +86,7 @@ public class Partie {
         });
 
         // réception de la carte jouée
+        /*
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
             @Override
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
@@ -101,32 +104,59 @@ public class Partie {
                 }
             }
         });
+    }*/
 
-//        serveur.addEventListener(MESSAGES.JE_JOUE, Object.class, new DataListener<Object>() {
-//            @Override
-//            public void onData(SocketIOClient socketIOClient, Object o, AckRequest ackRequest) throws Exception {
-//                System.out.println("CARTE -------" + o);
-//               Carte carte = m.getCartes().get(0);
-//                Gson gson = new Gson();
-//                Type type = new TypeToken<ArrayList<Carte>>(){}.getType();
-//                System.out.println("type " +type);
-//                Main main = gson.fromJson(o.toString(), type);
-//                System.out.println("MAIN "+main);
-//                miseAJourMain();
-//                // retrouver le participant
-//                Participant p = retrouveParticipant(socketIOClient);
-//                if (p != null) {
-//                    System.out.println(o.getClass().getSimpleName());
-//                    System.out.println("serveur > " + p + " a joue " + o);
-//                    // puis lui supprimer de sa main la carte jouée
-//                    p.getMain().getCartes().remove(o);
-//                    //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
-//                    // p.setPoint(carte.getPointDeVictoire());
-//                    System.out.println(o + " supprimé");
-//                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
-//                }
-//            }
-//        });
+       serveur.addEventListener(MESSAGES.JE_JOUE, String.class, new DataListener<String>() {
+           @Override
+           public void onData(SocketIOClient socketIOClient, String o, AckRequest ackRequest) throws Exception {
+               System.out.println("CARTE -------" + o);
+               miseAJourMain();
+               Carte c ;
+               Participant p = retrouveParticipant(socketIOClient);
+               String labelCouleur = "\"couleurCarte\":\"";
+                int i = o.indexOf(labelCouleur);
+               if (i > 0) {
+                   String type = o.substring(i+labelCouleur.length());
+                   String couleur = type.split("\"")[0];
+
+                   ObjectMapper mapper = new ObjectMapper();
+
+                   switch (CouleurCarte.valueOf(couleur.toUpperCase())) {
+                       case JAUNE :
+                            c = mapper.readValue(o, BatimentCommercial.class);
+
+                            break;
+                       case MARRON:
+                            c = mapper.readValue(o, MatierePremiere.class);
+                            break;
+                       default:
+                           c = null;
+                   }
+                   p.getMain().getCartes().remove(c);
+                   System.out.println(c + " supprimé");
+                   System.out.println("c = "+c);
+
+                   System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
+
+               }
+
+
+
+/*               miseAJourMain();
+               // retrouver le participant
+               Participant p = retrouveParticipant(socketIOClient);
+               if (p != null) {
+                   System.out.println(o.getClass().getSimpleName());
+                   System.out.println("serveur > " + p + " a joue " + main);
+                   // puis lui supprimer de sa main la carte jouée
+                   p.getMain().getCartes().remove(main);
+                   //on met a jour le score du joueur - A FAIRE PLUS TARD A LA FIN DE L AGE
+                   // p.setPoint(carte.getPointDeVictoire());
+                   System.out.println(o + " supprimé");
+                   System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
+               }*/
+           }
+       });
     }
 
     private void miseAJourMain() {

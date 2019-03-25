@@ -14,4 +14,5 @@ public class MESSAGES {
     public static final String ENVOI_DE_PIECE = "LES PIECES DU JOUEUR";
     public static final String JE_JOUE = "JE JOUE CETTE CARTE";
 
+
 }

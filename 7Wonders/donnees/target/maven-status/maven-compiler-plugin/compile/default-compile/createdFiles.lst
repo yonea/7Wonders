@@ -1,0 +1,15 @@
+donnees\Guilde.class
+donnees\LibelleCoutConstruction.class
+config\CONFIG.class
+donnees\MatierePremiere.class
+donnees\BatimentCommercial.class
+donnees\Main.class
+config\MESSAGES.class
+donnees\CouleurCarte.class
+donnees\Carte.class
+donnees\ProduitManufacture.class
+donnees\BatimentCivil.class
+donnees\Merveille.class
+donnees\BatimentMilitaire.class
+donnees\Deck.class
+donnees\BatimentScientifique.class

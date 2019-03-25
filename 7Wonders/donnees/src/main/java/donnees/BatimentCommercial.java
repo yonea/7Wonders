@@ -7,6 +7,8 @@ public class BatimentCommercial extends Carte {
     private int pointVictoire;
     private String couleurCarte = CouleurCarte.JAUNE.couleur();
 
+    public BatimentCommercial() {}
+
     public BatimentCommercial(String nomcarte, int coupConstruction, int pieceMonnaie, int ressourceCree, int pointVictoire) {
         super(nomcarte,coupConstruction);
         this.pieceMonnaie = pieceMonnaie;
@@ -54,7 +56,8 @@ public class BatimentCommercial extends Carte {
     @Override
     public String toString() {
         return "BatimentCommercial{" +
-                "pieceMonnaie=" + pieceMonnaie +
+                "nomCarte =" + getNomCarte() +
+                ", pieceMonnaie=" + pieceMonnaie +
                 ", ressourceCree=" + ressourceCree +
                 ", pointVictoire=" + pointVictoire +
                 '}';

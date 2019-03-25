@@ -27,7 +27,6 @@ public class Joueur {
     private int point;
     Socket connexion ;
     private Merveille merveille;
-    private Main main;
 
 
     public Joueur(String un_joueur, int pt) {
@@ -125,7 +124,6 @@ public class Joueur {
                             }
                             m.ajouterCarte(c);
                         }
-                        setMain(m);
                         System.out.println(nom+" > j'ai recu "+m);
                         // le joueur a reçu, il joue
                         jouer(m);
@@ -143,13 +141,19 @@ public class Joueur {
     private void jouer(Main m) {
         int indiceCarte = 0;
         JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
+        try {
+            pieceJointe.put("nomCarte", m.getCartes().get(indiceCarte).getNomCarte());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         System.out.println("PJ" + pieceJointe);
+
         // dans Android, il faudrait faire :
         // JSONObject pieceJointe = new JSONObject();
         // pieceJointe.put("name", m.getCartes().get(0).getName());
         // et il faudrait faire cela entre try / catch
         System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
-        connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
+        connexion.emit(MESSAGES.JE_JOUE, pieceJointe.toString());
     }
 
     public void démarrer() {
@@ -180,9 +184,6 @@ public class Joueur {
 
     public void setMerveille(Merveille merveille) {
         this.merveille = merveille;
-    }
-    public void setMain(Main main) {
-        this.main = main;
     }
     public Merveille getMerveille() {
         return merveille;
