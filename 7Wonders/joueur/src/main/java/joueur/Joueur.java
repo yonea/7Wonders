@@ -15,6 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class Joueur {
 
@@ -23,13 +26,21 @@ public class Joueur {
     private int point;
     Socket connexion ;
     private Merveille merveille;
-    private Main main;
+    private ArrayList<Carte> cartesJouees;
+    private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
 
 
     public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
         setPt(pt);
         System.out.println(nom +" > creation");
+        ressourceJoueur.put("argile",0);
+        ressourceJoueur.put("minerai",0);
+        ressourceJoueur.put("pierre",0);
+        ressourceJoueur.put("bois",0);
+        ressourceJoueur.put("verre",0);
+        ressourceJoueur.put("tissu",0);
+        ressourceJoueur.put("papyrus",0);
         try {
             // préparation de la connexion
             connexion = IO.socket("http://" + CONFIG.IP + ":" + CONFIG.PORT);
@@ -91,17 +102,19 @@ public class Joueur {
                         Main m = new Main();
                         // la main ne contient qu'une liste de carte, c'est un JSONArray
                         JSONArray cartesJSON = mainJSON.getJSONArray("cartes");
-                        System.out.println("carte JSON " + cartesJSON);
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            String JcouleurCarte = carteJSON.getString("couleurCarte");
-                            String couleurCarte = JcouleurCarte.toUpperCase();
-                            Carte c = new Carte(CouleurCarte.valueOf(couleurCarte).couleur(), carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"),carteJSON.getInt("coutConstruction"));
+                            String couleurCarte = carteJSON.getString("couleurCarte");
+                            String nomCarte = carteJSON.getString("name");
+                            int pointDeVictoireCarte = carteJSON.getInt("pointDeVictoire");
+                            int coutDeConstructionCarte = carteJSON.getInt("coutConstruction");
+                            String effetRessourceCarte = carteJSON.getString("effetRessource");
+                            int nbRessourceCarte = carteJSON.getInt("nbRessource");
+                            Carte c = new Carte(couleurCarte,nomCarte,pointDeVictoireCarte,coutDeConstructionCarte,effetRessourceCarte,nbRessourceCarte);
                             m.ajouterCarte(c);
                         }
-                        setMain(m);
-                        System.out.println(nom+" > j'ai recu "+m);
+                        //System.out.println("[" + nom+"] reçoit Main");
                         // le joueur a reçu, il joue
                         jouer(m);
                     } catch (JSONException e) {
@@ -117,16 +130,24 @@ public class Joueur {
     int tour = 1;
     private void jouer(Main m) {
         int indiceCarte = 0;
-        JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
-        // dans Android, il faudrait faire :
-        // JSONObject pieceJointe = new JSONObject();
-        // pieceJointe.put("name", m.getCartes().get(0).getName());
-        // et il faudrait faire cela entre try / catch
-        System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
+        Carte carteChoisie = m.getCartes().get(indiceCarte);
+        JSONObject pieceJointe = new JSONObject(carteChoisie) ;
+        System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "MARRON")) {
+            if(carteChoisie.getEffetRessource().indexOf("/")>0) {
+                String[] parts = carteChoisie.getEffetRessource().split("/");
+                ressourceJoueur.put(parts[0], ressourceJoueur.get(parts[0]) + carteChoisie.getNbRessource());
+                System.out.println(ressourceJoueur);
+            }else {
+                ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
+                System.out.println(ressourceJoueur);
+            }
+
+
+        }
+
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
-
-
 
     public void démarrer() {
         // connexion effective
@@ -157,10 +178,15 @@ public class Joueur {
     public void setMerveille(Merveille merveille) {
         this.merveille = merveille;
     }
-    public void setMain(Main main) {
-        this.main = main;
-    }
     public Merveille getMerveille() {
         return merveille;
+    }
+
+    public void setCartesJouees(ArrayList<Carte> cartesJouees) {
+        this.cartesJouees = cartesJouees;
+    }
+
+    public ArrayList<Carte> getCartesJouees() {
+        return cartesJouees;
     }
 }

@@ -2,71 +2,78 @@ package donnees;
 
 import java.util.ArrayList;
 
+import static donnees.CouleurCarte.MARRON;
+import static donnees.CouleurCarte.GRISE;
+import static donnees.CouleurCarte.BLEUE;
+import static donnees.CouleurCarte.JAUNE;
+import static donnees.CouleurCarte.ROUGE;
+import static donnees.CouleurCarte.VERTE;
+
 public class Deck {
 
     ArrayList<Carte> deck = new ArrayList<Carte>();
 
     //Age 1
     //Matieres Premieres
-    private Carte c1 = new Carte(CouleurCarte.MARRON.couleur(),"Chantier",0,0);
-    private Carte c2 = new Carte(CouleurCarte.MARRON.couleur(),"Chantier",0,0);
-    private Carte c3 = new Carte(CouleurCarte.MARRON.couleur(),"Cavite",0,0);
-    private Carte c4 = new Carte(CouleurCarte.MARRON.couleur(),"Cavite",0,0);
-    private Carte c5 = new Carte(CouleurCarte.MARRON.couleur(),"Bassin Argileux",0,0);
-    private Carte c6 = new Carte(CouleurCarte.MARRON.couleur(),"Bassin Argileux",0,0);
-    private Carte c7 = new Carte(CouleurCarte.MARRON.couleur(),"Filon",0,0);
-    private Carte c8 = new Carte(CouleurCarte.MARRON.couleur(),"Filon",0,0);
-    private Carte c9 = new Carte(CouleurCarte.MARRON.couleur(),"Friche",0,1);
-    private Carte c10 = new Carte(CouleurCarte.MARRON.couleur(),"Excavation",0,1);
-    private Carte c11 = new Carte(CouleurCarte.MARRON.couleur(),"Fosse Argileuse",0,1);
-    private Carte c12 = new Carte(CouleurCarte.MARRON.couleur(),"Exploitation Forestiere",1,1);
-    private Carte c13 = new Carte(CouleurCarte.MARRON.couleur(),"Gisement",0,1);
-    private Carte c14 = new Carte(CouleurCarte.MARRON.couleur(),"Mine",0,1);
+    private Carte c1 = new Carte("MARRON","Chantier",0,0,"bois",1);
+    private Carte c2 = new Carte("MARRON","Chantier",0,0,"bois",1);
+    private Carte c3 = new Carte("MARRON","Cavite",0,0,"pierre",1);
+    private Carte c4 = new Carte("MARRON","Cavite",0,0,"pierre",1);
+    private Carte c5 = new Carte("MARRON","Bassin Argileux",0,0,"argile",1);
+    private Carte c6 = new Carte("MARRON","Bassin Argileux",0,0,"argile",1);
+    private Carte c7 = new Carte("MARRON","Filon",0,0,"minerai",1);
+    private Carte c8 = new Carte("MARRON","Filon",0,0,"minerai",1);
+    private Carte c9 = new Carte("MARRON","Friche",0,1,"bois/argile",1);
+    private Carte c10 = new Carte("MARRON","Excavation",0,1,"pierre/argile",1);
+    private Carte c11 = new Carte("MARRON","Fosse Argileuse",0,1,"argile/minerai",1);
+    private Carte c12 = new Carte("MARRON","Exploitation Forestiere",1,1,"pierre/bois",1);
+    private Carte c13 = new Carte("MARRON","Gisement",0,1,"bois/minerai",1);
+    private Carte c14 = new Carte("MARRON","Mine",0,1,"minerai/pierre",1);
 
     //Produits Manufacturés
-    private Carte c15 = new Carte(CouleurCarte.GRISE.couleur(),"Metier A Tisser",0,0);
-    private Carte c16 = new Carte(CouleurCarte.GRISE.couleur(),"Metier A Tisser",0,0);
-    private Carte c17 = new Carte(CouleurCarte.GRISE.couleur(),"Verrerie",0,0);
-    private Carte c18 = new Carte(CouleurCarte.GRISE.couleur(),"Verrerie",0,0);
-    private Carte c19 = new Carte(CouleurCarte.GRISE.couleur(),"Presse",0,0);
-    private Carte c20 = new Carte(CouleurCarte.GRISE.couleur(),"Presse",0,0);
+    private Carte c15 = new Carte("GRISE","Metier A Tisser",0,0,"",1);
+    private Carte c16 = new Carte("GRISE","Metier A Tisser",0,0,"",1);
+    private Carte c17 = new Carte("GRISE","Verrerie",0,0,"",1);
+    private Carte c18 = new Carte("GRISE","Verrerie",0,0,"",1);
+    private Carte c19 = new Carte("GRISE","Presse",0,0,"",1);
+    private Carte c20 = new Carte("GRISE","Presse",0,0,"",1);
 
     //Batiments civils
-    private Carte c21 = new Carte(CouleurCarte.BLEUE.couleur(),"Preteur Sur Gages",3,0);
-    private Carte c22 = new Carte(CouleurCarte.BLEUE.couleur(),"Preteur Sur Gages",3,0);
-    private Carte c23 = new Carte(CouleurCarte.BLEUE.couleur(),"Bains",3,0);
-    private Carte c24 = new Carte(CouleurCarte.BLEUE.couleur(),"Bains",3,0);
-    private Carte c25 = new Carte(CouleurCarte.BLEUE.couleur(),"Autel",2,0);
-    private Carte c26 = new Carte(CouleurCarte.BLEUE.couleur(),"Autel",2,0);
-    private Carte c27 = new Carte(CouleurCarte.BLEUE.couleur(),"Theatre",2,0);
-    private Carte c28 = new Carte(CouleurCarte.BLEUE.couleur(),"Theatre",2,0);
+    private Carte c21 = new Carte("BLEUE","Preteur Sur Gages",3,0,"",1);
+    private Carte c22 = new Carte("BLEUE","Preteur Sur Gages",3,0,"",1);
+    private Carte c23 = new Carte("BLEUE","Bains",3,0,"",1);
+    private Carte c24 = new Carte("BLEUE","Bains",3,0,"",1);
+    private Carte c25 = new Carte("BLEUE","Autel",2,0,"",1);
+    private Carte c26 = new Carte("BLEUE","Autel",2,0,"",1);
+    private Carte c27 = new Carte("BLEUE","Theatre",2,0,"",1);
+    private Carte c28 = new Carte("BLEUE","Theatre",2,0,"",1);
 
     // Batiments commerciaux
-    private Carte c29 = new Carte(CouleurCarte.JAUNE.couleur(),"Taverne",0,0);//Rapporte 5 pieces
-    private Carte c30 = new Carte(CouleurCarte.JAUNE.couleur(),"Taverne",0,0);//Rapporte 5 pieces
-    private Carte c31 = new Carte(CouleurCarte.JAUNE.couleur(),"Taverne",0,0);//Rapporte 5 pieces
-    private Carte c32 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Est",1,0);//Rapporte 1 pieces
-    private Carte c33 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Est",1,0);//Rapporte 1 pieces
-    private Carte c34 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Ouest",1,0);//Rapporte 1 pieces
-    private Carte c35 = new Carte(CouleurCarte.JAUNE.couleur(),"Comptoir Ouest",1,0);//Rapporte 1 pieces
-    private Carte c36 = new Carte(CouleurCarte.JAUNE.couleur(),"Marche",1,0);//Rapporte 1 pieces
-    private Carte c37 = new Carte(CouleurCarte.JAUNE.couleur(),"Marche",1,0);//Rapporte 1 pieces
+    private Carte c29 = new Carte("JAUNE","Taverne",0,0,"",1);//Rapporte 5 pieces
+    private Carte c30 = new Carte("JAUNE","Taverne",0,0,"",1);//Rapporte 5 pieces
+    private Carte c31 = new Carte("JAUNE","Taverne",0,0,"",1);//Rapporte 5 pieces
+    private Carte c32 = new Carte("JAUNE","Comptoir Est",1,0,"",1);//Rapporte 1 pieces
+    private Carte c33 = new Carte("JAUNE","Comptoir Est",1,0,"",1);//Rapporte 1 pieces
+    private Carte c34 = new Carte("JAUNE","Comptoir Ouest",1,0,"",1);//Rapporte 1 pieces
+    private Carte c35 = new Carte("JAUNE","Comptoir Ouest",1,0,"",1);//Rapporte 1 pieces
+    private Carte c36 = new Carte("JAUNE","Marche",1,0,"",1);//Rapporte 1 pieces
+    private Carte c37 = new Carte("JAUNE","Marche",1,0,"",1);//Rapporte 1 pieces
 
     //Batiments militaires
-    private Carte c38 = new Carte(CouleurCarte.ROUGE.couleur(),"Palissade",0,0);
-    private Carte c39 = new Carte(CouleurCarte.ROUGE.couleur(),"Palissade",0,0);
-    private Carte c40 = new Carte(CouleurCarte.ROUGE.couleur(),"Caserne",0,0);
-    private Carte c41 = new Carte(CouleurCarte.ROUGE.couleur(),"Caserne",0,0);
-    private Carte c42 = new Carte(CouleurCarte.ROUGE.couleur(),"Tour De Garde",0,0);
-    private Carte c43 = new Carte(CouleurCarte.ROUGE.couleur(),"Tour De Garde",0,0);
+    private Carte c38 = new Carte("ROUGE","Palissade",0,0,"",1);
+    private Carte c39 = new Carte("ROUGE","Palissade",0,0,"",1);
+    private Carte c40 = new Carte("ROUGE","Caserne",0,0,"",1);
+    private Carte c41 = new Carte("ROUGE","Caserne",0,0,"",1);
+    private Carte c42 = new Carte("ROUGE","Tour De Garde",0,0,"",1);
+    private Carte c43 = new Carte("ROUGE","Tour De Garde",0,0,"",1);
 
     //Batiments scientifiques
-    private Carte c44 = new Carte(CouleurCarte.VERTE.couleur(),"Officine",0,0);
-    private Carte c45 = new Carte(CouleurCarte.VERTE.couleur(),"Officine",0,0);
-    private Carte c46 = new Carte(CouleurCarte.VERTE.couleur(),"Atelier",0,0);
-    private Carte c47 = new Carte(CouleurCarte.VERTE.couleur(),"Atelier",0,0);
-    private Carte c48 = new Carte(CouleurCarte.VERTE.couleur(),"Scriptorium",0,0);
-    private Carte c49 = new Carte(CouleurCarte.VERTE.couleur(),"Scriptorium",0,0);
+    private Carte c44 = new Carte("VERTE","Officine",0,0,"",1);
+    private Carte c45 = new Carte("VERTE","Officine",0,0,"",1);
+    private Carte c46 = new Carte("VERTE","Atelier",0,0,"",1);
+    private Carte c47 = new Carte("VERTE","Atelier",0,0,"",1);
+    private Carte c48 = new Carte("VERTE","Scriptorium",0,0,"",1);
+    private Carte c49 = new Carte("VERTE","Scriptorium",0,0,"",1);
 
     private void creerDeckAge1(){
 

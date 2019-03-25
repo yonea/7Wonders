@@ -5,6 +5,8 @@ import donnees.Carte;
 import donnees.Main;
 import donnees.Merveille;
 
+import java.util.ArrayList;
+
 
 public class Participant {
 
@@ -13,6 +15,16 @@ public class Participant {
     private int point;
     private Merveille merveille;
     private Main main;
+
+    public ArrayList<Carte> getCartesJouees() {
+        return cartesJouees;
+    }
+
+    public void setCartesJouees(ArrayList<Carte> cartesJouees) {
+        this.cartesJouees = cartesJouees;
+    }
+
+    private ArrayList<Carte> cartesJouees;
 
 
     public Participant(SocketIOClient socketIOClient) {

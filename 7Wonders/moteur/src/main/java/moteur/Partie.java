@@ -24,6 +24,7 @@ public class Partie {
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
     private Main[] mains = new Main[CONFIG.NB_JOUEURS];
+    private ArrayList<Carte> cartesJouees = new ArrayList<>();
     private Deck deck;
     public Partie() {
 
@@ -88,24 +89,28 @@ public class Partie {
         serveur.addEventListener(MESSAGES.JE_JOUE, Carte.class, new DataListener<Carte>() {
             @Override
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
-                for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                    participants.get(i).setMain(mains[i]);
-                }
+                miseAJourMain();
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
-                    System.out.println("serveur > " + p + " a joue " + carte);
+                    System.out.println("[SERVEUR] : [" + p + "] joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
+                    cartesJouees.add(carte);
+                    p.setCartesJouees(cartesJouees);
                     p.getMain().getCartes().remove(carte);
                     //on met a jour le score du joueur
-                    p.setPoint(carte.getPointDeVictoire());
-                    System.out.println(carte + " supprimé");
-                    System.out.println("serveur > il reste a " + p + " les cartes " + p.getMain().getCartes());
+                    //p.setPoint(carte.getPointDeVictoire());
+                    //System.out.println("[SERVEUR] > il reste a " + p + " les cartes " + p.getMain().getCartes());
                 }
             }
         });
     }
 
+    private void miseAJourMain(){
+        for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+            participants.get(i).setMain(mains[i]);
+        }
+    }
     private void distributionCartes() {
 
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
