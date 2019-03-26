@@ -41,11 +41,15 @@ public class Joueur {
         ressourceJoueur.put("pierre",0);
         ressourceJoueur.put("bois",0);
 
-        ressourceJoueur.put("verre",0);
-        ressourceJoueur.put("tissu",0);
-        ressourceJoueur.put("papyrus",0);
+        ressourceJoueur.put("verre",10);
+        ressourceJoueur.put("tissu",10);
+        ressourceJoueur.put("papyrus",10);
 
         ressourceJoueur.put("bouclier",0);
+
+        ressourceJoueur.put("compas",0);
+        ressourceJoueur.put("roue",0);
+        ressourceJoueur.put("tablette",0);
 
         try {
             // préparation de la connexion
@@ -185,21 +189,22 @@ public class Joueur {
                 }
             }
         }
-        if(Objects.equals(carteChoisie.getCouleurCarte(), "ROUGE")) {
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "ROUGE") || Objects.equals(carteChoisie.getCouleurCarte(), "VERTE")) {
             if(carteChoisie.getNbCoutConstruction()!=0){
                 int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
                 if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
                     utilisationRessource(carteChoisie);
                     //j'ajoute le nombre de bouclier correspond à la carte, au tableau de ressource du joueur
-                    ressourceJoueur.put("bouclier", ressourceJoueur.get("bouclier") + carteChoisie.getNbRessource());
+                    ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
                 }else{
                     //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
                     defausserUneCarte(carteChoisie);
                     pieceJointe.put("defausse", true);
 
                 }
-            }
+            }System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
         }
+
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
 

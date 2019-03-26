@@ -68,12 +68,12 @@ public class Deck {
     private Carte c43 = new Carte("ROUGE","Tour De Garde",0,"argile",1,"bouclier",1);
 
     //Batiments scientifiques
-    private Carte c44 = new Carte("VERTE","Officine",0,"",0,"",1);
-    private Carte c45 = new Carte("VERTE","Officine",0,"",0,"",1);
-    private Carte c46 = new Carte("VERTE","Atelier",0,"",0,"",1);
-    private Carte c47 = new Carte("VERTE","Atelier",0,"",0,"",1);
-    private Carte c48 = new Carte("VERTE","Scriptorium",0,"",0,"",1);
-    private Carte c49 = new Carte("VERTE","Scriptorium",0,"",0,"",1);
+    private Carte c44 = new Carte("VERTE","Officine",0,"tissu",1,"compas",1);
+    private Carte c45 = new Carte("VERTE","Officine",0,"tissu",1,"compas",1);
+    private Carte c46 = new Carte("VERTE","Atelier",0,"verre",1,"roue",1);
+    private Carte c47 = new Carte("VERTE","Atelier",0,"verre",1,"roue",1);
+    private Carte c48 = new Carte("VERTE","Scriptorium",0,"papyrus",1,"tablette",1);
+    private Carte c49 = new Carte("VERTE","Scriptorium",0,"papyrus",1,"tablette",1);
 
     private void creerDeckAge1(){
 
