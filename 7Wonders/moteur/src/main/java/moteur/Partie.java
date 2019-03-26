@@ -16,6 +16,7 @@ import donnees.Merveille;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Partie {
 
@@ -100,7 +101,9 @@ public class Partie {
                     p.setCartesJouees(cartesJouees);
                     p.getMain().getCartes().remove(carte);
                     //on met a jour le score du joueur
-                    //p.setPoint(carte.getPointDeVictoire());
+                    if(!carte.isDefausse() && Objects.equals(carte.getCouleurCarte(), "BLEUE")) {
+                        p.setPoint(carte.getPointDeVictoire());
+                    }
                     //System.out.println("[SERVEUR] > il reste a " + p + " les cartes " + p.getMain().getCartes());
                 }
             }
@@ -192,7 +195,7 @@ public class Partie {
             System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
             // envoi de la merveille au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 0);
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 3);
         }
     }
 

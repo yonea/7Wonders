@@ -31,18 +31,18 @@ public class Deck {
     private Carte c14 = new Carte("MARRON","Mine",0,"piece",1,"minerai/pierre",1);
 
     //Produits Manufacturés
-    private Carte c15 = new Carte("GRISE","Metier A Tisser",0,"",0,"",1);
-    private Carte c16 = new Carte("GRISE","Metier A Tisser",0,"",0,"",1);
-    private Carte c17 = new Carte("GRISE","Verrerie",0,"",0,"",1);
-    private Carte c18 = new Carte("GRISE","Verrerie",0,"",0,"",1);
-    private Carte c19 = new Carte("GRISE","Presse",0,"",0,"",1);
-    private Carte c20 = new Carte("GRISE","Presse",0,"",0,"",1);
+    private Carte c15 = new Carte("GRISE","Metier A Tisser",0,"",0,"tissu",1);
+    private Carte c16 = new Carte("GRISE","Metier A Tisser",0,"",0,"tissu",1);
+    private Carte c17 = new Carte("GRISE","Verrerie",0,"",0,"verre",1);
+    private Carte c18 = new Carte("GRISE","Verrerie",0,"",0,"verre",1);
+    private Carte c19 = new Carte("GRISE","Presse",0,"",0,"papyrus",1);
+    private Carte c20 = new Carte("GRISE","Presse",0,"",0,"papyrus",1);
 
     //Batiments civils
     private Carte c21 = new Carte("BLEUE","Preteur Sur Gages",3,"",0,"",1);
     private Carte c22 = new Carte("BLEUE","Preteur Sur Gages",3,"",0,"",1);
-    private Carte c23 = new Carte("BLEUE","Bains",3,"",0,"",1);
-    private Carte c24 = new Carte("BLEUE","Bains",3,"",0,"",1);
+    private Carte c23 = new Carte("BLEUE","Bains",3,"pierre",1,"",1);
+    private Carte c24 = new Carte("BLEUE","Bains",3,"pierre",1,"",1);
     private Carte c25 = new Carte("BLEUE","Autel",2,"",0,"",1);
     private Carte c26 = new Carte("BLEUE","Autel",2,"",0,"",1);
     private Carte c27 = new Carte("BLEUE","Theatre",2,"",0,"",1);

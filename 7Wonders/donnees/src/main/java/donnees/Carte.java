@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class Carte {
     private String couleurCarte;
+    private boolean defausse = false;
     private String name;
     private int pointDeVictoire;
     private String coutConstruction;
@@ -68,5 +69,11 @@ public class Carte {
     public int getNbRessource() {
         return nbRessource;
     }
+    public boolean isDefausse() {
+        return defausse;
+    }
 
+    public void setDefausse(boolean defausse) {
+        this.defausse = defausse;
+    }
 }

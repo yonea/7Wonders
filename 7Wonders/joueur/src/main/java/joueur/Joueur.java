@@ -40,6 +40,7 @@ public class Joueur {
         ressourceJoueur.put("minerai",0);
         ressourceJoueur.put("pierre",0);
         ressourceJoueur.put("bois",0);
+
         ressourceJoueur.put("verre",0);
         ressourceJoueur.put("tissu",0);
         ressourceJoueur.put("papyrus",0);
@@ -142,7 +143,7 @@ public class Joueur {
         }
     }
     int tour = 1;
-    private void jouer(Main m) {
+    private void jouer(Main m) throws JSONException {
         int indiceCarte = 0;
         Carte carteChoisie = m.getCartes().get(indiceCarte);
         JSONObject pieceJointe = new JSONObject(carteChoisie) ;
@@ -155,8 +156,8 @@ public class Joueur {
                     ressourceJoueur.put(carteChoisie.getCoutConstruction(), ressourceJoueur.get(carteChoisie.getCoutConstruction()) - carteChoisie.getNbCoutConstruction());
                 }else{
                     //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
-                    System.out.println("["+ nom + "] défausse " +  carteChoisie);
-                    ressourceJoueur.put("piece", ressourceJoueur.get("piece") + 3);
+                    defausserUneCarte(carteChoisie);
+                    pieceJointe.put("defausse", true);
                 }
             }else {
                 if(carteChoisie.getEffetRessource().indexOf("/")>0) {
@@ -167,15 +168,35 @@ public class Joueur {
                 }
 
             }
+
             System.out.println(ressourceJoueur);
 
 
 
         }
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
+            if(carteChoisie.getNbCoutConstruction()!=0){
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
+                    System.out.println("besoin d'une ressource");
+                    ressourceJoueur.put(carteChoisie.getCoutConstruction(), ressourceJoueur.get(carteChoisie.getCoutConstruction()) - carteChoisie.getNbCoutConstruction());
+                    setPt(carteChoisie.getPointDeVictoire());
+                }else{
+                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
+                    defausserUneCarte(carteChoisie);
+                    pieceJointe.put("defausse", true);
 
+                }
+            }
+        }
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
     }
 
+    public void defausserUneCarte(Carte carte){
+        System.out.println("["+ nom + "] défausse " +  carte);
+        carte.setDefausse(true);
+        ressourceJoueur.put("piece", ressourceJoueur.get("piece") + 3);
+    }
     public void démarrer() {
         // connexion effective
         if (connexion != null) connexion.connect();
