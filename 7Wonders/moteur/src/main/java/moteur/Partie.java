@@ -13,10 +13,7 @@ import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Partie {
 
@@ -25,8 +22,10 @@ public class Partie {
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
     private Main[] mains = new Main[CONFIG.NB_JOUEURS];
-    private ArrayList<Carte> cartesJouees = new ArrayList<>();
+    //private ArrayList<Carte> cartesJouees = new ArrayList<>();
     private Deck deck;
+    private HashMap<String, Integer> ressources = new HashMap<>();
+
     public Partie() {
 
         // création du serveur (peut-être externalisée)
@@ -98,8 +97,8 @@ public class Partie {
                 if (p != null) {
                     System.out.println("[SERVEUR] : " + p + " joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
-                    cartesJouees.add(carte);
-                    p.setCartesJouees(cartesJouees);
+                    //cartesJouees.add(carte);
+                    //p.setCartesJouees(cartesJouees);
                     p.getMain().getCartes().remove(carte);
                     //on met a jour le score du joueur
                     if(!carte.isDefausse() && Objects.equals(carte.getCouleurCarte(), "BLEUE")) {
@@ -109,6 +108,19 @@ public class Partie {
                 }
             }
         });
+
+        // réception des ressources
+        serveur.addEventListener(MESSAGES.RESSOURCE, HashMap.class, new DataListener<HashMap>() {
+            @Override
+            public void onData(SocketIOClient socketIOClient, HashMap ressource, AckRequest ackRequest) throws Exception {
+                // retrouver le participant
+                Participant p = retrouveParticipant(socketIOClient);
+                if (p != null) {
+                    p.setRessourceJoueur(ressource);
+                }
+            }
+        });
+        
     }
 
     private void miseAJourMain(){

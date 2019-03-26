@@ -26,7 +26,6 @@ public class Joueur {
     private int point;
     Socket connexion ;
     private Merveille merveille;
-    private ArrayList<Carte> cartesJouees;
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
 
 
@@ -35,18 +34,18 @@ public class Joueur {
         setPt(pt);
         System.out.println(nom +" > creation");
         ressourceJoueur.put("piece",0);
-
+        //carte marron
         ressourceJoueur.put("argile",0);
         ressourceJoueur.put("minerai",0);
         ressourceJoueur.put("pierre",0);
         ressourceJoueur.put("bois",0);
-
-        ressourceJoueur.put("verre",10);
-        ressourceJoueur.put("tissu",10);
-        ressourceJoueur.put("papyrus",10);
-
+        //carte grise
+        ressourceJoueur.put("verre",0);
+        ressourceJoueur.put("tissu",0);
+        ressourceJoueur.put("papyrus",0);
+        //carte rouge
         ressourceJoueur.put("bouclier",0);
-
+        //carte verte
         ressourceJoueur.put("compas",0);
         ressourceJoueur.put("roue",0);
         ressourceJoueur.put("tablette",0);
@@ -206,6 +205,7 @@ public class Joueur {
         }
 
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
+        connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
     }
 
     public void utilisationRessource(Carte carte) {
@@ -251,11 +251,4 @@ public class Joueur {
         return merveille;
     }
 
-    public void setCartesJouees(ArrayList<Carte> cartesJouees) {
-        this.cartesJouees = cartesJouees;
-    }
-
-    public ArrayList<Carte> getCartesJouees() {
-        return cartesJouees;
-    }
 }
