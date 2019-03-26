@@ -45,6 +45,8 @@ public class Joueur {
         ressourceJoueur.put("tissu",0);
         ressourceJoueur.put("papyrus",0);
 
+        ressourceJoueur.put("bouclier",0);
+
         try {
             // préparation de la connexion
             connexion = IO.socket("http://" + CONFIG.IP + ":" + CONFIG.PORT);
@@ -175,6 +177,21 @@ public class Joueur {
                 if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
                     utilisationRessource(carteChoisie);
                     setPt(carteChoisie.getPointDeVictoire());
+                }else{
+                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
+                    defausserUneCarte(carteChoisie);
+                    pieceJointe.put("defausse", true);
+
+                }
+            }
+        }
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "ROUGE")) {
+            if(carteChoisie.getNbCoutConstruction()!=0){
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
+                    utilisationRessource(carteChoisie);
+                    //j'ajoute le nombre de bouclier correspond à la carte, au tableau de ressource du joueur
+                    ressourceJoueur.put("bouclier", ressourceJoueur.get("bouclier") + carteChoisie.getNbRessource());
                 }else{
                     //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
                     defausserUneCarte(carteChoisie);

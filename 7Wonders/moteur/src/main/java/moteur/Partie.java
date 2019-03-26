@@ -69,6 +69,7 @@ public class Partie {
                         creationMerveille();
                         //envoi de merveille et envoi de 3 pièces
                         débuterLeJeu();
+                        Thread.sleep( 2 * 1000);
                         //for(int i=1; i<4; i++) {
                             System.out.println("\nNous sommes dans l'Age 1");
                             //creation du deck à distribuer
