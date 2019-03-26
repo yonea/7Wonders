@@ -66,6 +66,7 @@ public class Partie {
 
                     if (tousIndentifiés()) {
                         creationMerveille();
+                        //envoi de merveille et envoi de 3 pièces
                         débuterLeJeu();
                         //for(int i=1; i<4; i++) {
                             System.out.println("\nNous sommes dans l'Age 1");
@@ -191,6 +192,7 @@ public class Partie {
             System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
             // envoi de la merveille au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 3);
         }
     }
 

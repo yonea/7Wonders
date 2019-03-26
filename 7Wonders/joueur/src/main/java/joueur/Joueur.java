@@ -34,6 +34,8 @@ public class Joueur {
         setNom(un_joueur);
         setPt(pt);
         System.out.println(nom +" > creation");
+        ressourceJoueur.put("piece",0);
+
         ressourceJoueur.put("argile",0);
         ressourceJoueur.put("minerai",0);
         ressourceJoueur.put("pierre",0);
@@ -41,6 +43,7 @@ public class Joueur {
         ressourceJoueur.put("verre",0);
         ressourceJoueur.put("tissu",0);
         ressourceJoueur.put("papyrus",0);
+
         try {
             // préparation de la connexion
             connexion = IO.socket("http://" + CONFIG.IP + ":" + CONFIG.PORT);
@@ -71,7 +74,7 @@ public class Joueur {
                         m.setRessource(ressource);
 
                         // mémorisation de la merveille
-                        System.out.println(nom+" > j'ai recu "+m);
+                        System.out.println("[" + nom +"] reçoit " + m);
                         setMerveille(m);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -79,6 +82,16 @@ public class Joueur {
                 }
             });
 
+            // réception des 3 pièces
+            connexion.on(MESSAGES.ENVOI_DE_PIECE, new Emitter.Listener() {
+                @Override
+                public void call(Object... objects) {
+                    // réception du JSON
+                    int p = (int) objects[0];
+                    System.out.println("[" + nom +"] reçoit " + p + " pièces");
+                    ressourceJoueur.put("piece", ressourceJoueur.get("piece") + p);
+                }
+            });
 
             // réception du score
             connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
@@ -108,10 +121,11 @@ public class Joueur {
                             String couleurCarte = carteJSON.getString("couleurCarte");
                             String nomCarte = carteJSON.getString("name");
                             int pointDeVictoireCarte = carteJSON.getInt("pointDeVictoire");
-                            int coutDeConstructionCarte = carteJSON.getInt("coutConstruction");
+                            String coutConstructionCarte = carteJSON.getString("coutConstruction");
+                            int nbCoutConstructionCarte = carteJSON.getInt("nbCoutConstruction");
                             String effetRessourceCarte = carteJSON.getString("effetRessource");
                             int nbRessourceCarte = carteJSON.getInt("nbRessource");
-                            Carte c = new Carte(couleurCarte,nomCarte,pointDeVictoireCarte,coutDeConstructionCarte,effetRessourceCarte,nbRessourceCarte);
+                            Carte c = new Carte(couleurCarte,nomCarte,pointDeVictoireCarte,coutConstructionCarte,nbCoutConstructionCarte,effetRessourceCarte,nbRessourceCarte);
                             m.ajouterCarte(c);
                         }
                         //System.out.println("[" + nom+"] reçoit Main");

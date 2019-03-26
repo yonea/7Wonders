@@ -7,7 +7,8 @@ public class Carte {
     private String couleurCarte;
     private String name;
     private int pointDeVictoire;
-    private int coutConstruction;
+    private String coutConstruction;
+    private int nbCoutConstruction;
     private String effetRessource;
     private int nbRessource;
     //private ArrayList<Carte> cartes = new ArrayList<>();
@@ -27,11 +28,12 @@ public class Carte {
         this.pointDeVictoire = pointDeVictoire;
     }
 
-    public Carte(String couleurCarte, String name, int pointDeVictoire, int coutConstruction, String effetRessource, int nbRessource) {
+    public Carte(String couleurCarte, String name, int pointDeVictoire, String coutConstruction, int nbCoutConstruction, String effetRessource, int nbRessource) {
         this.couleurCarte = couleurCarte;
         this.name = name;
         this.pointDeVictoire = pointDeVictoire;
         this.coutConstruction = coutConstruction;
+        this.nbCoutConstruction = nbCoutConstruction;
         this.effetRessource = effetRessource;
         this.nbRessource = nbRessource;
     }
@@ -52,10 +54,10 @@ public class Carte {
     public int getPointDeVictoire() {
         return pointDeVictoire;
     }
-    public int getCoutConstruction() {
+    public String getCoutConstruction() {
         return coutConstruction;
     }
-
+    public int getNbCoutConstruction() { return nbCoutConstruction;}
     public String getCouleurCarte() {
         return this.couleurCarte;
     }
