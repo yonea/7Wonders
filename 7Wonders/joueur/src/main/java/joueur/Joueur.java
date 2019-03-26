@@ -148,14 +148,27 @@ public class Joueur {
         JSONObject pieceJointe = new JSONObject(carteChoisie) ;
         System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
         if(Objects.equals(carteChoisie.getCouleurCarte(), "MARRON")) {
-            if(carteChoisie.getEffetRessource().indexOf("/")>0) {
-                String[] parts = carteChoisie.getEffetRessource().split("/");
-                ressourceJoueur.put(parts[0], ressourceJoueur.get(parts[0]) + carteChoisie.getNbRessource());
-                System.out.println(ressourceJoueur);
+            if(carteChoisie.getNbCoutConstruction()!=0){
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
+                    System.out.println("besoin d'une ressource");
+                    ressourceJoueur.put(carteChoisie.getCoutConstruction(), ressourceJoueur.get(carteChoisie.getCoutConstruction()) - carteChoisie.getNbCoutConstruction());
+                }else{
+                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
+                    System.out.println("["+ nom + "] défausse " +  carteChoisie);
+                    ressourceJoueur.put("piece", ressourceJoueur.get("piece") + 3);
+                }
             }else {
-                ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
-                System.out.println(ressourceJoueur);
+                if(carteChoisie.getEffetRessource().indexOf("/")>0) {
+                    String[] parts = carteChoisie.getEffetRessource().split("/");
+                    ressourceJoueur.put(parts[0], ressourceJoueur.get(parts[0]) + carteChoisie.getNbRessource());
+                }else {
+                    ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
+                }
+
             }
+            System.out.println(ressourceJoueur);
+
 
 
         }

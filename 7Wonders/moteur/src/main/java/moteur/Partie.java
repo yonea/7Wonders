@@ -113,7 +113,7 @@ public class Partie {
         }
     }
     private void distributionCartes() {
-
+        System.out.println("--Distribution des cartes--");
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
             for (int j = 7 * i; j < 7 * (i + 1); j++) {
@@ -192,7 +192,7 @@ public class Partie {
             System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
             // envoi de la merveille au joueur
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 3);
+            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 0);
         }
     }
 
