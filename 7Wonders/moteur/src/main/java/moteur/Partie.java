@@ -95,7 +95,7 @@ public class Partie {
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
-                    System.out.println("[SERVEUR] : [" + p + "] joue " + carte);
+                    System.out.println("[SERVEUR] : " + p + " joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
                     cartesJouees.add(carte);
                     p.setCartesJouees(cartesJouees);
