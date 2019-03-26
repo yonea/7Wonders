@@ -14,9 +14,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="7w" target="1.8" />
-      <module name="7w-lanceur" target="1.8" />
-      <module name="donnees" target="1.8" />
-      <module name="joueur" target="1.8" />
+      <module name="7w-lanceur" target="1.5" />
+      <module name="donnees" target="1.5" />
+      <module name="joueur" target="1.5" />
       <module name="moteur" target="1.8" />
     </bytecodeTargetLevel>
   </component>
