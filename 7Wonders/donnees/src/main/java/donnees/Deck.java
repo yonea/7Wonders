@@ -23,12 +23,12 @@ public class Deck {
     private Carte c6 = new Carte("MARRON","Bassin Argileux",0,"",0,"argile",1);
     private Carte c7 = new Carte("MARRON","Filon",0,"",0,"minerai",1);
     private Carte c8 = new Carte("MARRON","Filon",0,"",0,"minerai",1);
-    private Carte c9 = new Carte("MARRON","Friche",0,"piece",1,"bois/argile",1);
-    private Carte c10 = new Carte("MARRON","Excavation",0,"piece",1,"pierre/argile",1);
-    private Carte c11 = new Carte("MARRON","Fosse Argileuse",0,"piece",1,"argile/minerai",1);
-    private Carte c12 = new Carte("MARRON","Exploitation Forestiere",1,"piece",1,"pierre/bois",1);
-    private Carte c13 = new Carte("MARRON","Gisement",0,"piece",1,"bois/minerai",1);
-    private Carte c14 = new Carte("MARRON","Mine",0,"piece",1,"minerai/pierre",1);
+    private Carte c9 = new Carte("MARRON","Friche",0,"piece",1,"bois",1);//bois/argile
+    private Carte c10 = new Carte("MARRON","Excavation",0,"piece",1,"argile",1);//pierre/argile
+    private Carte c11 = new Carte("MARRON","Fosse Argileuse",0,"piece",1,"minerai",1);//argile/minerai
+    private Carte c12 = new Carte("MARRON","Exploitation Forestiere",1,"piece",1,"pierre",1);//pierre/bois
+    private Carte c13 = new Carte("MARRON","Gisement",0,"piece",1,"bois",1);//bois/minerai
+    private Carte c14 = new Carte("MARRON","Mine",0,"piece",1,"minerai",1);//minerai/pierre
 
     //Produits Manufacturés
     private Carte c15 = new Carte("GRISE","Metier A Tisser",0,"",0,"tissu",1);

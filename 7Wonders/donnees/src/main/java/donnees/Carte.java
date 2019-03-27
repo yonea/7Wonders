@@ -40,7 +40,7 @@ public class Carte {
     }
 
     public String toString() {
-        return "[ couleur - " + getCouleurCarte() + ", carte - " + getName() + " - " + getPointDeVictoire() + " - " + getCoutConstruction() +" ]";
+        return "[ couleur : " + getCouleurCarte() + ", carte : " + getName() + ", ptVictoire : " + getPointDeVictoire() + ", coutConstruction : " + getCoutConstruction() +", effet : " + getEffetRessource()+ " ]";
     }
 
     public boolean equals(Object o) {
