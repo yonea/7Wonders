@@ -4,18 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Carte {
+    private String couleurCarte;
+    private boolean defausse = false;
     private String name;
     private int pointDeVictoire;
-    private int coutConstruction;
+    private String coutConstruction;
+    private int nbCoutConstruction;
+    private String effetRessource;
+    private int nbRessource;
     //private ArrayList<Carte> cartes = new ArrayList<>();
-
-
-    public String getName() {
-        return name;
-    }
-    public int getPointDeVictoire() {
-        return pointDeVictoire;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -32,14 +29,18 @@ public class Carte {
         this.pointDeVictoire = pointDeVictoire;
     }
 
-    public Carte(String name, int pointDeVictoire, int coutConstruction) {
+    public Carte(String couleurCarte, String name, int pointDeVictoire, String coutConstruction, int nbCoutConstruction, String effetRessource, int nbRessource) {
+        this.couleurCarte = couleurCarte;
         this.name = name;
         this.pointDeVictoire = pointDeVictoire;
         this.coutConstruction = coutConstruction;
+        this.nbCoutConstruction = nbCoutConstruction;
+        this.effetRessource = effetRessource;
+        this.nbRessource = nbRessource;
     }
 
     public String toString() {
-        return "[carte - "+getName()+" - " + getPointDeVictoire() +" ]";
+        return "[ couleur : " + getCouleurCarte() + ", carte : " + getName() + ", ptVictoire : " + getPointDeVictoire() + ", coutConstruction : " + getCoutConstruction() +", effet : " + getEffetRessource()+ " ]";
     }
 
     public boolean equals(Object o) {
@@ -48,6 +49,31 @@ public class Carte {
         }
         else return false;
     }
+    public String getName() {
+        return name;
+    }
+    public int getPointDeVictoire() {
+        return pointDeVictoire;
+    }
+    public String getCoutConstruction() {
+        return coutConstruction;
+    }
+    public int getNbCoutConstruction() { return nbCoutConstruction;}
+    public String getCouleurCarte() {
+        return this.couleurCarte;
+    }
 
+    public String getEffetRessource() {
+        return effetRessource;
+    }
+    public int getNbRessource() {
+        return nbRessource;
+    }
+    public boolean isDefausse() {
+        return defausse;
+    }
 
+    public void setDefausse(boolean defausse) {
+        this.defausse = defausse;
+    }
 }

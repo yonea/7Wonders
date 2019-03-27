@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
+import donnees.CouleurCarte;
 import donnees.Main;
 import donnees.Merveille;
 import io.socket.client.IO;
@@ -14,6 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class Joueur {
 
@@ -22,13 +26,30 @@ public class Joueur {
     private int point;
     Socket connexion ;
     private Merveille merveille;
-    private Main main;
+    private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
 
 
     public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
         setPt(pt);
         System.out.println(nom +" > creation");
+        ressourceJoueur.put("piece",0);
+        //carte marron
+        ressourceJoueur.put("argile",0);
+        ressourceJoueur.put("minerai",0);
+        ressourceJoueur.put("pierre",0);
+        ressourceJoueur.put("bois",0);
+        //carte grise
+        ressourceJoueur.put("verre",0);
+        ressourceJoueur.put("tissu",0);
+        ressourceJoueur.put("papyrus",0);
+        //carte rouge
+        ressourceJoueur.put("bouclier",0);
+        //carte verte
+        ressourceJoueur.put("compas",0);
+        ressourceJoueur.put("roue",0);
+        ressourceJoueur.put("tablette",0);
+
         try {
             // préparation de la connexion
             connexion = IO.socket("http://" + CONFIG.IP + ":" + CONFIG.PORT);
@@ -40,6 +61,7 @@ public class Joueur {
                     System.out.println(getNom() + " > connecte");
                     //System.out.println(getNom()+" > envoi de mon nom");
                     connexion.emit(MESSAGES.MON_NOM, getNom());
+
                 }
             });
 
@@ -59,7 +81,7 @@ public class Joueur {
                         m.setRessource(ressource);
 
                         // mémorisation de la merveille
-                        System.out.println(nom+" > j'ai recu "+m);
+                        System.out.println("[" + nom +"] reçoit " + m);
                         setMerveille(m);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -67,6 +89,16 @@ public class Joueur {
                 }
             });
 
+            // réception des 3 pièces
+            connexion.on(MESSAGES.ENVOI_DE_PIECE, new Emitter.Listener() {
+                @Override
+                public void call(Object... objects) {
+                    // réception du JSON
+                    int p = (int) objects[0];
+                    System.out.println("[" + nom +"] reçoit " + p + " pièces");
+                    ressourceJoueur.put("piece", ressourceJoueur.get("piece") + p);
+                }
+            });
 
             // réception du score
             connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
@@ -93,11 +125,17 @@ public class Joueur {
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
                             JSONObject carteJSON = (JSONObject) cartesJSON.get(j);
-                            Carte c = new Carte(carteJSON.getString("name"),carteJSON.getInt("pointDeVictoire"));
+                            String couleurCarte = carteJSON.getString("couleurCarte");
+                            String nomCarte = carteJSON.getString("name");
+                            int pointDeVictoireCarte = carteJSON.getInt("pointDeVictoire");
+                            String coutConstructionCarte = carteJSON.getString("coutConstruction");
+                            int nbCoutConstructionCarte = carteJSON.getInt("nbCoutConstruction");
+                            String effetRessourceCarte = carteJSON.getString("effetRessource");
+                            int nbRessourceCarte = carteJSON.getInt("nbRessource");
+                            Carte c = new Carte(couleurCarte,nomCarte,pointDeVictoireCarte,coutConstructionCarte,nbCoutConstructionCarte,effetRessourceCarte,nbRessourceCarte);
                             m.ajouterCarte(c);
                         }
-                        setMain(m);
-                        System.out.println(nom+" > j'ai recu "+m);
+                        connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
                         // le joueur a reçu, il joue
                         jouer(m);
                     } catch (JSONException e) {
@@ -111,19 +149,91 @@ public class Joueur {
         }
     }
     int tour = 1;
-    private void jouer(Main m) {
+    private void jouer(Main m) throws JSONException {
+
         int indiceCarte = 0;
-        JSONObject pieceJointe = new JSONObject(m.getCartes().get(indiceCarte)) ;
-        // dans Android, il faudrait faire :
-        // JSONObject pieceJointe = new JSONObject();
-        // pieceJointe.put("name", m.getCartes().get(0).getName());
-        // et il faudrait faire cela entre try / catch
-        System.out.println("tour n°" + tour++ + " : " + nom + " > je joue "+ m.getCartes().get(indiceCarte));
+        Carte carteChoisie = m.getCartes().get(indiceCarte);
+        JSONObject pieceJointe = new JSONObject(carteChoisie) ;
+        System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
+
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "MARRON") || Objects.equals(carteChoisie.getCouleurCarte(), "GRISE")) {
+            if(carteChoisie.getNbCoutConstruction()!=0) {
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if (ressourceJoueur.get(carteChoisie.getCoutConstruction()) >= nbCoutConstruction) {
+                    utilisationRessource(carteChoisie);
+                } else {
+                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
+                    //if (ressourceJoueur.get("piece") < 2) {
+                        defausserUneCarte(carteChoisie);
+                    //} else {
+                        connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+                    //}
+                    pieceJointe.put("defausse", true);
+                }
+            }else{
+                ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
+            }
+            /*else {
+                if(carteChoisie.getEffetRessource().indexOf("/")>0) {
+                    String[] parts = carteChoisie.getEffetRessource().split("/");
+                    ressourceJoueur.put(parts[0], ressourceJoueur.get(parts[0]) + carteChoisie.getNbRessource());
+                }else {
+                    ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
+                }*/
+        }
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
+            if(carteChoisie.getNbCoutConstruction()!=0){
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
+                    utilisationRessource(carteChoisie);
+                    setPt(carteChoisie.getPointDeVictoire());
+                }else{
+                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
+                    //if (ressourceJoueur.get("piece") < 2) {
+                    defausserUneCarte(carteChoisie);
+                    //} else {
+                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+                    //}
+                    pieceJointe.put("defausse", true);
+                }
+            }
+        }
+        if(Objects.equals(carteChoisie.getCouleurCarte(), "ROUGE") || Objects.equals(carteChoisie.getCouleurCarte(), "VERTE")) {
+            if(carteChoisie.getNbCoutConstruction()!=0){
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
+                    utilisationRessource(carteChoisie);
+                    //j'ajoute le nombre de bouclier correspond à la carte, au tableau de ressource du joueur
+                    ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
+                }else{
+                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
+                    //if (ressourceJoueur.get("piece") < 2) {
+                    defausserUneCarte(carteChoisie);
+                    //} else {
+                    //SI LE JOUEUR PROCEDE A UN ECHANGE, les ressources du joueur ne sont pas mise à jour apres la défausse d'une carte.
+                    //le retour du tableau de ressource renvoyer par l'emit est donc faux (à améliorer)
+                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+                    //}
+                    pieceJointe.put("defausse", true);
+
+                }
+            }
+        }
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
+        connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
+        System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
     }
 
+    public void utilisationRessource(Carte carte) {
+        System.out.println("[ "+ nom +"] utilise une ressource pour jouer la carte " + carte.getName());
+        ressourceJoueur.put(carte.getCoutConstruction(), ressourceJoueur.get(carte.getCoutConstruction()) - carte.getNbCoutConstruction());
 
-
+    }
+    public void defausserUneCarte(Carte carte){
+        System.out.println("["+ nom + "] défausse " +  carte);
+        carte.setDefausse(true);
+        ressourceJoueur.put("piece", ressourceJoueur.get("piece") + 3);
+    }
     public void démarrer() {
         // connexion effective
         if (connexion != null) connexion.connect();
@@ -153,10 +263,8 @@ public class Joueur {
     public void setMerveille(Merveille merveille) {
         this.merveille = merveille;
     }
-    public void setMain(Main main) {
-        this.main = main;
-    }
     public Merveille getMerveille() {
         return merveille;
     }
+
 }

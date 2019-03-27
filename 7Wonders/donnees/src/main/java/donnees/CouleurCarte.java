@@ -22,4 +22,17 @@ public enum CouleurCarte {
 
     //guildes
     VIOLETTE;
+/*
+    private String couleur;
+
+
+
+    CouleurCarte(String couleur) {
+        this.couleur = couleur;
+    }
+
+    public String couleur() {
+        return couleur;
+    }
+    */
 }
