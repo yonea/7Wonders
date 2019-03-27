@@ -35,20 +35,20 @@ public class Joueur {
         System.out.println(nom +" > creation");
         ressourceJoueur.put("piece",0);
         //carte marron
-        ressourceJoueur.put("argile",0);
-        ressourceJoueur.put("minerai",0);
-        ressourceJoueur.put("pierre",0);
-        ressourceJoueur.put("bois",0);
+        ressourceJoueur.put("argile",2);
+        ressourceJoueur.put("minerai",2);
+        ressourceJoueur.put("pierre",2);
+        ressourceJoueur.put("bois",2);
         //carte grise
-        ressourceJoueur.put("verre",0);
-        ressourceJoueur.put("tissu",0);
-        ressourceJoueur.put("papyrus",0);
+        ressourceJoueur.put("verre",2);
+        ressourceJoueur.put("tissu",2);
+        ressourceJoueur.put("papyrus",2);
         //carte rouge
-        ressourceJoueur.put("bouclier",0);
+        ressourceJoueur.put("bouclier",2);
         //carte verte
-        ressourceJoueur.put("compas",0);
-        ressourceJoueur.put("roue",0);
-        ressourceJoueur.put("tablette",0);
+        ressourceJoueur.put("compas",2);
+        ressourceJoueur.put("roue",2);
+        ressourceJoueur.put("tablette",2);
 
         try {
             // préparation de la connexion
@@ -197,15 +197,17 @@ public class Joueur {
                     ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
                 }else{
                     //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
-                    defausserUneCarte(carteChoisie);
+                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+                    //defausserUneCarte(carteChoisie);
                     pieceJointe.put("defausse", true);
 
                 }
             }System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
         }
-
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
+        connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+
     }
 
     public void utilisationRessource(Carte carte) {

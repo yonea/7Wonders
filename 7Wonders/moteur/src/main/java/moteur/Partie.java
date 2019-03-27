@@ -120,7 +120,42 @@ public class Partie {
                 }
             }
         });
-        
+
+        // achat ressource voisine
+        serveur.addEventListener(MESSAGES.ACHETER_RESSOURCE, Carte.class, new DataListener<Carte>() {
+            @Override
+            public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
+                miseAJourMain();
+                String ressourceACherche = carte.getCoutConstruction();
+                // retrouver le participant
+                Participant p = retrouveParticipant(socketIOClient);
+                if(p != null) {
+                    int longueur = p.getNom().length();
+                    int numeroDuJoueur = Integer.parseInt(p.getNom().substring(longueur - 1 , longueur));
+                    if(numeroDuJoueur<3) {
+                        for (Map.Entry mapentry : participants.get(numeroDuJoueur + 1).getRessourceJoueur().entrySet()) {
+                            String cle = (String) mapentry.getKey();
+                            int valeur = (int) mapentry.getValue();
+                            if ((Objects.equals(cle, ressourceACherche)) && (valeur > 0)) {
+                                System.out.println("AVANT ACHAT" + p.getRessourceJoueur());
+                                //modification des ressources du voisin
+                                //retire 2 pièces
+                                int pieceAPayer = 2;
+                                p.getRessourceJoueur().put("piece", p.getRessourceJoueur().get("piece") - pieceAPayer);
+                                System.out.println("["+ p.getNom() +"] achète " + ressourceACherche + " avec " + pieceAPayer + " pièces à " + participants.get(numeroDuJoueur + 1).getNom());
+                                //ajoute la ressource achetée
+                                p.getRessourceJoueur().put(ressourceACherche, p.getRessourceJoueur().get(ressourceACherche) + 1);
+                                participants.get(numeroDuJoueur + 1).getRessourceJoueur().put("piece", participants.get(numeroDuJoueur + 1).getRessourceJoueur().get("piece") + pieceAPayer);
+                                System.out.println(p.getNom() + " APRES ACHAT" + p.getRessourceJoueur());
+                            }
+                        }
+                    }
+
+
+
+                }
+            }
+        });
     }
 
     private void miseAJourMain(){
