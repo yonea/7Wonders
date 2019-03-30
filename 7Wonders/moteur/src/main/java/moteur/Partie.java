@@ -183,7 +183,49 @@ public class Partie {
                 Thread.sleep(1000);
             }
             echangeDeMain();
+
         }
+        for(int i=0;i<4;i++) {
+            participants.get(i).setMain(null);
+            participants.get(i).getRessourceJoueur().put("bouclier",i * 2);
+        }
+        System.out.println("[SERVEUR] ---CONFLIT MILITAIRE---");
+        conflitMilitaire();
+    }
+
+    private void conflitMilitaire(){
+        int [] boucliers = new int[4];
+        for(int i=0;i<4;i++){
+            boucliers[i] = participants.get(i).getRessourceJoueur().get("bouclier");
+            System.out.println("bouclier" + boucliers[i]);
+        }
+        for(int i = 0; i<3; i++){
+            if (boucliers[i] > boucliers[i+1]) {
+                participants.get(i).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(i).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+                participants.get(i+1).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(i+1).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+            } else if (boucliers[i] < boucliers[i+1]) {
+                participants.get(i).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(i).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+                participants.get(i+1).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(i+1).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+            }
+            else {
+                System.out.println("Nombre de boucliers identique");
+            }
+        }
+        if (boucliers[3] > boucliers[0]) {
+            participants.get(3).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(3).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+            participants.get(0).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(0).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+        } else if (boucliers[3] < boucliers[0]) {
+            participants.get(3).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(3).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+            participants.get(0).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(0).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+        }
+        else {
+            System.out.println("Nombre de boucliers identique");
+        }
+
+        for(int i=0;i<4;i++) {
+            System.out.println(participants.get(i).getRessourceJoueur());
+        }
+
     }
     private void echangeDeMain(){
         Main main0, main1, main2, main3;

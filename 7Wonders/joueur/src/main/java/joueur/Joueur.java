@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class Joueur {
 
-
+    private int age = 1;
     private String nom;
     private int point;
     Socket connexion ;
@@ -44,7 +44,9 @@ public class Joueur {
         ressourceJoueur.put("tissu",0);
         ressourceJoueur.put("papyrus",0);
         //carte rouge
-        ressourceJoueur.put("bouclier",0);
+        ressourceJoueur.put("bouclier",2);
+        ressourceJoueur.put("jetonVictoireMilitaire", 0);
+        ressourceJoueur.put("jetonDefaiteMilitaire", 0);
         //carte verte
         ressourceJoueur.put("compas",0);
         ressourceJoueur.put("roue",0);
