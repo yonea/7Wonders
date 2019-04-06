@@ -31,7 +31,7 @@ public class Joueur {
 
     public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
-        setPt(pt);
+        addPt(pt);
         System.out.println(nom +" > creation");
         ressourceJoueur.put("piece",0);
         //carte marron
@@ -108,7 +108,7 @@ public class Joueur {
                 public void call(Object... objects) {
                     // réception du JSON
                     int n = (int) objects[0];
-                    setPt(n);
+                    addPt(n);
                     // affichage du score
                     System.out.println("\n" + nom + "  ---SCORE---  " + point + " points");
                 }
@@ -173,8 +173,8 @@ public class Joueur {
                     pieceJointe.put("defausse", true);
                 }
             }else{
-                ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
-            }
+                joueCarteSansCout(carteChoisie);
+                }
             /*else {
                 if(carteChoisie.getEffetRessource().indexOf("/")>0) {
                     String[] parts = carteChoisie.getEffetRessource().split("/");
@@ -184,11 +184,11 @@ public class Joueur {
                 }*/
         }
         if(Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
-            if(carteChoisie.getNbCoutConstruction()!=0){
+            if(carteChoisie.getNbCoutConstruction() != 0){
                 int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
                 if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
                     utilisationRessource(carteChoisie);
-                    setPt(carteChoisie.getPointDeVictoire());
+                    addPt(carteChoisie.getPointDeVictoire());
                 }else{
                     //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
                     //if (ressourceJoueur.get("piece") < 2) {
@@ -198,6 +198,8 @@ public class Joueur {
                     //}
                     pieceJointe.put("defausse", true);
                 }
+            } else {
+                System.out.println("[ "+ nom +"] joue la carte " + carteChoisie.getName() + " gratuitement");
             }
         }
         if(Objects.equals(carteChoisie.getCouleurCarte(), "ROUGE") || Objects.equals(carteChoisie.getCouleurCarte(), "VERTE")) {
@@ -226,8 +228,13 @@ public class Joueur {
         System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
     }
 
+    public void joueCarteSansCout(Carte carte) {
+        System.out.println("[ "+ nom +"] joue la carte " + carte.getName() + " gratuitement");
+        ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
+
+    }
     public void utilisationRessource(Carte carte) {
-        System.out.println("[ "+ nom +"] utilise une ressource pour jouer la carte " + carte.getName());
+        System.out.println("[ "+ nom +"] utilise une ressource " + carte.getCoutConstruction() + " pour jouer la carte " + carte.getName());
         ressourceJoueur.put(carte.getCoutConstruction(), ressourceJoueur.get(carte.getCoutConstruction()) - carte.getNbCoutConstruction());
 
     }
@@ -249,7 +256,7 @@ public class Joueur {
         return nom;
     }
 
-    public void setPt(int pt) {
+    public void addPt(int pt) {
         this.point += pt;
     }
 

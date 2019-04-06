@@ -102,9 +102,9 @@ public class Partie {
                     p.getMain().getCartes().remove(carte);
                     //on met a jour le score du joueur
                     if(!carte.isDefausse() && Objects.equals(carte.getCouleurCarte(), "BLEUE")) {
-                        p.setPoint(carte.getPointDeVictoire());
+                        p.addPoint(carte.getPointDeVictoire());
                     }
-                    //System.out.println("[SERVEUR] > il reste a " + p + " les cartes " + p.getMain().getCartes());
+                    System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
                 }
             }
         });
@@ -189,15 +189,15 @@ public class Partie {
             participants.get(i).setMain(null);
             participants.get(i).getRessourceJoueur().put("bouclier",i * 2);
         }
-        System.out.println("[SERVEUR] ---CONFLIT MILITAIRE---");
-        conflitMilitaire();
+        //System.out.println("[SERVEUR] ---CONFLIT MILITAIRE---");
+        //conflitMilitaire();
     }
 
     private void conflitMilitaire(){
         int [] boucliers = new int[4];
         for(int i=0;i<4;i++){
             boucliers[i] = participants.get(i).getRessourceJoueur().get("bouclier");
-            System.out.println("bouclier" + boucliers[i]);
+            //System.out.println("bouclier" + boucliers[i]);
         }
         for(int i = 0; i<3; i++){
             if (boucliers[i] > boucliers[i+1]) {
@@ -223,7 +223,7 @@ public class Partie {
         }
 
         for(int i=0;i<4;i++) {
-            System.out.println(participants.get(i).getRessourceJoueur());
+            System.out.println("[" + participants.get(i).getNom() + "]" + participants.get(i).getRessourceJoueur());
         }
 
     }
@@ -241,9 +241,15 @@ public class Partie {
     private void totalScore(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
+            //ajoute 1 point tout les 2 pièces que possède le joueur
+            int nbPiece = participants.get(i).getRessourceJoueur().get("piece");
+            int pointPiece = nbPiece/2;
+            participants.get(i).addPoint(pointPiece);
+            //envoi du score
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }
     }
+
     private void creationMerveille(){
         Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
         Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);

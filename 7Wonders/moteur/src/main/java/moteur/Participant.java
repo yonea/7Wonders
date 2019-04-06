@@ -68,7 +68,7 @@ public class Participant {
         return point;
     }
 
-    public void setPoint(int pt) {
+    public void addPoint(int pt) {
         this.point += pt;
     }
 
