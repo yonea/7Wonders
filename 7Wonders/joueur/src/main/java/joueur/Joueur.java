@@ -27,7 +27,7 @@ public class Joueur {
     Socket connexion ;
     private Merveille merveille;
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
-
+    private ArrayList<Carte> cartesJouees = new ArrayList<>();
 
     public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
@@ -48,9 +48,9 @@ public class Joueur {
         ressourceJoueur.put("jetonVictoireMilitaire", 0);
         ressourceJoueur.put("jetonDefaiteMilitaire", 0);
         //carte verte
-        ressourceJoueur.put("compas",0);
-        ressourceJoueur.put("roue",0);
-        ressourceJoueur.put("tablette",0);
+        ressourceJoueur.put("compas",1);
+        ressourceJoueur.put("roue",2);
+        ressourceJoueur.put("tablette",3);
 
         try {
             // préparation de la connexion
@@ -223,6 +223,7 @@ public class Joueur {
                 }
             }
         }
+        cartesJouees.add(carteChoisie);
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
         System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);

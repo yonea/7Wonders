@@ -17,6 +17,7 @@ public class Participant {
     private Merveille merveille;
     private Main main;
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
+    private ArrayList<Carte> cartesJouees = new ArrayList<>();
 
     public Participant(SocketIOClient socketIOClient) {
         setSocket(socketIOClient);
@@ -71,11 +72,14 @@ public class Participant {
     public void addPoint(int pt) {
         this.point += pt;
     }
-
+    public ArrayList<Carte> getCartesJouees() {
+        return cartesJouees;
+    }
     public HashMap<String, Integer> getRessourceJoueur() {
         return ressourceJoueur;
     }
     public void setRessourceJoueur(HashMap<String, Integer> ressourceJoueur) {
         this.ressourceJoueur = ressourceJoueur;
     }
+
 }

@@ -24,6 +24,10 @@ public class Carte {
         this.name = name;
     }
 
+    /**
+     * @param name represente le nom de la carte
+     * @param pointDeVictoire
+     */
     public Carte(String name, int pointDeVictoire) {
         this.name = name;
         this.pointDeVictoire = pointDeVictoire;

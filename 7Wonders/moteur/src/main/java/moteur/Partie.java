@@ -6,6 +6,7 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
@@ -15,6 +16,9 @@ import donnees.Merveille;
 
 import java.util.*;
 
+/**
+ *
+ */
 public class Partie {
 
     SocketIOServer serveur;
@@ -24,7 +28,7 @@ public class Partie {
     private Main[] mains = new Main[CONFIG.NB_JOUEURS];
     //private ArrayList<Carte> cartesJouees = new ArrayList<>();
     private Deck deck;
-    private HashMap<String, Integer> ressources = new HashMap<>();
+    //private HashMap<String, Integer> ressources = new HashMap<>();
 
     public Partie() {
 
@@ -94,6 +98,7 @@ public class Partie {
                 miseAJourMain();
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
+                p.getCartesJouees().add(carte);
                 if (p != null) {
                     //System.out.println("[SERVEUR] : " + p + " joue " + carte);
                     // puis lui supprimer de sa main la carte jouée
@@ -105,6 +110,8 @@ public class Partie {
                         p.addPoint(carte.getPointDeVictoire());
                     }
                     System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
+                    System.out.println("[" + p.getNom() + "] [CARTES JOUEES] :" + p.getCartesJouees());
+                    System.out.println("[" + p.getNom() + "] [CARTES JOUEES] :" + p.getCartesJouees().size());
                 }
             }
         });
@@ -238,6 +245,7 @@ public class Partie {
         mains[2] = main1;
         mains[3] = main2;
     }
+
     private void totalScore(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
@@ -245,6 +253,24 @@ public class Partie {
             int nbPiece = participants.get(i).getRessourceJoueur().get("piece");
             int pointPiece = nbPiece/2;
             participants.get(i).addPoint(pointPiece);
+            //calcul point carte batiments scientifiques
+            int nbSymboleRoue = participants.get(i).getRessourceJoueur().get("roue");
+            int nbSymboleCompas = participants.get(i).getRessourceJoueur().get("compas");
+            int nbSymboleTablette = participants.get(i).getRessourceJoueur().get("tablette");
+            System.out.println("ROUE : "  + nbSymboleRoue + " ; COMPAS : " + nbSymboleCompas + " ; TABLETTE : " + nbSymboleTablette);
+            //score par famille de symboles identiques
+            participants.get(i).addPoint(nbSymboleCompas * nbSymboleCompas);
+            participants.get(i).addPoint(nbSymboleRoue * nbSymboleRoue);
+            participants.get(i).addPoint(nbSymboleTablette * nbSymboleTablette);
+            // score par groupe de 3 symboles différents
+            int nbGroupeSymboleDifferents = 0;
+            while(nbSymboleCompas>0 && nbSymboleRoue>0 && nbSymboleTablette>0){
+                    nbGroupeSymboleDifferents += 1;
+                    nbSymboleTablette -= 1;
+                    nbSymboleRoue -= 1;
+                    nbSymboleCompas -= 1;
+                }
+            participants.get(i).addPoint(nbGroupeSymboleDifferents * 7);
             //envoi du score
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }
