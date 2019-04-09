@@ -5,6 +5,9 @@ import donnees.Carte;
 import donnees.Main;
 import donnees.Merveille;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Participant {
 
@@ -13,7 +16,8 @@ public class Participant {
     private int point;
     private Merveille merveille;
     private Main main;
-
+    private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
+    private ArrayList<Carte> cartesJouees = new ArrayList<>();
 
     public Participant(SocketIOClient socketIOClient) {
         setSocket(socketIOClient);
@@ -65,7 +69,17 @@ public class Participant {
         return point;
     }
 
-    public void setPoint(int pt) {
+    public void addPoint(int pt) {
         this.point += pt;
     }
+    public ArrayList<Carte> getCartesJouees() {
+        return cartesJouees;
+    }
+    public HashMap<String, Integer> getRessourceJoueur() {
+        return ressourceJoueur;
+    }
+    public void setRessourceJoueur(HashMap<String, Integer> ressourceJoueur) {
+        this.ressourceJoueur = ressourceJoueur;
+    }
+
 }
