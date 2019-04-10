@@ -29,6 +29,10 @@ public class Joueur {
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
     private ArrayList<Carte> cartesJouees = new ArrayList<>();
 
+    /**
+     * @param un_joueur qui represente le nom du joueur de la partie
+     * @param pt represente les points du joueur au debut de la partie
+     */
     public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
         addPt(pt);
@@ -151,6 +155,11 @@ public class Joueur {
         }
     }
     int tour = 1;
+
+    /**
+     * @param m
+     * @throws JSONException
+     */
     private void jouer(Main m) throws JSONException {
 
         int indiceCarte = 0;
@@ -229,21 +238,34 @@ public class Joueur {
         System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
     }
 
+    /**
+     * @param carte represente la carte joué
+     */
     public void joueCarteSansCout(Carte carte) {
         System.out.println("[ "+ nom +"] joue la carte " + carte.getName() + " gratuitement");
         ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
 
     }
+
+    /**
+     * @param carte represente la carte joué en fonction d'une ressource
+     */
     public void utilisationRessource(Carte carte) {
         System.out.println("[ "+ nom +"] utilise une ressource " + carte.getCoutConstruction() + " pour jouer la carte " + carte.getName());
         ressourceJoueur.put(carte.getCoutConstruction(), ressourceJoueur.get(carte.getCoutConstruction()) - carte.getNbCoutConstruction());
 
     }
+
+    /**
+     * @param carte represente la carte défaussé
+     */
     public void defausserUneCarte(Carte carte){
         System.out.println("["+ nom + "] défausse " +  carte);
         carte.setDefausse(true);
         ressourceJoueur.put("piece", ressourceJoueur.get("piece") + 3);
     }
+
+
     public void démarrer() {
         // connexion effective
         if (connexion != null) connexion.connect();
@@ -253,6 +275,9 @@ public class Joueur {
         this.nom = nom;
     }
 
+    /**
+     * @return nom
+     */
     public String getNom() {
         return nom;
     }
@@ -261,18 +286,31 @@ public class Joueur {
         this.point += pt;
     }
 
+    /**
+     * @return point retourne les points du joueur
+     */
     public int getPoint() {
         return point;
     }
 
+    /**
+     * @param args
+     */
     public static final void main(String  [] args) {
         Joueur j = new Joueur("toto",0);
         j.démarrer();
     }
 
+    /**
+     * @param merveille qui represente la merveille attribué au joueur
+     */
     public void setMerveille(Merveille merveille) {
         this.merveille = merveille;
     }
+
+    /**
+     * @return merveille represente la merveille qui appartient au joueur
+     */
     public Merveille getMerveille() {
         return merveille;
     }

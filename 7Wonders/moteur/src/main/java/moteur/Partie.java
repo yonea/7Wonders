@@ -165,11 +165,18 @@ public class Partie {
         });
     }
 
+    /**
+     * Cette méthode permet de mettre à jour l'image de la main du joueur dans l'objet participant qui lui correspond
+     */
     private void miseAJourMain(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             participants.get(i).setMain(mains[i]);
         }
     }
+
+    /**
+     * Cette méthode gère la distribution des cartes
+     */
     private void distributionCartes() {
         System.out.println("--Distribution des cartes--");
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -181,6 +188,10 @@ public class Partie {
             participants.get(i).setMain(mains[i]);
         }
     }
+
+    /**
+     * @throws InterruptedException represente le moment ou il y a une pause en attendant le moment ou le joueur recoit ses cartes
+     */
     private void deroulementAge() throws InterruptedException {
         for(int t = 1; t<7; t++){
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -200,6 +211,9 @@ public class Partie {
         //conflitMilitaire();
     }
 
+    /**
+     * Cette méthode gère le conflit militaire entre les participants au cours de la partie
+     */
     private void conflitMilitaire(){
         int [] boucliers = new int[4];
         for(int i=0;i<4;i++){
@@ -234,6 +248,10 @@ public class Partie {
         }
 
     }
+
+    /**
+     * Cette méthode represente l'echange de main entre chaque joueur
+     */
     private void echangeDeMain(){
         Main main0, main1, main2, main3;
         main0 = mains[0];
@@ -246,6 +264,9 @@ public class Partie {
         mains[3] = main2;
     }
 
+    /**
+     * Cette méthode permet de calcul le score de chaque joueur
+     */
     private void totalScore(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
@@ -276,6 +297,9 @@ public class Partie {
         }
     }
 
+    /**
+     * Cette méthode permet la création des Merveilles
+     */
     private void creationMerveille(){
         Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
         Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);
@@ -294,12 +318,23 @@ public class Partie {
         merveilles.add(m7);
     }
 
+    /**
+     * @param age represente la creation du deck
+     */
     private void creationDeck(int age){
         deck = new Deck(age);
     }
+
+    /**
+     * Cette méthode permet le mélange du paquet de carte
+     */
     private void melangerDeck() {
         Collections.shuffle(deck.getDeck());
     }
+
+    /**
+     * @return indiceAuHasard
+     */
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
         while(merveilles.get(indiceAuHasard).isEstPris()){
@@ -307,6 +342,10 @@ public class Partie {
         }
         return indiceAuHasard;
     }
+
+    /**
+     * Cette méthode permet de débuter le jeu
+     */
     private void débuterLeJeu() {
         // création des merveilles, au début de simple nom
         for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -321,6 +360,9 @@ public class Partie {
         }
     }
 
+    /**
+     * @return resultat
+     */
     private boolean tousIndentifiés() {
         boolean resultat = true;
         for(Participant p : participants) {
@@ -332,6 +374,10 @@ public class Partie {
         }
         return resultat;
     }
+
+    /**
+     * Cette méthode permet de démarrer la partie
+     */
     public void démarrer() {
         // démarrage du serveur
         serveur.start();
@@ -352,6 +398,9 @@ public class Partie {
         return p;
     }
 
+    /**
+     * @param args
+     */
     public static final void main(String  [] args) {
         Partie p = new Partie();
         p.démarrer();

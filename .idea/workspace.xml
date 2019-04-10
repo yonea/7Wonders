@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="913c2a41-dfe0-44ee-ac34-7d78a990541b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/7Wonders.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RENDU-COO.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Carte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Merveille.java" beforeDir="false" afterPath="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Merveille.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7Wonders/joueur/src/main/java/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/7Wonders/joueur/src/main/java/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Partie.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,12 +16,52 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/7Wonders/joueur/src/main/java/joueur/Joueur.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Participant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1564">
+              <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Partie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Carte.java" />
+        <option value="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Deck.java" />
+        <option value="$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Merveille.java" />
+        <option value="$PROJECT_DIR$/7Wonders/joueur/src/main/java/joueur/Joueur.java" />
+        <option value="$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Participant.java" />
+        <option value="$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Partie.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="8" />
     <option name="y" value="53" />
     <option name="width" value="1346" />
@@ -86,6 +125,101 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="donnees" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="donnees" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="donnees" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="joueur" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7Wonders" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -122,9 +256,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="8" y="53" width="1346" height="688" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2807154" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2730711" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -151,6 +286,18 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Carte.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Batiments.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -172,6 +319,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Merveille.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Main.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Deck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="155" column="49" selection-start-line="155" selection-start-column="49" selection-end-line="155" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/CouleurCarte.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/donnees/src/main/java/donnees/Carte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/joueur/src/main/java/joueur/Joueur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Participant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="126" column="30" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7Wonders/moteur/src/main/java/moteur/Partie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
         </state>
       </provider>
     </entry>

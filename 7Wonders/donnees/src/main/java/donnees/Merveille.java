@@ -5,6 +5,9 @@ public class Merveille {
     private String ressource;
     private boolean estPris;
 
+    /**
+     * @return ressource qui represente la ressource
+     */
     public String getRessource() {
         return ressource;
     }
@@ -24,6 +27,12 @@ public class Merveille {
     public Merveille() {
         setRessource("-vide-");
     }
+
+    /**
+     * @param n
+     * @param ressource
+     * @param estPris
+     */
     public Merveille(String n, String ressource, boolean estPris) {
         this();
         setNom(n);
@@ -31,6 +40,9 @@ public class Merveille {
         this.estPris = estPris;
     }
 
+    /**
+     * @param n
+     */
     public Merveille(String n) {
         this();
         setNom(n);
