@@ -98,20 +98,19 @@ public class Partie {
                 miseAJourMain();
                 // retrouver le participant
                 Participant p = retrouveParticipant(socketIOClient);
-                p.getCartesJouees().add(carte);
                 if (p != null) {
-                    //System.out.println("[SERVEUR] : " + p + " joue " + carte);
-                    // puis lui supprimer de sa main la carte jouée
-                    //cartesJouees.add(carte);
-                    //p.setCartesJouees(cartesJouees);
+                    //ajoute la carte qui a été jouée dans l'arraylsit de carte jouées (si la carte n'a pas été défaussée)
+                    if(!carte.isDefausse()) {
+                        p.getCartesJouees().add(carte);
+                    }
+                    //puis lui supprimer de sa main la carte jouée
                     p.getMain().getCartes().remove(carte);
                     //on met a jour le score du joueur
                     if(!carte.isDefausse() && Objects.equals(carte.getCouleurCarte(), "BLEUE")) {
                         p.addPoint(carte.getPointDeVictoire());
                     }
+                    System.out.println("[" + p.getNom() + "] [CARTES JOUEES] " + p.getCartesJouees());
                     System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
-                    System.out.println("[" + p.getNom() + "] [CARTES JOUEES] :" + p.getCartesJouees());
-                    System.out.println("[" + p.getNom() + "] [CARTES JOUEES] :" + p.getCartesJouees().size());
                 }
             }
         });
@@ -196,8 +195,8 @@ public class Partie {
             participants.get(i).setMain(null);
             participants.get(i).getRessourceJoueur().put("bouclier",i * 2);
         }
-        //System.out.println("[SERVEUR] ---CONFLIT MILITAIRE---");
-        //conflitMilitaire();
+        System.out.println("\n[SERVEUR] ---CONFLIT MILITAIRE---\n");
+        conflitMilitaire();
     }
 
     private void conflitMilitaire(){
@@ -207,32 +206,34 @@ public class Partie {
             //System.out.println("bouclier" + boucliers[i]);
         }
         for(int i = 0; i<3; i++){
+            System.out.println("[NOMBRE BOUCLIERS] [" + participants.get(i).getNom() + "] : " + boucliers[i] + " ; [" + participants.get(i+1).getNom() + "] : " + boucliers[i+1]);
             if (boucliers[i] > boucliers[i+1]) {
                 participants.get(i).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(i).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
                 participants.get(i+1).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(i+1).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+                System.out.println("[" + participants.get(i).getNom() + "] remporte le duel face à [ " + participants.get(i+1).getNom() + "]");
             } else if (boucliers[i] < boucliers[i+1]) {
                 participants.get(i).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(i).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
                 participants.get(i+1).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(i+1).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+                System.out.println("[" + participants.get(i).getNom() + "] perd le duel face à [ " + participants.get(i+1).getNom() + "]");
             }
             else {
                 System.out.println("Nombre de boucliers identique");
             }
         }
+        System.out.println("[NOMBRE BOUCLIERS] [" + participants.get(3).getNom() + "] : " + boucliers[3] + " ; [" + participants.get(0).getNom() + "] : " + boucliers[0]);
+
         if (boucliers[3] > boucliers[0]) {
             participants.get(3).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(3).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
             participants.get(0).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(0).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+            System.out.println("[" + participants.get(3).getNom() + "] remporte le duel face à [ " + participants.get(0).getNom() + "]");
         } else if (boucliers[3] < boucliers[0]) {
             participants.get(3).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(3).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
             participants.get(0).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(0).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+            System.out.println("[" + participants.get(3).getNom() + "] perd le duel face à [ " + participants.get(0).getNom() + "]");
         }
         else {
             System.out.println("Nombre de boucliers identique");
         }
-
-        for(int i=0;i<4;i++) {
-            System.out.println("[" + participants.get(i).getNom() + "]" + participants.get(i).getRessourceJoueur());
-        }
-
     }
     private void echangeDeMain(){
         Main main0, main1, main2, main3;
@@ -253,27 +254,37 @@ public class Partie {
             int nbPiece = participants.get(i).getRessourceJoueur().get("piece");
             int pointPiece = nbPiece/2;
             participants.get(i).addPoint(pointPiece);
-            //calcul point carte batiments scientifiques
-            int nbSymboleRoue = participants.get(i).getRessourceJoueur().get("roue");
-            int nbSymboleCompas = participants.get(i).getRessourceJoueur().get("compas");
-            int nbSymboleTablette = participants.get(i).getRessourceJoueur().get("tablette");
-            System.out.println("ROUE : "  + nbSymboleRoue + " ; COMPAS : " + nbSymboleCompas + " ; TABLETTE : " + nbSymboleTablette);
-            //score par famille de symboles identiques
-            participants.get(i).addPoint(nbSymboleCompas * nbSymboleCompas);
-            participants.get(i).addPoint(nbSymboleRoue * nbSymboleRoue);
-            participants.get(i).addPoint(nbSymboleTablette * nbSymboleTablette);
-            // score par groupe de 3 symboles différents
-            int nbGroupeSymboleDifferents = 0;
-            while(nbSymboleCompas>0 && nbSymboleRoue>0 && nbSymboleTablette>0){
-                    nbGroupeSymboleDifferents += 1;
-                    nbSymboleTablette -= 1;
-                    nbSymboleRoue -= 1;
-                    nbSymboleCompas -= 1;
-                }
-            participants.get(i).addPoint(nbGroupeSymboleDifferents * 7);
+            //calcul point de victoire supplementaire obtenus avec les cartes batiments scientifiques
+            scoreBatimentScientifique(i);
+            //ajout point de victoire en fonction du resultat des conflits militaires
+            int nbVictoire = participants.get(i).getRessourceJoueur().get("jetonVictoireMilitaire");
+            int nbDefaire = participants.get(i).getRessourceJoueur().get("jetonDefaiteMilitaire");
+            participants.get(i).addPoint(nbVictoire);
+            participants.get(i).addPoint(-nbDefaire);
             //envoi du score
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }
+    }
+    private void scoreBatimentScientifique(int indiceParticipant){
+            //calcul point carte batiments scientifiques
+            int nbSymboleRoue = participants.get(indiceParticipant).getRessourceJoueur().get("roue");
+            int nbSymboleCompas = participants.get(indiceParticipant).getRessourceJoueur().get("compas");
+            int nbSymboleTablette = participants.get(indiceParticipant).getRessourceJoueur().get("tablette");
+
+            //score par famille de symboles identiques
+            participants.get(indiceParticipant).addPoint(nbSymboleCompas * nbSymboleCompas);
+            participants.get(indiceParticipant).addPoint(nbSymboleRoue * nbSymboleRoue);
+            participants.get(indiceParticipant).addPoint(nbSymboleTablette * nbSymboleTablette);
+
+            // score par groupe de 3 symboles différents
+            int nbGroupeSymboleDifferents = 0;
+            while(nbSymboleCompas>0 && nbSymboleRoue>0 && nbSymboleTablette>0){
+                nbGroupeSymboleDifferents += 1;
+                nbSymboleTablette -= 1;
+                nbSymboleRoue -= 1;
+                nbSymboleCompas -= 1;
+            }
+            participants.get(indiceParticipant).addPoint(nbGroupeSymboleDifferents * 7);
     }
 
     private void creationMerveille(){

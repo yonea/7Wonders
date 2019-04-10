@@ -48,9 +48,9 @@ public class Joueur {
         ressourceJoueur.put("jetonVictoireMilitaire", 0);
         ressourceJoueur.put("jetonDefaiteMilitaire", 0);
         //carte verte
-        ressourceJoueur.put("compas",1);
-        ressourceJoueur.put("roue",2);
-        ressourceJoueur.put("tablette",3);
+        ressourceJoueur.put("compas",0);
+        ressourceJoueur.put("roue",0);
+        ressourceJoueur.put("tablette",0);
 
         try {
             // préparation de la connexion
