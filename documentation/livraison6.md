@@ -16,6 +16,8 @@ elle calcule les pts de victoires supplémentaires en fonction du score par fami
 
 Les conflits militaires sont fait dans la methode "conflitMilitaire" (l.222 de la classe Partie). Afin de tester la méthode et le calcul de score en fin de partie, nous avons octroyé un nombre de boucliers différents à chaque joueur (voir l.210 classe Partie)
 
+Concernant le possibilité qu'un joueur ne joue pas un tour dans une partie (ce qui entraine par la suite des erreurs au niveau du calcul des scores) nous avons ajouté des blocs synchronized sans réelle certitude (nous aurions besoin d'une aide).
+
 Nous avons mis en commentaire la possibilité d'acheter une ressource à son voisin car la méthode comporte quelques erreurs. Nottament l'action de défausser la carte si l'achat d'une ressource n'a pas aboutit.
 
 Nous développerons le déroulement de la partie en 3 âges pour la prochaine itération.
