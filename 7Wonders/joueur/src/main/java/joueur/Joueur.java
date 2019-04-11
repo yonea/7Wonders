@@ -34,6 +34,8 @@ public class Joueur {
         addPt(pt);
         System.out.println(nom +" > creation");
         ressourceJoueur.put("piece",0);
+        //carte bleue
+        ressourceJoueur.put("ptdevictoire",0);
         //carte marron
         ressourceJoueur.put("argile",0);
         ressourceJoueur.put("minerai",0);
@@ -157,70 +159,29 @@ public class Joueur {
         Carte carteChoisie = m.getCartes().get(indiceCarte);
         JSONObject pieceJointe = new JSONObject(carteChoisie) ;
         System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
+        //nous n'avons pas encore traiter les cartes jaunes
+        if(!Objects.equals(carteChoisie.getCouleurCarte(), "JAUNE")) {
 
-        if(Objects.equals(carteChoisie.getCouleurCarte(), "MARRON") || Objects.equals(carteChoisie.getCouleurCarte(), "GRISE")) {
-            if(carteChoisie.getNbCoutConstruction()!=0) {
+            if (carteChoisie.getNbCoutConstruction() == 0) {
+                joueCarteSansCout(carteChoisie);
+            }
+            if (carteChoisie.getNbCoutConstruction() != 0) {
                 int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+
                 if (ressourceJoueur.get(carteChoisie.getCoutConstruction()) >= nbCoutConstruction) {
                     utilisationRessource(carteChoisie);
+                    if (Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
+                        addPt(carteChoisie.getPointDeVictoire());
+                    }
+                } else if (ressourceJoueur.get("piece") > 2) {
+                    //le joueur essaie d'acheter la ressource à ces voisins
+                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+                    pieceJointe.put("defausse", true);
                 } else {
-                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
-                    //if (ressourceJoueur.get("piece") < 2) {
-                        defausserUneCarte(carteChoisie);
-                    //} else {
-                        connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
-                    //}
-                    pieceJointe.put("defausse", true);
-                }
-            }else{
-                joueCarteSansCout(carteChoisie);
-                }
-            /*else {
-                if(carteChoisie.getEffetRessource().indexOf("/")>0) {
-                    String[] parts = carteChoisie.getEffetRessource().split("/");
-                    ressourceJoueur.put(parts[0], ressourceJoueur.get(parts[0]) + carteChoisie.getNbRessource());
-                }else {
-                    ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
-                }*/
-        }
-        if(Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
-            if(carteChoisie.getNbCoutConstruction() != 0){
-                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
-                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
-                    utilisationRessource(carteChoisie);
-                    addPt(carteChoisie.getPointDeVictoire());
-                }else{
-                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
-                    //if (ressourceJoueur.get("piece") < 2) {
                     defausserUneCarte(carteChoisie);
-                    //} else {
-                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
-                    //}
                     pieceJointe.put("defausse", true);
                 }
-            } else {
-                System.out.println("[ "+ nom +"] joue la carte " + carteChoisie.getName() + " gratuitement");
-            }
-        }
-        if(Objects.equals(carteChoisie.getCouleurCarte(), "ROUGE") || Objects.equals(carteChoisie.getCouleurCarte(), "VERTE")) {
-            if(carteChoisie.getNbCoutConstruction()!=0){
-                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
-                if(ressourceJoueur.get(carteChoisie.getCoutConstruction())>= nbCoutConstruction) {
-                    utilisationRessource(carteChoisie);
-                    //j'ajoute le nombre de bouclier correspond à la carte, au tableau de ressource du joueur
-                    ressourceJoueur.put(carteChoisie.getEffetRessource(), ressourceJoueur.get(carteChoisie.getEffetRessource()) + carteChoisie.getNbRessource());
-                }else{
-                    //le joueur defausse la carte car il n'a pas les ressources pour jouer la carte;
-                    //if (ressourceJoueur.get("piece") < 2) {
-                    defausserUneCarte(carteChoisie);
-                    //} else {
-                    //SI LE JOUEUR PROCEDE A UN ECHANGE, les ressources du joueur ne sont pas mise à jour apres la défausse d'une carte.
-                    //le retour du tableau de ressource renvoyer par l'emit est donc faux (à améliorer)
-                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
-                    //}
-                    pieceJointe.put("defausse", true);
 
-                }
             }
         }
         cartesJouees.add(carteChoisie);
@@ -237,6 +198,7 @@ public class Joueur {
     public void utilisationRessource(Carte carte) {
         System.out.println("[ "+ nom +"] utilise une ressource " + carte.getCoutConstruction() + " pour jouer la carte " + carte.getName());
         ressourceJoueur.put(carte.getCoutConstruction(), ressourceJoueur.get(carte.getCoutConstruction()) - carte.getNbCoutConstruction());
+        ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
 
     }
     public void defausserUneCarte(Carte carte){

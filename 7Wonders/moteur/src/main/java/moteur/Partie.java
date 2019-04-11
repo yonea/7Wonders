@@ -14,6 +14,7 @@ import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
 
+import java.io.Console;
 import java.util.*;
 
 /**
@@ -50,9 +51,11 @@ public class Partie {
 
                 // mémorisation du participant
                 // ajout d'une limitation sur le nombre de joueur
-                if (participants.size() < CONFIG.NB_JOUEURS) {
-                    Participant p = new Participant(socketIOClient);
-                    participants.add(p);
+                synchronized (Partie.this) {
+                    if (participants.size() < CONFIG.NB_JOUEURS) {
+                        Participant p = new Participant(socketIOClient);
+                        participants.add(p);
+                    }
                 }
             }
         });
@@ -67,7 +70,6 @@ public class Partie {
                 if (p != null) {
                     p.setNom(s);
                     //System.out.println("serveur > identification de "+p.getNom()+" ("+socketIOClient.getRemoteAddress()+")");
-
                     if (tousIndentifiés()) {
                         creationMerveille();
                         //envoi de merveille et envoi de 3 pièces
@@ -133,6 +135,7 @@ public class Partie {
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
                 miseAJourMain();
                 if(!Objects.equals(carte.getCoutConstruction(), "MARRON")){
+                    boolean achat = false;
                     String ressourceACherche = carte.getCoutConstruction();
                     // retrouver le participant
                     Participant p = retrouveParticipant(socketIOClient);
@@ -144,6 +147,7 @@ public class Partie {
                                 String cle = (String) mapentry.getKey();
                                 int quantite = (int) mapentry.getValue();
                                 if ((Objects.equals(cle, ressourceACherche)) && (quantite > 0)) {
+                                    achat = true;
                                     //System.out.println("AVANT ACHAT" + p.getRessourceJoueur());
                                     //modification des ressources du voisin
                                     //retire 2 pièces
@@ -154,12 +158,18 @@ public class Partie {
                                     p.getRessourceJoueur().put(ressourceACherche, p.getRessourceJoueur().get(ressourceACherche) + 1);
                                     participants.get(numeroDuJoueur + 1).getRessourceJoueur().put("piece", participants.get(numeroDuJoueur + 1).getRessourceJoueur().get("piece") + pieceAPayer);
                                     System.out.println("["+ p.getNom() +"] [RESSOURCE] apres achat" + p.getRessourceJoueur());
+
                                 }
                             }
+
+                        }
+                        if(!achat){
+                           System.out.println("["+  p.getNom() + "] défausse " +  carte);
+                           p.getRessourceJoueur().put("piece",   p.getRessourceJoueur().get("piece") + 3);
+                           System.out.println("["+  p.getNom() +"] [RESSOURCE] apres défausse " +  p.getRessourceJoueur());
                         }
                     }
                 }
-
             }
         });
     }
@@ -181,16 +191,18 @@ public class Partie {
         }
     }
     private void deroulementAge() throws InterruptedException {
-        for(int t = 1; t<7; t++){
-            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                // envoi de la main au joueur
-                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
-                System.out.println("\n");
-                Thread.sleep(1000);
+        synchronized (Partie.this) {
+            for (int t = 1; t < 7; t++) {
+                for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+                    // envoi de la main au joueur
+                    participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+                    System.out.println("\n");
+                    Thread.sleep(1000);
+                }
+                echangeDeMain();
             }
-            echangeDeMain();
-
         }
+        //pour tester les conflits militaires
         for(int i=0;i<4;i++) {
             participants.get(i).setMain(null);
             participants.get(i).getRessourceJoueur().put("bouclier",i * 2);

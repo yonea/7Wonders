@@ -39,14 +39,14 @@ public class Deck {
     private Carte c20 = new Carte("GRISE","Presse",0,"",0,"papyrus",1);
 
     //Batiments civils
-    private Carte c21 = new Carte("BLEUE","Preteur Sur Gages",3,"",0,"",1);
-    private Carte c22 = new Carte("BLEUE","Preteur Sur Gages",3,"",0,"",1);
-    private Carte c23 = new Carte("BLEUE","Bains",3,"pierre",1,"",1);
-    private Carte c24 = new Carte("BLEUE","Bains",3,"pierre",1,"",1);
-    private Carte c25 = new Carte("BLEUE","Autel",2,"",0,"",1);
-    private Carte c26 = new Carte("BLEUE","Autel",2,"",0,"",1);
-    private Carte c27 = new Carte("BLEUE","Theatre",2,"",0,"",1);
-    private Carte c28 = new Carte("BLEUE","Theatre",2,"",0,"",1);
+    private Carte c21 = new Carte("BLEUE","Preteur Sur Gages",3,"",0,"ptdevictoire",3);
+    private Carte c22 = new Carte("BLEUE","Preteur Sur Gages",3,"",0,"ptdevictoire",3);
+    private Carte c23 = new Carte("BLEUE","Bains",3,"pierre",1,"ptdevictoire",3);
+    private Carte c24 = new Carte("BLEUE","Bains",3,"pierre",1,"ptdevictoire",3);
+    private Carte c25 = new Carte("BLEUE","Autel",2,"",0,"ptdevictoire",2);
+    private Carte c26 = new Carte("BLEUE","Autel",2,"",0,"ptdevictoire",2);
+    private Carte c27 = new Carte("BLEUE","Theatre",2,"",0,"ptdevictoire",2);
+    private Carte c28 = new Carte("BLEUE","Theatre",2,"",0,"ptdevictoire",2);
 
     // Batiments commerciaux
     private Carte c29 = new Carte("JAUNE","Taverne",0,"",0,"",1);
