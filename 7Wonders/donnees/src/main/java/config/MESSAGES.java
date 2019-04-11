@@ -13,5 +13,7 @@ public class MESSAGES {
     public static final String ENVOI_DE_SCORE = "LES POINTS DU JOUEUR";
     public static final String ENVOI_DE_PIECE = "LES PIECES DU JOUEUR";
     public static final String JE_JOUE = "JE JOUE CETTE CARTE";
+    public static final String RESSOURCE = "JE RECEPTIONNE LES RESSOURCES";
+    public static final String ACHETER_RESSOURCE = "J ACHATE UNE RESSOURCE";
 
 }
