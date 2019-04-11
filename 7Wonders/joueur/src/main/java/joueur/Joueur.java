@@ -181,10 +181,12 @@ public class Joueur {
                     if (Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
                         addPt(carteChoisie.getPointDeVictoire());
                     }
-                } else if (ressourceJoueur.get("piece") > 2) {
+                /*} else if (ressourceJoueur.get("piece") > 2) {
                     //le joueur essaie d'acheter la ressource à ces voisins
                     connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+
                     pieceJointe.put("defausse", true);
+                    */
                 } else {
                     defausserUneCarte(carteChoisie);
                     pieceJointe.put("defausse", true);
