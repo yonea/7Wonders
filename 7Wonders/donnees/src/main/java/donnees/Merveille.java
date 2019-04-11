@@ -5,10 +5,12 @@ public class Merveille {
     private String ressource;
     private boolean estPris;
 
+    /**
+     * @return ressource contenu dans une étape de la merveille
+     */
     public String getRessource() {
         return ressource;
     }
-
     public void setRessource(String ressource) {
         this.ressource = ressource;
     }

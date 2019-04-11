@@ -29,6 +29,10 @@ public class Joueur {
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
     private ArrayList<Carte> cartesJouees = new ArrayList<>();
 
+    /**
+     * @param un_joueur qui represente le nom du joueur de la partie
+     * @param pt represente les points du joueur au debut de la partie
+     */
     public Joueur(String un_joueur, int pt) {
         setNom(un_joueur);
         addPt(pt);
@@ -153,6 +157,10 @@ public class Joueur {
         }
     }
     int tour = 1;
+    /**
+     * @param m, la main du joueur
+     * @throws JSONException
+     */
     private void jouer(Main m) throws JSONException {
 
         int indiceCarte = 0;
@@ -190,17 +198,26 @@ public class Joueur {
         System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
     }
 
+    /**
+     * @param carte represente la carte jouée
+     */
     public void joueCarteSansCout(Carte carte) {
         System.out.println("[ "+ nom +"] joue la carte " + carte.getName() + " gratuitement");
         ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
 
     }
+    /**
+     * @param carte represente la carte jouée qui va servir à mettre a jour le tableau de ressource du joueur en fonction de son effet
+     */
     public void utilisationRessource(Carte carte) {
         System.out.println("[ "+ nom +"] utilise une ressource " + carte.getCoutConstruction() + " pour jouer la carte " + carte.getName());
         ressourceJoueur.put(carte.getCoutConstruction(), ressourceJoueur.get(carte.getCoutConstruction()) - carte.getNbCoutConstruction());
         ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
 
     }
+    /**
+     * @param carte represente la carte jouée
+     */
     public void defausserUneCarte(Carte carte){
         System.out.println("["+ nom + "] défausse " +  carte);
         carte.setDefausse(true);

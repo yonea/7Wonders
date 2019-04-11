@@ -139,6 +139,9 @@ public class Deck {
 
     }
 
+    /**
+     * @return deck qui represente le deck du jeu
+     */
     public ArrayList<Carte> getDeck() {
         return deck;
     }
@@ -147,7 +150,10 @@ public class Deck {
         this.deck = creationDeckAge(age);
 
     }
-
+    /**
+     * @param age qui represente l'age en cours dans le jeu
+     * @return deck qui represente le deck du jeu
+     */
     public ArrayList<Carte> creationDeckAge(int age){
         switch (age){
             case 1:

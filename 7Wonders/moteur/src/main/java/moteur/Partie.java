@@ -158,10 +158,8 @@ public class Partie {
                                     p.getRessourceJoueur().put(ressourceACherche, p.getRessourceJoueur().get(ressourceACherche) + 1);
                                     participants.get(numeroDuJoueur + 1).getRessourceJoueur().put("piece", participants.get(numeroDuJoueur + 1).getRessourceJoueur().get("piece") + pieceAPayer);
                                     System.out.println("["+ p.getNom() +"] [RESSOURCE] apres achat" + p.getRessourceJoueur());
-
                                 }
                             }
-
                         }
                         if(!achat){
                            System.out.println("["+  p.getNom() + "] défausse " +  carte);
@@ -174,11 +172,18 @@ public class Partie {
         });
     }
 
+    /**
+     *  Méthode permettant de mettre à jour la main du joueur dans l'objet participant qui lui correspond
+     */
     private void miseAJourMain(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             participants.get(i).setMain(mains[i]);
         }
     }
+
+    /**
+     * Méthode gèrant la distribution des cartes afin de construire la main de chaque joueur, contenant chacune 7 cartes
+     */
     private void distributionCartes() {
         System.out.println("--Distribution des cartes--");
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -211,6 +216,9 @@ public class Partie {
         conflitMilitaire();
     }
 
+    /**
+     * Méthode gèrant les conflits militaires en fin de partie, entre les participants en find d'Age
+     */
     private void conflitMilitaire(){
         int [] boucliers = new int[4];
         for(int i=0;i<4;i++){
@@ -247,6 +255,10 @@ public class Partie {
             System.out.println("Nombre de boucliers identique");
         }
     }
+
+    /**
+     * Cette méthode represente l'echange de main entre chaque joueur à chaque tour de jeu
+     */
     private void echangeDeMain(){
         Main main0, main1, main2, main3;
         main0 = mains[0];
@@ -259,6 +271,9 @@ public class Partie {
         mains[3] = main2;
     }
 
+    /**
+     * Cette méthode permet de calcul le score de chaque joueur en fonction des points de victoires, des pièces restantes, des conflits militaires et des batiments scientifiques
+     */
     private void totalScore(){
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             // envoi de la main au joueur
@@ -277,6 +292,9 @@ public class Partie {
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }
     }
+    /**
+     * Méthode permettant d'ajouter les points de victoires aux joueurs en fonction des cartes batiments scientifiques possédées
+     */
     private void scoreBatimentScientifique(int indiceParticipant){
             //calcul point carte batiments scientifiques
             int nbSymboleRoue = participants.get(indiceParticipant).getRessourceJoueur().get("roue");
@@ -299,6 +317,9 @@ public class Partie {
             participants.get(indiceParticipant).addPoint(nbGroupeSymboleDifferents * 7);
     }
 
+    /**
+     * Méthode permettant la création des Merveilles
+     */
     private void creationMerveille(){
         Merveille m1 = new Merveille("Le Colosse de Rhodes","a",false);
         Merveille m2 = new Merveille("Le phare d’Alexandrie","a",false);
@@ -317,12 +338,24 @@ public class Partie {
         merveilles.add(m7);
     }
 
+    /**
+     * @param age represente l'age en cours
+     */
     private void creationDeck(int age){
         deck = new Deck(age);
     }
+
+    /**
+     * Cette méthode permet le mélange du paquet de carte
+     */
     private void melangerDeck() {
         Collections.shuffle(deck.getDeck());
     }
+
+    /**
+     * Methode permettant de trouver une merveille non utilisée par un joueur, afin de lui attribuer par la suite
+     * @return indiceAuHasard
+     */
     private int merveilleDisponible(){
         int indiceAuHasard = (int) (Math.random() * (merveilles.size()));
         while(merveilles.get(indiceAuHasard).isEstPris()){
@@ -330,6 +363,9 @@ public class Partie {
         }
         return indiceAuHasard;
     }
+    /**
+     * Cette méthode permet de débuter le jeu : fournir à chaque joueur une merveille et trois pièces
+     */
     private void débuterLeJeu() {
         // création des merveilles, au début de simple nom
         for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -344,6 +380,9 @@ public class Partie {
         }
     }
 
+    /**
+     * @return resultat qui reprensente si tout les participants ont été identifié
+     */
     private boolean tousIndentifiés() {
         boolean resultat = true;
         for(Participant p : participants) {
@@ -355,6 +394,10 @@ public class Partie {
         }
         return resultat;
     }
+
+    /**
+     * Cette méthode permet de démarrer la partie
+     */
     public void démarrer() {
         // démarrage du serveur
         serveur.start();
