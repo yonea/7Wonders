@@ -1,10 +1,8 @@
 package joueur;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
-import donnees.CouleurCarte;
 import donnees.Main;
 import donnees.Merveille;
 import io.socket.client.IO;
@@ -28,7 +26,6 @@ public class Joueur {
     private Merveille merveille;
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
     private ArrayList<Carte> cartesJouees = new ArrayList<>();
-
 
     /**
      * @param un_joueur qui represente le nom du joueur de la partie
@@ -70,7 +67,6 @@ public class Joueur {
                     System.out.println(getNom() + " > connecte");
                     //System.out.println(getNom()+" > envoi de mon nom");
                     connexion.emit(MESSAGES.MON_NOM, getNom());
-
                 }
             });
 
@@ -196,10 +192,10 @@ public class Joueur {
             }
         }
         cartesJouees.add(carteChoisie);
-        connexion.emit(MESSAGES.PRET, nom);
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
         System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
+
     }
 
     /**
@@ -208,7 +204,6 @@ public class Joueur {
     public void joueCarteSansCout(Carte carte) {
         System.out.println("[ "+ nom +"] joue la carte " + carte.getName() + " gratuitement");
         ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
-
     }
     /**
      * @param carte represente la carte jouée qui va servir à mettre a jour le tableau de ressource du joueur en fonction de son effet

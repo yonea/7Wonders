@@ -10,8 +10,6 @@ class PartieTest {
     Partie ptest;
     @BeforeEach
     public void setUp() {
-        ptest = new Partie();
-        //ptest.démarrer();
 
     }
 
@@ -20,12 +18,10 @@ class PartieTest {
     void creationdeMerveille() {
 
     }
-    /*
-    @org.junit.jupiter.api.Test
-    void démarrer() {
+
+    @Test
+    void confiltMilitaire() {
+
     }
 
-    @org.junit.jupiter.api.Test
-    void main() {
-    }*/
 }

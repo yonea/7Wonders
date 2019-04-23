@@ -23,14 +23,14 @@ import java.util.*;
 public class Partie {
 
     SocketIOServer serveur;
-
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
     private Main[] mains = new Main[CONFIG.NB_JOUEURS];
     //private ArrayList<Carte> cartesJouees = new ArrayList<>();
     private Deck deck;
     //private HashMap<String, Integer> ressources = new HashMap<>();
-    private ArrayList<String> pret = new ArrayList<>();
+    private int nbTours;
+    private int nbJoueurQuiOntJoues;
 
 
     public Partie() {
@@ -48,9 +48,6 @@ public class Partie {
         serveur.addConnectListener(new ConnectListener() {
             @Override
             public void onConnect(SocketIOClient socketIOClient) {
-                //System.out.println("serveur > connexion de "+socketIOClient.getRemoteAddress());
-                //System.out.println("serveur > connexion de "+socketIOClient);
-
                 // mémorisation du participant
                 // ajout d'une limitation sur le nombre de joueur
                 if (participants.size() < CONFIG.NB_JOUEURS) {
@@ -84,11 +81,11 @@ public class Partie {
                             //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
                             distributionCartes();
                             deroulementAge();
-                            Thread.sleep( 5 * 1000);
+                            // Thread.sleep( 5 * 1000);
                             //calcul du score en fin de partie
                         //}
 
-                        totalScore();
+
                     }
                 }
             }
@@ -114,6 +111,14 @@ public class Partie {
                     }
                     System.out.println("[" + p.getNom() + "] [CARTES JOUEES] " + p.getCartesJouees());
                     System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
+
+
+                    compterUnJoueurQuiAJoue();
+
+                    if(ontIlsTousJoues()) {
+                        nbJoueurQuiOntJoues= 0;
+                        deroulementTour();
+                    }
                 }
             }
         });
@@ -130,16 +135,7 @@ public class Partie {
             }
         });
 
-        // réception du joueur pret
-        serveur.addEventListener(MESSAGES.PRET, String.class, new DataListener<String>() {
-            @Override
-            public void onData(SocketIOClient socketIOClient, String nom, AckRequest ackRequest) throws Exception {
-                // retrouver le participant
-                pret.add(nom);
-                System.out.println(pret);
-                System.out.println(pret.size());
-            }
-        });
+
 
         // achat ressource voisine
         serveur.addEventListener(MESSAGES.ACHETER_RESSOURCE, Carte.class, new DataListener<Carte>() {
@@ -184,6 +180,19 @@ public class Partie {
         });
     }
 
+    private synchronized void incrementerNbTours() {
+        nbTours++;
+    }
+
+    private synchronized void compterUnJoueurQuiAJoue() {
+        nbJoueurQuiOntJoues += 1;
+    }
+
+
+    private synchronized boolean ontIlsTousJoues() {
+        return (nbJoueurQuiOntJoues ==  CONFIG.NB_JOUEURS);
+    }
+
     /**
      *  Méthode permettant de mettre à jour la main du joueur dans l'objet participant qui lui correspond
      */
@@ -208,41 +217,34 @@ public class Partie {
         }
     }
     synchronized private void deroulementAge() throws InterruptedException {
-        for (int t = 1; t < 7; t++) {
+        nbTours = 0;
+        deroulementTour();
+    }
+
+    synchronized private void deroulementTour() throws InterruptedException {
+        incrementerNbTours();
+        if (nbTours > 6) {
+            // fin de l'age
+            finAge();
+        }
+        else {
+            System.out.println("--------------- Tour n°"+nbTours+" ---------------");
+            nbJoueurQuiOntJoues = 0;
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
                 // envoi de la main au joueur
                 participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
-                System.out.println("\n");
-                Thread.sleep(1000);
-
             }
-            while (!ToutLeMondeAJoue()){
-                System.out.println("attente que les joueurs ont tous joués");
-                wait();
-            }
-
             echangeDeMain();
-            pret.clear();
-
-
-
         }
+    }
 
-        //pour tester les conflits militaires
-        /*
-        for(int i=0;i<4;i++) {
-            participants.get(i).setMain(null);
-            participants.get(i).getRessourceJoueur().put("bouclier",i * 2);
-        }
-        */
+
+    synchronized void finAge() {
         System.out.println("\n[SERVEUR] ---CONFLIT MILITAIRE---\n");
         conflitMilitaire();
+        totalScore();
     }
 
-    private boolean ToutLeMondeAJoue() throws InterruptedException {
-        if(pret.size()==4) return true;
-        else return false;
-    }
     /**
      * Méthode gèrant les conflits militaires en fin de partie, entre les participants en find d'Age
      */
@@ -411,7 +413,7 @@ public class Partie {
      * @return resultat qui reprensente si tout les participants ont été identifié
      */
     private boolean tousIndentifiés() {
-        boolean resultat = true;
+        boolean resultat = (participants.size() == CONFIG.NB_JOUEURS);
         for(Participant p : participants) {
             // pas nom, pas identifié
             if (p.getNom() == null) {

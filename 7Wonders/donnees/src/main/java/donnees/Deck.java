@@ -2,12 +2,6 @@ package donnees;
 
 import java.util.ArrayList;
 
-import static donnees.CouleurCarte.MARRON;
-import static donnees.CouleurCarte.GRISE;
-import static donnees.CouleurCarte.BLEUE;
-import static donnees.CouleurCarte.JAUNE;
-import static donnees.CouleurCarte.ROUGE;
-import static donnees.CouleurCarte.VERTE;
 
 public class Deck {
 

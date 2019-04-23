@@ -1,0 +1,6 @@
+config\CONFIG.class
+donnees\Carte.class
+donnees\Deck.class
+donnees\Main.class
+config\MESSAGES.class
+donnees\Merveille.class
