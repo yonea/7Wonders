@@ -5,6 +5,10 @@ public class Merveille {
     private String ressource;
     private boolean estPris;
 
+    private boolean premiereEtape = true;
+    private boolean deuxiemeEtape = false;
+    private boolean troisiemeEtape = false;
+
     public String getRessource() {
         return ressource;
     }
@@ -43,6 +47,44 @@ public class Merveille {
     public void setEstPris(boolean estPris) {
         this.estPris = estPris;
     }
+
+    public boolean isPremiereEtape() {
+        return premiereEtape;
+    }
+
+    public void setPremiereEtape(boolean premiereEtape) {
+        this.premiereEtape = premiereEtape;
+    }
+
+    public boolean isDeuxiemeEtape() {
+        return deuxiemeEtape;
+    }
+
+    public void setDeuxiemeEtape(boolean deuxiemeEtape) {
+        this.deuxiemeEtape = deuxiemeEtape;
+    }
+
+    public boolean isTroisiemeEtape() {
+        return troisiemeEtape;
+    }
+
+    public void setTroisiemeEtape(boolean troisiemeEtape) {
+        this.troisiemeEtape = troisiemeEtape;
+    }
+
+    // il faut utiliser des ressources pour changer l'etat de la merveille
+
+    private void changementEtat() {
+        if (premiereEtape = true){
+            premiereEtape = false;
+            deuxiemeEtape = true;
+        } else if(deuxiemeEtape = true){
+            deuxiemeEtape = false;
+            troisiemeEtape = true;
+        }
+
+    }
+
     public String toString() {
         return "Merveille "+getNom();
     }

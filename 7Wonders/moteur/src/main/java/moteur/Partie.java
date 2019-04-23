@@ -7,10 +7,10 @@ import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
+//import com.google.gson.JsonElement;
+//import com.google.gson.reflect.TypeToken;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.*;
@@ -259,6 +259,7 @@ public class Partie {
         }
         return resultat;
     }
+
     public void démarrer() {
         // démarrage du serveur
         serveur.start();
