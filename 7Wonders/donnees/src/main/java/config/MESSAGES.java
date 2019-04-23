@@ -15,5 +15,6 @@ public class MESSAGES {
     public static final String JE_JOUE = "JE JOUE CETTE CARTE";
     public static final String RESSOURCE = "JE RECEPTIONNE LES RESSOURCES";
     public static final String ACHETER_RESSOURCE = "J ACHATE UNE RESSOURCE";
+    public static final String PRET = "LE JOUEUR EST PRET POUR LA PROCHAINE ETAPE";
 
 }

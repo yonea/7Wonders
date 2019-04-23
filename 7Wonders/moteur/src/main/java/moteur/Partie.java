@@ -30,6 +30,8 @@ public class Partie {
     //private ArrayList<Carte> cartesJouees = new ArrayList<>();
     private Deck deck;
     //private HashMap<String, Integer> ressources = new HashMap<>();
+    private ArrayList<String> pret = new ArrayList<>();
+
 
     public Partie() {
 
@@ -51,11 +53,9 @@ public class Partie {
 
                 // mémorisation du participant
                 // ajout d'une limitation sur le nombre de joueur
-                synchronized (Partie.this) {
-                    if (participants.size() < CONFIG.NB_JOUEURS) {
-                        Participant p = new Participant(socketIOClient);
-                        participants.add(p);
-                    }
+                if (participants.size() < CONFIG.NB_JOUEURS) {
+                    Participant p = new Participant(socketIOClient);
+                    participants.add(p);
                 }
             }
         });
@@ -87,6 +87,7 @@ public class Partie {
                             Thread.sleep( 5 * 1000);
                             //calcul du score en fin de partie
                         //}
+
                         totalScore();
                     }
                 }
@@ -126,6 +127,17 @@ public class Partie {
                 if (p != null) {
                     p.setRessourceJoueur(ressource);
                 }
+            }
+        });
+
+        // réception du joueur pret
+        serveur.addEventListener(MESSAGES.PRET, String.class, new DataListener<String>() {
+            @Override
+            public void onData(SocketIOClient socketIOClient, String nom, AckRequest ackRequest) throws Exception {
+                // retrouver le participant
+                pret.add(nom);
+                System.out.println(pret);
+                System.out.println(pret.size());
             }
         });
 
@@ -195,27 +207,42 @@ public class Partie {
             participants.get(i).setMain(mains[i]);
         }
     }
-    private void deroulementAge() throws InterruptedException {
-        synchronized (Partie.this) {
-            for (int t = 1; t < 7; t++) {
-                for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-                    // envoi de la main au joueur
-                    participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
-                    System.out.println("\n");
-                    Thread.sleep(1000);
-                }
-                echangeDeMain();
+    synchronized private void deroulementAge() throws InterruptedException {
+        for (int t = 1; t < 7; t++) {
+            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+                // envoi de la main au joueur
+                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
+                System.out.println("\n");
+                Thread.sleep(1000);
+
             }
+            while (!ToutLeMondeAJoue()){
+                System.out.println("attente que les joueurs ont tous joués");
+                wait();
+            }
+
+            echangeDeMain();
+            pret.clear();
+
+
+
         }
+
         //pour tester les conflits militaires
+        /*
         for(int i=0;i<4;i++) {
             participants.get(i).setMain(null);
             participants.get(i).getRessourceJoueur().put("bouclier",i * 2);
         }
+        */
         System.out.println("\n[SERVEUR] ---CONFLIT MILITAIRE---\n");
         conflitMilitaire();
     }
 
+    private boolean ToutLeMondeAJoue() throws InterruptedException {
+        if(pret.size()==4) return true;
+        else return false;
+    }
     /**
      * Méthode gèrant les conflits militaires en fin de partie, entre les participants en find d'Age
      */

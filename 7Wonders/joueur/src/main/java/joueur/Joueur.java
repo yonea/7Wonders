@@ -29,6 +29,7 @@ public class Joueur {
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
     private ArrayList<Carte> cartesJouees = new ArrayList<>();
 
+
     /**
      * @param un_joueur qui represente le nom du joueur de la partie
      * @param pt represente les points du joueur au debut de la partie
@@ -50,7 +51,7 @@ public class Joueur {
         ressourceJoueur.put("tissu",0);
         ressourceJoueur.put("papyrus",0);
         //carte rouge
-        ressourceJoueur.put("bouclier",2);
+        ressourceJoueur.put("bouclier",0);
         ressourceJoueur.put("jetonVictoireMilitaire", 0);
         ressourceJoueur.put("jetonDefaiteMilitaire", 0);
         //carte verte
@@ -195,6 +196,7 @@ public class Joueur {
             }
         }
         cartesJouees.add(carteChoisie);
+        connexion.emit(MESSAGES.PRET, nom);
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
         System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
