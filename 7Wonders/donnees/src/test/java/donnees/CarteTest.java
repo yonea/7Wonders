@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarteTest {
-/*
+
     Carte c1, c2, c3;
     @BeforeEach
     public void setUp() {
@@ -27,7 +27,7 @@ class CarteTest {
     }
     @Test
     public void testToString(){
-        assertEquals("[carte - nameTest - 2 ]", c1.toString());
+        assertEquals("[ couleur : null, carte : nameTest, ptVictoire : 2, coutConstruction : null, effet : null ]", c1.toString());
     }
-*/
+
 }
