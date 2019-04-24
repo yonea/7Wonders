@@ -159,12 +159,13 @@ public class Partie {
                                 //retire 2 pièces
                                 int pieceAPayer = 2;
                                 p.getRessourceJoueur().put("piece", p.getRessourceJoueur().get("piece") - pieceAPayer);
-                                System.out.println("["+ p.getNom() +"] achète " + ressourceACherche + " avec " + pieceAPayer + " pièces à " + participants.get(voisin).getNom());
+                                System.out.println("\n["+ p.getNom() +"] achète " + ressourceACherche + " avec " + pieceAPayer + " pièces à " + participants.get(voisin).getNom());
                                 //ajoute la ressource achetée
                                 p.getRessourceJoueur().put(ressourceACherche, p.getRessourceJoueur().get(ressourceACherche) + 1);
                                 //on ajoute les pièces au joueur voisin dû à l'achat
                                 participants.get(voisin).getRessourceJoueur().put("piece", participants.get(voisin).getRessourceJoueur().get("piece") + pieceAPayer);
                                 System.out.println("["+ p.getNom() +"] [RESSOURCE] après achat" + p.getRessourceJoueur());
+                                participants.get(voisin).setRessourceJoueur(p.getRessourceJoueur());
                             }
                         }
 
