@@ -25,7 +25,7 @@ public class Joueur {
     Socket connexion ;
     private Merveille merveille;
     private HashMap<String, Integer> ressourceJoueur = new HashMap<>();
-    private ArrayList<Carte> cartesJouees = new ArrayList<>();
+
 
     /**
      * @param un_joueur qui represente le nom du joueur de la partie
@@ -35,7 +35,7 @@ public class Joueur {
         setNom(un_joueur);
         addPt(pt);
         System.out.println(nom +" > creation");
-        ressourceJoueur.put("piece",0);
+        ressourceJoueur.put("piece",3);
         //carte bleue
         ressourceJoueur.put("ptdevictoire",0);
         //carte marron
@@ -88,22 +88,15 @@ public class Joueur {
                         // mémorisation de la merveille
                         System.out.println("[" + nom +"] reçoit " + m);
                         setMerveille(m);
+                        //connexion.emit(MESSAGES.RECOIT_MERVEILLE, m);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
             });
 
-            // réception des 3 pièces
-            connexion.on(MESSAGES.ENVOI_DE_PIECE, new Emitter.Listener() {
-                @Override
-                public void call(Object... objects) {
-                    // réception du JSON
-                    int p = (int) objects[0];
-                    System.out.println("[" + nom +"] reçoit " + p + " pièces");
-                    ressourceJoueur.put("piece", ressourceJoueur.get("piece") + p);
-                }
-            });
+
 
             // réception du score
             connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
@@ -159,11 +152,13 @@ public class Joueur {
      * @throws JSONException
      */
     private void jouer(Main m) throws JSONException {
-
+        System.out.println("\n[" + nom + "]");
+        System.out.println("[MAIN]" + m.getCartes());
         int indiceCarte = 0;
         Carte carteChoisie = m.getCartes().get(indiceCarte);
         JSONObject pieceJointe = new JSONObject(carteChoisie) ;
-        System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
+        //System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
+        System.out.println("[" + nom + "] joue " + carteChoisie);
         //nous n'avons pas encore traiter les cartes jaunes
         if(!Objects.equals(carteChoisie.getCouleurCarte(), "JAUNE")) {
 
@@ -191,10 +186,9 @@ public class Joueur {
 
             }
         }
-        cartesJouees.add(carteChoisie);
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
-        System.out.println("[" + nom + "] [RESSOURCE] " + ressourceJoueur);
+        System.out.println("\n[" + nom + "] [RESSOURCE] " + ressourceJoueur);
 
     }
 

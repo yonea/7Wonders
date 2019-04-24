@@ -6,6 +6,7 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import config.CONFIG;
 import config.MESSAGES;
@@ -31,6 +32,8 @@ public class Partie {
     //private HashMap<String, Integer> ressources = new HashMap<>();
     private int nbTours;
     private int nbJoueurQuiOntJoues;
+    private int nbJoueurQuiOntRecuPieces;
+    private int nbJoueurQuiOntRecuMerveille;
 
 
     public Partie() {
@@ -69,23 +72,17 @@ public class Partie {
                     //System.out.println("serveur > identification de "+p.getNom()+" ("+socketIOClient.getRemoteAddress()+")");
                     if (tousIndentifiés()) {
                         creationMerveille();
+                        System.out.println("\nNous sommes dans l'Age 1");
+                        //creation du deck à distribuer
+                        creationDeck(1);
+                        //on melange le deck
+                        melangerDeck();
+                        //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
+                        distributionCartes();
                         //envoi de merveille et envoi de 3 pièces
                         débuterLeJeu();
-                        Thread.sleep( 2 * 1000);
-                        //for(int i=1; i<4; i++) {
-                            System.out.println("\nNous sommes dans l'Age 1");
-                            //creation du deck à distribuer
-                            creationDeck(1);
-                            //on melange le deck
-                            melangerDeck();
-                            //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
-                            distributionCartes();
-                            deroulementAge();
-                            // Thread.sleep( 5 * 1000);
-                            //calcul du score en fin de partie
-                        //}
-
-
+                        Thread.sleep(500);
+                        deroulementAge();
                     }
                 }
             }
@@ -109,7 +106,7 @@ public class Partie {
                     if(!carte.isDefausse() && Objects.equals(carte.getCouleurCarte(), "BLEUE")) {
                         p.addPoint(carte.getPointDeVictoire());
                     }
-                    System.out.println("[" + p.getNom() + "] [CARTES JOUEES] " + p.getCartesJouees());
+                    System.out.println("\n[" + p.getNom() + "] [CARTES JOUEES] " + p.getCartesJouees());
                     System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
 
 
@@ -117,11 +114,13 @@ public class Partie {
 
                     if(ontIlsTousJoues()) {
                         nbJoueurQuiOntJoues= 0;
+                        echangeDeMain();
                         deroulementTour();
                     }
                 }
             }
         });
+
 
         // réception des ressources
         serveur.addEventListener(MESSAGES.RESSOURCE, HashMap.class, new DataListener<HashMap>() {
@@ -180,6 +179,7 @@ public class Partie {
         });
     }
 
+
     private synchronized void incrementerNbTours() {
         nbTours++;
     }
@@ -187,7 +187,6 @@ public class Partie {
     private synchronized void compterUnJoueurQuiAJoue() {
         nbJoueurQuiOntJoues += 1;
     }
-
 
     private synchronized boolean ontIlsTousJoues() {
         return (nbJoueurQuiOntJoues ==  CONFIG.NB_JOUEURS);
@@ -223,26 +222,49 @@ public class Partie {
 
     synchronized private void deroulementTour() throws InterruptedException {
         incrementerNbTours();
+        miseAJourMain();
         if (nbTours > 6) {
             // fin de l'age
             finAge();
         }
         else {
-            System.out.println("--------------- Tour n°"+nbTours+" ---------------");
+            System.out.println("\n--------------- Tour n°"+nbTours+" ---------------\n");
             nbJoueurQuiOntJoues = 0;
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
                 // envoi de la main au joueur
                 participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MAIN, mains[i]);
             }
-            echangeDeMain();
+
         }
+
     }
 
-
     synchronized void finAge() {
-        System.out.println("\n[SERVEUR] ---CONFLIT MILITAIRE---\n");
+        System.out.println("\n[SERVEUR] --------------- CONFLIT MILITAIRE ---------------\n");
         conflitMilitaire();
         totalScore();
+    }
+
+    /**
+     * Cette méthode permet de débuter le jeu : fournir à chaque joueur une merveille et trois pièces
+     */
+    synchronized private void débuterLeJeu() throws InterruptedException {
+        nbJoueurQuiOntRecuMerveille = 0;
+        nbJoueurQuiOntRecuPieces = 0;
+        distributionMerveille();
+    }
+    synchronized private void distributionMerveille() throws InterruptedException {
+            for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
+                int indiceMerveilleDisponible = merveilleDisponible();
+                merveilles.get(indiceMerveilleDisponible).setEstPris(true);
+                // association joueur - merveille
+                participants.get(i).setMerveille(merveilles.get(indiceMerveilleDisponible));
+                //System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
+                // envoi de la merveille au joueur
+                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
+                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 3);
+            }
+
     }
 
     /**
@@ -392,22 +414,7 @@ public class Partie {
         }
         return indiceAuHasard;
     }
-    /**
-     * Cette méthode permet de débuter le jeu : fournir à chaque joueur une merveille et trois pièces
-     */
-    private void débuterLeJeu() {
-        // création des merveilles, au début de simple nom
-        for(int i = 0; i < CONFIG.NB_JOUEURS; i++) {
-            int indiceMerveilleDisponible = merveilleDisponible();
-            merveilles.get(indiceMerveilleDisponible).setEstPris(true);
-            // association joueur - merveille
-            participants.get(i).setMerveille(merveilles.get(indiceMerveilleDisponible));
-            System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
-            // envoi de la merveille au joueur
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
-            participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 3);
-        }
-    }
+
 
     /**
      * @return resultat qui reprensente si tout les participants ont été identifié

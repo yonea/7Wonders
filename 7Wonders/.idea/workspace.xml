@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e12fe36-3a9d-453f-88ad-f85389a15554" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/donnees/target/classes/donnees/CouleurCarte.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$6.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/target/classes/donnees/Deck.class" afterPath="$PROJECT_DIR$/donnees/target/classes/donnees/Deck.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/target/test-classes/donnees/MainTest.class" afterPath="$PROJECT_DIR$/donnees/target/test-classes/donnees/MainTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$1.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$1.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$5.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/target/classes/config/MESSAGES.class" afterPath="$PROJECT_DIR$/donnees/target/classes/config/MESSAGES.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$2.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$3.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$4.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$5.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$1.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$2.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$2.class" />
@@ -18,14 +14,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$4.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$5.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/test-classes/moteur/PartieTest.class" afterPath="$PROJECT_DIR$/moteur/target/test-classes/moteur/PartieTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/pom.xml" afterPath="$PROJECT_DIR$/donnees/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/src/main/java/donnees/Deck.java" afterPath="$PROJECT_DIR$/donnees/src/main/java/donnees/Deck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java" afterPath="$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java" afterPath="$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" afterPath="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" afterPath="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" afterPath="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/7w/target/" />
     <ignored path="$PROJECT_DIR$/moteur/target/" />
@@ -64,29 +56,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Partie.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Partie.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="224" column="29" lean-forward="false" selection-start-line="224" selection-start-column="29" selection-end-line="224" selection-end-column="29" />
+            <state relative-caret-position="388">
+              <caret line="116" column="40" lean-forward="false" selection-start-line="116" selection-start-column="40" selection-end-line="116" selection-end-column="40" />
               <folding>
-                <element signature="e#752#763#0" expanded="true" />
-                <element signature="e#8508#8509#0" expanded="true" />
-                <element signature="e#8533#8534#0" expanded="true" />
-                <element signature="e#8592#8593#0" expanded="true" />
-                <element signature="e#8632#8633#0" expanded="true" />
-                <element signature="e#8687#8688#0" expanded="true" />
-                <element signature="e#8753#8754#0" expanded="true" />
+                <element signature="e#804#815#0" expanded="true" />
+                <element signature="e#8454#8455#0" expanded="true" />
+                <element signature="e#8479#8480#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Joueur.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Joueur.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4675">
-              <caret line="205" column="128" lean-forward="false" selection-start-line="205" selection-start-column="128" selection-end-line="205" selection-end-column="128" />
+            <state relative-caret-position="100">
+              <caret line="154" column="46" lean-forward="false" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MESSAGES.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="18" column="72" lean-forward="false" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -95,7 +93,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
+            <state relative-caret-position="425">
               <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="e#450#451#0" expanded="true" />
@@ -118,7 +116,7 @@
       <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
+            <state relative-caret-position="1250">
               <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="2" selection-end-line="56" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -130,18 +128,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
+            <state relative-caret-position="1300">
               <caret line="52" column="20" lean-forward="false" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MerveilleTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/MerveilleTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-237">
-              <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -150,7 +138,7 @@
       <file leaf-file-name="CarteTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/CarteTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
+            <state relative-caret-position="550">
               <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
@@ -160,7 +148,7 @@
       <file leaf-file-name="JoueurTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-912">
+            <state relative-caret-position="1250">
               <caret line="68" column="28" lean-forward="false" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
               <folding />
             </state>
@@ -170,7 +158,7 @@
       <file leaf-file-name="PartieTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
+            <state relative-caret-position="200">
               <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding />
             </state>
@@ -190,31 +178,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Carte</find>
-      <find>setMerveille</find>
-      <find>merveille</find>
-      <find>débuterLeJeu</find>
-      <find>+</find>
-      <find>cartesJouees</find>
-      <find>connexion</find>
-      <find>setPo</find>
-      <find>MESSAGES</find>
-      <find>sy</find>
-      <find>all</find>
-      <find>tous</find>
-      <find>Joueur4</find>
-      <find>Joueur3</find>
-      <find>Joueur1</find>
-      <find>ROUGE</find>
-      <find>Joueur2</find>
       <find>distributionCartes</find>
       <find>ajouterCarte</find>
       <find>finAg</find>
       <find>pret</find>
-      <find>system.</find>
       <find>totalScore</find>
+      <find>system.</find>
+      <find>cartesJouees</find>
+      <find>echangeDeMain</find>
+      <find>nbJoueurQuiOntRecuMerveille</find>
+      <find>compterUnJoueurQuiAJoue</find>
       <find>incrementerNbTours</find>
+      <find>deroulementAge()</find>
+      <find>distributionPiece</find>
+      <find>envoie</find>
+      <find>débuterLeJeu</find>
+      <find>compterUnJoueurQuiARecuPiece</find>
+      <find>nbJoueurQuiOntRecuPieces</find>
+      <find>ontIlsTousRecu3Pieces</find>
+      <find>bleu</find>
+      <find>Exploitation Forestiere</find>
       <find>deroulementAge</find>
+      <find>Joueur2</find>
+      <find>ontIlsTousJoues</find>
+      <find>deroulementTour</find>
+      <find>ontIlsTousRecuMerveille</find>
+      <find>compterUnJoueurQuiARecuMerveille</find>
+      <find>nbTours</find>
+      <find>Joueur1</find>
+      <find>Joueur3</find>
+      <find>miseAJourMain</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -250,14 +243,14 @@
         <option value="$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java" />
         <option value="$PROJECT_DIR$/donnees/src/main/java/donnees/Merveille.java" />
         <option value="$PROJECT_DIR$/moteur/src/main/java/moteur/Participant.java" />
-        <option value="$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java" />
         <option value="$PROJECT_DIR$/7w/src/main/java/lanceur/Lanceur.java" />
         <option value="$PROJECT_DIR$/donnees/pom.xml" />
         <option value="$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java" />
         <option value="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" />
         <option value="$PROJECT_DIR$/donnees/src/main/java/donnees/Deck.java" />
-        <option value="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" />
+        <option value="$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java" />
         <option value="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" />
+        <option value="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" />
       </list>
     </option>
   </component>
@@ -299,8 +292,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="204" />
-    <option name="y" value="1" />
+    <option name="x" value="952" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
@@ -320,9 +312,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -340,30 +331,6 @@
               <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
               <item name="7w" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
-              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
-              <item name="7w" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
-              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
-              <item name="7w" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="7w" type="b2602c69:ProjectViewProjectNode" />
-              <item name="7Wonders" type="462c0819:PsiDirectoryNode" />
-              <item name="7w" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanceur" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="7w" type="b2602c69:ProjectViewProjectNode" />
@@ -555,7 +522,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -905,7 +873,9 @@
       <workItem from="1555569495409" duration="401000" />
       <workItem from="1555604991811" duration="3751000" />
       <workItem from="1555610652135" duration="1388000" />
-      <workItem from="1556021310217" duration="6822000" />
+      <workItem from="1556021310217" duration="8839000" />
+      <workItem from="1556046229580" duration="5683000" />
+      <workItem from="1556108243579" duration="3069000" />
     </task>
     <servers />
   </component>
@@ -942,7 +912,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225629000" />
+    <option name="totallyTimeSpent" value="236398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -955,16 +925,15 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16433942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16433942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4476082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9259681" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.99202734" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21804512" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2244898" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12642369" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -976,6 +945,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12642369" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -999,11 +969,11 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44874716" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22551253" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.99202734" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21804512" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21804512" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12642369" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -1216,14 +1186,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" column="75" lean-forward="false" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/7w/src/main/java/lanceur/Lanceur.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1240,28 +1202,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/CouleurCarte.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/CouleurCarte.java" />
     <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Merveille.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding>
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="false" />
+            <element signature="e#273#274#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/MerveilleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-237">
+        <state relative-caret-position="100">
           <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding />
         </state>
@@ -1269,7 +1224,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-912">
+        <state relative-caret-position="1250">
           <caret line="68" column="28" lean-forward="false" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
           <folding />
         </state>
@@ -1277,7 +1232,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/CarteTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
+        <state relative-caret-position="550">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
@@ -1285,7 +1240,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/donnees/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="1300">
           <caret line="52" column="20" lean-forward="false" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
           <folding />
         </state>
@@ -1293,7 +1248,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
+        <state relative-caret-position="200">
           <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding />
         </state>
@@ -1309,7 +1264,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
+        <state relative-caret-position="1250">
           <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="2" selection-end-line="56" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1319,7 +1274,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
+        <state relative-caret-position="425">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="e#450#451#0" expanded="true" />
@@ -1336,27 +1291,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/config/MESSAGES.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4675">
-          <caret line="205" column="128" lean-forward="false" selection-start-line="205" selection-start-column="128" selection-end-line="205" selection-end-column="128" />
+        <state relative-caret-position="450">
+          <caret line="18" column="72" lean-forward="false" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="224" column="29" lean-forward="false" selection-start-line="224" selection-start-column="29" selection-end-line="224" selection-end-column="29" />
+        <state relative-caret-position="388">
+          <caret line="116" column="40" lean-forward="false" selection-start-line="116" selection-start-column="40" selection-end-line="116" selection-end-column="40" />
           <folding>
-            <element signature="e#752#763#0" expanded="true" />
-            <element signature="e#8508#8509#0" expanded="true" />
-            <element signature="e#8533#8534#0" expanded="true" />
-            <element signature="e#8592#8593#0" expanded="true" />
-            <element signature="e#8632#8633#0" expanded="true" />
-            <element signature="e#8687#8688#0" expanded="true" />
-            <element signature="e#8753#8754#0" expanded="true" />
+            <element signature="e#804#815#0" expanded="true" />
+            <element signature="e#8454#8455#0" expanded="true" />
+            <element signature="e#8479#8480#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="154" column="46" lean-forward="false" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
