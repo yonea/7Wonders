@@ -27,14 +27,9 @@ public class Partie {
     private ArrayList<Participant> participants;
     private ArrayList<Merveille> merveilles = new ArrayList<Merveille>();
     private Main[] mains = new Main[CONFIG.NB_JOUEURS];
-    //private ArrayList<Carte> cartesJouees = new ArrayList<>();
     private Deck deck;
-    //private HashMap<String, Integer> ressources = new HashMap<>();
     private int nbTours;
     private int nbJoueurQuiOntJoues;
-    private int nbJoueurQuiOntRecuPieces;
-    private int nbJoueurQuiOntRecuMerveille;
-
 
     public Partie() {
 
@@ -60,8 +55,6 @@ public class Partie {
             }
         });
 
-
-
         // réception de l'identification du joueur
         serveur.addEventListener(MESSAGES.MON_NOM, String.class, new DataListener<String>() {
             @Override
@@ -81,7 +74,7 @@ public class Partie {
                         distributionCartes();
                         //envoi de merveille et envoi de 3 pièces
                         débuterLeJeu();
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                         deroulementAge();
                     }
                 }
@@ -106,6 +99,7 @@ public class Partie {
                     if(!carte.isDefausse() && Objects.equals(carte.getCouleurCarte(), "BLEUE")) {
                         p.addPoint(carte.getPointDeVictoire());
                     }
+
                     System.out.println("\n[" + p.getNom() + "] [CARTES JOUEES] " + p.getCartesJouees());
                     System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
 
@@ -149,29 +143,35 @@ public class Partie {
                     if(p != null) {
                         int longueur = p.getNom().length();
                         int numeroDuJoueur = Integer.parseInt(p.getNom().substring(longueur - 1 , longueur));
+                        int voisin;
                         if(numeroDuJoueur<3) {
-                            for (Map.Entry mapentry : participants.get(numeroDuJoueur + 1).getRessourceJoueur().entrySet()) {
-                                String cle = (String) mapentry.getKey();
-                                int quantite = (int) mapentry.getValue();
-                                if ((Objects.equals(cle, ressourceACherche)) && (quantite > 0)) {
-                                    achat = true;
-                                    //System.out.println("AVANT ACHAT" + p.getRessourceJoueur());
-                                    //modification des ressources du voisin
-                                    //retire 2 pièces
-                                    int pieceAPayer = 2;
-                                    p.getRessourceJoueur().put("piece", p.getRessourceJoueur().get("piece") - pieceAPayer);
-                                    System.out.println("["+ p.getNom() +"] achète " + ressourceACherche + " avec " + pieceAPayer + " pièces à " + participants.get(numeroDuJoueur + 1).getNom());
-                                    //ajoute la ressource achetée
-                                    p.getRessourceJoueur().put(ressourceACherche, p.getRessourceJoueur().get(ressourceACherche) + 1);
-                                    participants.get(numeroDuJoueur + 1).getRessourceJoueur().put("piece", participants.get(numeroDuJoueur + 1).getRessourceJoueur().get("piece") + pieceAPayer);
-                                    System.out.println("["+ p.getNom() +"] [RESSOURCE] apres achat" + p.getRessourceJoueur());
-                                }
+                             voisin= numeroDuJoueur + 1;
+                        }else{
+                            voisin = 0;
+                        }
+                        for (Map.Entry mapentry : participants.get(voisin).getRessourceJoueur().entrySet()) {
+                            String cle = (String) mapentry.getKey();
+                            int quantite = (int) mapentry.getValue();
+                            if ((Objects.equals(cle, ressourceACherche)) && (quantite > 0)) {
+                                achat = true;
+                                //System.out.println("AVANT ACHAT" + p.getRessourceJoueur());
+                                //modification des ressources du voisin
+                                //retire 2 pièces
+                                int pieceAPayer = 2;
+                                p.getRessourceJoueur().put("piece", p.getRessourceJoueur().get("piece") - pieceAPayer);
+                                System.out.println("["+ p.getNom() +"] achète " + ressourceACherche + " avec " + pieceAPayer + " pièces à " + participants.get(voisin).getNom());
+                                //ajoute la ressource achetée
+                                p.getRessourceJoueur().put(ressourceACherche, p.getRessourceJoueur().get(ressourceACherche) + 1);
+                                //on ajoute les pièces au joueur voisin dû à l'achat
+                                participants.get(voisin).getRessourceJoueur().put("piece", participants.get(voisin).getRessourceJoueur().get("piece") + pieceAPayer);
+                                System.out.println("["+ p.getNom() +"] [RESSOURCE] après achat" + p.getRessourceJoueur());
                             }
                         }
+
                         if(!achat){
                            System.out.println("["+  p.getNom() + "] défausse " +  carte);
                            p.getRessourceJoueur().put("piece",   p.getRessourceJoueur().get("piece") + 3);
-                           System.out.println("["+  p.getNom() +"] [RESSOURCE] apres défausse " +  p.getRessourceJoueur());
+                           System.out.println("["+  p.getNom() +"] [RESSOURCE] après défausse " +  p.getRessourceJoueur());
                         }
                     }
                 }
@@ -205,7 +205,7 @@ public class Partie {
      * Méthode gèrant la distribution des cartes afin de construire la main de chaque joueur, contenant chacune 7 cartes
      */
     private void distributionCartes() {
-        System.out.println("--Distribution des cartes--");
+        System.out.println("\n---------------Distribution des cartes... ---------------\n");
         for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
             mains[i] = new Main();
             for (int j = 7 * i; j < 7 * (i + 1); j++) {
@@ -249,8 +249,7 @@ public class Partie {
      * Cette méthode permet de débuter le jeu : fournir à chaque joueur une merveille et trois pièces
      */
     synchronized private void débuterLeJeu() throws InterruptedException {
-        nbJoueurQuiOntRecuMerveille = 0;
-        nbJoueurQuiOntRecuPieces = 0;
+        System.out.println("--------------- Distribution des merveilles ---------------\n");
         distributionMerveille();
     }
     synchronized private void distributionMerveille() throws InterruptedException {
@@ -262,7 +261,6 @@ public class Partie {
                 //System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
                 // envoi de la merveille au joueur
                 participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
-                participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_PIECE, 3);
             }
 
     }
