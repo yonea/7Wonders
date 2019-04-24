@@ -43,15 +43,15 @@ public class Deck {
     private Carte c28 = new Carte("BLEUE","Theatre",2,"",0,"ptdevictoire",2);
 
     // Batiments commerciaux
-    private Carte c29 = new Carte("JAUNE","Taverne",0,"",0,"",1);
-    private Carte c30 = new Carte("JAUNE","Taverne",0,"",0,"",1);
-    private Carte c31 = new Carte("JAUNE","Taverne",0,"",0,"",1);
-    private Carte c32 = new Carte("JAUNE","Comptoir Est",1,"",0,"",1);
-    private Carte c33 = new Carte("JAUNE","Comptoir Est",1,"",0,"",1);
-    private Carte c34 = new Carte("JAUNE","Comptoir Ouest",1,"",0,"",1);
-    private Carte c35 = new Carte("JAUNE","Comptoir Ouest",1,"",0,"",1);
-    private Carte c36 = new Carte("JAUNE","Marche",1,"",0,"",1);
-    private Carte c37 = new Carte("JAUNE","Marche",1,"",0,"",1);
+    private Carte c29 = new Carte("JAUNE","Taverne",0,"",0,"piece",5);
+    private Carte c30 = new Carte("JAUNE","Taverne",0,"",0,"piece",5);
+    private Carte c31 = new Carte("JAUNE","Taverne",0,"",0,"piece",5);
+    private Carte c32 = new Carte("JAUNE","Comptoir Est",1,"piece",1,"argile",1);
+    private Carte c33 = new Carte("JAUNE","Comptoir Est",1,"piece",1,"argile",1);
+    private Carte c34 = new Carte("JAUNE","Comptoir Ouest",1,"piece",1,"pierre",1);
+    private Carte c35 = new Carte("JAUNE","Comptoir Ouest",1,"piece",1,"pierre",1);
+    private Carte c36 = new Carte("JAUNE","Marche",1,"piece",1,"verre",1);
+    private Carte c37 = new Carte("JAUNE","Marche",1,"piece",1,"verre",1);
 
     //Batiments militaires
     private Carte c38 = new Carte("ROUGE","Palissade",0,"bois",1,"bouclier",1);

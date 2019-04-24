@@ -160,32 +160,31 @@ public class Joueur {
         //System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
         System.out.println("[" + nom + "] joue " + carteChoisie);
         //nous n'avons pas encore traiter les cartes jaunes
-        if(!Objects.equals(carteChoisie.getCouleurCarte(), "JAUNE")) {
 
-            if (carteChoisie.getNbCoutConstruction() == 0) {
-                joueCarteSansCout(carteChoisie);
-            }
-            if (carteChoisie.getNbCoutConstruction() != 0) {
-                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
-
-                if (ressourceJoueur.get(carteChoisie.getCoutConstruction()) >= nbCoutConstruction) {
-                    utilisationRessource(carteChoisie);
-                    if (Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
-                        addPt(carteChoisie.getPointDeVictoire());
-                    }
-                /*} else if (ressourceJoueur.get("piece") > 2) {
-                    //le joueur essaie d'acheter la ressource à ces voisins
-                    connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
-
-                    pieceJointe.put("defausse", true);
-                    */
-                } else {
-                    defausserUneCarte(carteChoisie);
-                    pieceJointe.put("defausse", true);
-                }
-
-            }
+        if (carteChoisie.getNbCoutConstruction() == 0) {
+            joueCarteSansCout(carteChoisie);
         }
+        if (carteChoisie.getNbCoutConstruction() != 0) {
+            int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+
+            if (ressourceJoueur.get(carteChoisie.getCoutConstruction()) >= nbCoutConstruction) {
+                utilisationRessource(carteChoisie);
+                if (Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
+                    addPt(carteChoisie.getPointDeVictoire());
+                }
+            /*} else if (ressourceJoueur.get("piece") > 2) {
+                //le joueur essaie d'acheter la ressource à ces voisins
+                connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
+
+                pieceJointe.put("defausse", true);
+                */
+            } else {
+                defausserUneCarte(carteChoisie);
+                pieceJointe.put("defausse", true);
+            }
+
+        }
+
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
         System.out.println("\n[" + nom + "] [RESSOURCE] " + ressourceJoueur);
