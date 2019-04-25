@@ -161,6 +161,10 @@ public class Joueur {
             carteChoisie = joueurQuiJoueQueDesCartesCivilsGratuitesSinonDefausse(m);
             System.out.println("[" + nom + "] joue " + carteChoisie);
             pieceJointe = new JSONObject(jeuJoueur1(carteChoisie));
+        }else if (Objects.equals(nom, "Joueur2")) {
+            carteChoisie = joueurQuiJoueRessourceEtCarteMilitaire(m);
+            System.out.println("[" + nom + "] joue " + carteChoisie);
+            pieceJointe = new JSONObject(jeuJoueur2(carteChoisie));
         }else {
             System.out.println("[" + nom + "] joue " + carteChoisie);
             //Si la carte choisie ne nécessite pas de cout de construction, alors le joueur la jouer gratuitement
@@ -178,11 +182,11 @@ public class Joueur {
                         connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
 
                         pieceJointe.put("defausse", true);
-                    }*/ else {
+                    }*/
+                else {
                     defausserUneCarte(carteChoisie);
                     pieceJointe.put("defausse", true);
                 }
-
             }
         }
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
@@ -205,6 +209,39 @@ public class Joueur {
         for (int i = 0; i < m.getCartes().size(); i++) {
             Carte carte = m.getCartes().get(i);
             if (Objects.equals(carte.getCouleurCarte(), "BLEUE") && carte.getNbCoutConstruction() == 0) {
+                return carte;
+            }
+
+        }
+        return carteParDefaut;
+    }
+
+    private Carte jeuJoueur2(Carte carte){
+        int nbCoutConstruction = carte.getNbCoutConstruction();
+        if(Objects.equals(carte.getCouleurCarte(), "ROUGE") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction){
+            utilisationRessource(carte);
+        }else if (Objects.equals(carte.getCouleurCarte(), "MARRON") && carte.getNbCoutConstruction()==0){
+            joueCarteSansCout(carte);
+        }else if(Objects.equals(carte.getCouleurCarte(), "MARRON") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
+            utilisationRessource(carte);
+        }else {
+            defausserUneCarte(carte);
+            carte.setDefausse(true);
+        }
+        return carte;
+    }
+    private Carte joueurQuiJoueRessourceEtCarteMilitaire(Main m) {
+        Carte carteParDefaut = m.getCartes().get(0);
+        for (int i = 0; i < m.getCartes().size(); i++) {
+            Carte carte = m.getCartes().get(i);
+            int nbCoutConstruction = carte.getNbCoutConstruction();
+            if (Objects.equals(carte.getCouleurCarte(), "ROUGE") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
+                return carte;
+            }
+            else if(Objects.equals(carte.getCouleurCarte(), "MARRON") && carte.getNbCoutConstruction()==0) {
+                return carte;
+            }
+            else if (Objects.equals(carte.getCouleurCarte(), "MARRON") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
                 return carte;
             }
 
