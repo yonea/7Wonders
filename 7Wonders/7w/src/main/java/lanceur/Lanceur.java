@@ -4,6 +4,9 @@ import config.CONFIG;
 import joueur.Joueur;
 import moteur.Partie;
 
+/**
+ * Classe Lanceur qui permet la création d'une partie, composée de 4 joueurs
+ */
 public class Lanceur {
 
 

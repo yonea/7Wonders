@@ -7,9 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PartieTest {
 
-    Partie ptest;
+    Partie ptest = new Partie();
+
     @BeforeEach
     public void setUp() {
+
 
     }
 

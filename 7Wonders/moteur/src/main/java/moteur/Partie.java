@@ -1,26 +1,17 @@
 package moteur;
 
-import com.corundumstudio.socketio.AckRequest;
-import com.corundumstudio.socketio.Configuration;
-import com.corundumstudio.socketio.SocketIOClient;
-import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.*;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import config.CONFIG;
 import config.MESSAGES;
 import donnees.Carte;
 import donnees.Deck;
 import donnees.Main;
 import donnees.Merveille;
-
-import java.io.Console;
 import java.util.*;
 
-/**
- *
- */
+
 public class Partie {
 
     SocketIOServer serveur;
@@ -30,15 +21,16 @@ public class Partie {
     private Deck deck;
     private int nbTours;
     private int nbJoueurQuiOntJoues;
-
+    private int nbJoueurQuiOntPlusQueUneCarteEnMain;
     public Partie() {
 
-        // création du serveur (peut-être externalisée)
+        // création du serveur
         Configuration config = new Configuration();
         config.setHostname(CONFIG.IP);
         config.setPort(CONFIG.PORT);
         serveur = new SocketIOServer(config);
-
+    SocketConfig sc = config.getSocketConfig();
+    sc.setReuseAddress(true);
         // init de la liste des participants
         participants = new ArrayList<>();
 
@@ -62,7 +54,6 @@ public class Partie {
                 Participant p = retrouveParticipant(socketIOClient);
                 if (p != null) {
                     p.setNom(s);
-                    //System.out.println("serveur > identification de "+p.getNom()+" ("+socketIOClient.getRemoteAddress()+")");
                     if (tousIndentifiés()) {
                         creationMerveille();
                         System.out.println("\nNous sommes dans l'Age 1");
@@ -72,9 +63,10 @@ public class Partie {
                         melangerDeck();
                         //on distribue les cartes du deck pour le joueur 0 à 6, pour le joueur 2 de 7 à 15 etc
                         distributionCartes();
-                        //envoi de merveille et envoi de 3 pièces
+                        //envoi de merveille
                         débuterLeJeu();
                         Thread.sleep(1000);
+                        //début de l'Age
                         deroulementAge();
                     }
                 }
@@ -103,7 +95,6 @@ public class Partie {
                     System.out.println("\n[" + p.getNom() + "] [CARTES JOUEES] " + p.getCartesJouees());
                     System.out.println("[" + p.getNom() + "] [POINT DE VICTOIRE] " + p.getPoint());
 
-
                     compterUnJoueurQuiAJoue();
 
                     if(ontIlsTousJoues()) {
@@ -117,6 +108,7 @@ public class Partie {
 
 
         // réception des ressources
+
         serveur.addEventListener(MESSAGES.RESSOURCE, HashMap.class, new DataListener<HashMap>() {
             @Override
             public void onData(SocketIOClient socketIOClient, HashMap ressource, AckRequest ackRequest) throws Exception {
@@ -125,12 +117,25 @@ public class Partie {
                 if (p != null) {
                     p.setRessourceJoueur(ressource);
                 }
+                /*Les 2 if ci-dessous permettent le bon enchainement des méthodes lié à la fin de l'age
+                En effet, on débute la fin de l'age lorsque les joueurs ont bien qu'une carte et que leur tableau des ressource à été mise à jour en fonction de la dernière carte jouée.
+                */
+                //Lorsque le joueur ne possède plus qu'une carte, ont incrémente la variable de 1
+                if(p.getMain().getCartes().size()==1) {
+                    nbJoueurQuiOntPlusQueUneCarteEnMain++;
+                }
+                //Lorsque les 4 joueurs n'ont plus qu'une carte, et que leurs ressources ont été mise à jour, ont entame la fin de l'Age
+                if(nbJoueurQuiOntPlusQueUneCarteEnMain == 4){
+                    finAge();
+                }
+
             }
         });
 
 
 
         // achat ressource voisine
+        /*
         serveur.addEventListener(MESSAGES.ACHETER_RESSOURCE, Carte.class, new DataListener<Carte>() {
             @Override
             public void onData(SocketIOClient socketIOClient, Carte carte, AckRequest ackRequest) throws Exception {
@@ -177,9 +182,8 @@ public class Partie {
                     }
                 }
             }
-        });
+        });*/
     }
-
 
     private synchronized void incrementerNbTours() {
         nbTours++;
@@ -202,6 +206,7 @@ public class Partie {
         }
     }
 
+
     /**
      * Méthode gèrant la distribution des cartes afin de construire la main de chaque joueur, contenant chacune 7 cartes
      */
@@ -216,6 +221,7 @@ public class Partie {
             participants.get(i).setMain(mains[i]);
         }
     }
+
     synchronized private void deroulementAge() throws InterruptedException {
         nbTours = 0;
         deroulementTour();
@@ -224,11 +230,7 @@ public class Partie {
     synchronized private void deroulementTour() throws InterruptedException {
         incrementerNbTours();
         miseAJourMain();
-        if (nbTours > 6) {
-            // fin de l'age
-            finAge();
-        }
-        else {
+        if (nbTours < 7) {
             System.out.println("\n--------------- Tour n°"+nbTours+" ---------------\n");
             nbJoueurQuiOntJoues = 0;
             for (int i = 0; i < CONFIG.NB_JOUEURS; i++) {
@@ -259,7 +261,6 @@ public class Partie {
                 merveilles.get(indiceMerveilleDisponible).setEstPris(true);
                 // association joueur - merveille
                 participants.get(i).setMerveille(merveilles.get(indiceMerveilleDisponible));
-                //System.out.println("serveur > envoie a " + participants.get(i) + " sa merveille " + merveilles.get(indiceMerveilleDisponible));
                 // envoi de la merveille au joueur
                 participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_MERVEILLE, merveilles.get(indiceMerveilleDisponible));
             }
@@ -270,40 +271,39 @@ public class Partie {
      * Méthode gèrant les conflits militaires en fin de partie, entre les participants en find d'Age
      */
     private void conflitMilitaire(){
+        for(int i = 0; i<CONFIG.NB_JOUEURS; i++) {
+            comparerLeNombreDeBoucliersDeDeuxJoueurs(i);
+            System.out.println(participants.get(i).getRessourceJoueur());
+        }
+
+    }
+    private void comparerLeNombreDeBoucliersDeDeuxJoueurs(int numJoueur){
+        int numJoueurVoisin;
+        if(numJoueur == 3){
+            numJoueurVoisin = 0;
+        } else {
+            numJoueurVoisin = numJoueur + 1;
+        }
+
         int [] boucliers = new int[4];
         for(int i=0;i<4;i++){
             boucliers[i] = participants.get(i).getRessourceJoueur().get("bouclier");
-            //System.out.println("bouclier" + boucliers[i]);
         }
-        for(int i = 0; i<3; i++){
-            System.out.println("[NOMBRE BOUCLIERS] [" + participants.get(i).getNom() + "] : " + boucliers[i] + " ; [" + participants.get(i+1).getNom() + "] : " + boucliers[i+1]);
-            if (boucliers[i] > boucliers[i+1]) {
-                participants.get(i).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(i).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
-                participants.get(i+1).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(i+1).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
-                System.out.println("[" + participants.get(i).getNom() + "] remporte le duel face à [ " + participants.get(i+1).getNom() + "]");
-            } else if (boucliers[i] < boucliers[i+1]) {
-                participants.get(i).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(i).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
-                participants.get(i+1).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(i+1).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
-                System.out.println("[" + participants.get(i).getNom() + "] perd le duel face à [ " + participants.get(i+1).getNom() + "]");
-            }
-            else {
-                System.out.println("Nombre de boucliers identique");
-            }
-        }
-        System.out.println("[NOMBRE BOUCLIERS] [" + participants.get(3).getNom() + "] : " + boucliers[3] + " ; [" + participants.get(0).getNom() + "] : " + boucliers[0]);
 
-        if (boucliers[3] > boucliers[0]) {
-            participants.get(3).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(3).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
-            participants.get(0).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(0).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
-            System.out.println("[" + participants.get(3).getNom() + "] remporte le duel face à [ " + participants.get(0).getNom() + "]");
-        } else if (boucliers[3] < boucliers[0]) {
-            participants.get(3).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(3).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
-            participants.get(0).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(0).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
-            System.out.println("[" + participants.get(3).getNom() + "] perd le duel face à [ " + participants.get(0).getNom() + "]");
+        System.out.println("[NOMBRE BOUCLIERS] [" + participants.get(numJoueur).getNom() + "] : " + boucliers[numJoueur] + " ; [" + participants.get(numJoueurVoisin).getNom() + "] : " + boucliers[numJoueurVoisin]);
+        if (boucliers[numJoueur] > boucliers[numJoueurVoisin]) {
+            participants.get(numJoueur).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(numJoueur).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+            participants.get(numJoueurVoisin).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(numJoueurVoisin).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+            System.out.println("[" + participants.get(numJoueur).getNom() + "] remporte le duel face à [ " + participants.get(numJoueurVoisin).getNom() + "]");
+        } else if (boucliers[numJoueur] < boucliers[numJoueurVoisin]) {
+            participants.get(numJoueur).getRessourceJoueur().put("jetonDefaiteMilitaire",participants.get(numJoueur).getRessourceJoueur().get("jetonDefaiteMilitaire") + 1);
+            participants.get(numJoueurVoisin).getRessourceJoueur().put("jetonVictoireMilitaire",participants.get(numJoueurVoisin).getRessourceJoueur().get("jetonVictoireMilitaire") + 1);
+            System.out.println("[" + participants.get(numJoueur).getNom() + "] perd le duel face à [ " + participants.get(numJoueurVoisin).getNom() + "]");
         }
         else {
             System.out.println("Nombre de boucliers identique");
         }
+
     }
 
     /**
@@ -335,9 +335,9 @@ public class Partie {
             scoreBatimentScientifique(i);
             //ajout point de victoire en fonction du resultat des conflits militaires
             int nbVictoire = participants.get(i).getRessourceJoueur().get("jetonVictoireMilitaire");
-            int nbDefaire = participants.get(i).getRessourceJoueur().get("jetonDefaiteMilitaire");
+            int nbDefaite = participants.get(i).getRessourceJoueur().get("jetonDefaiteMilitaire");
             participants.get(i).addPoint(nbVictoire);
-            participants.get(i).addPoint(-nbDefaire);
+            participants.get(i).addPoint(-nbDefaite);
             //envoi du score
             participants.get(i).getSocket().sendEvent(MESSAGES.ENVOI_DE_SCORE, participants.get(i).getPoint());
         }

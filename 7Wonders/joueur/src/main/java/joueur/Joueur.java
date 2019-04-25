@@ -19,7 +19,6 @@ import java.util.Objects;
 
 public class Joueur {
 
-    private int age = 1;
     private String nom;
     private int point;
     Socket connexion ;
@@ -35,6 +34,9 @@ public class Joueur {
         setNom(un_joueur);
         addPt(pt);
         System.out.println(nom +" > creation");
+        //Création de la liste des ressources d'un joueur :
+
+        //les joueurs commencent la partie avec 3 pièces.
         ressourceJoueur.put("piece",3);
         //carte bleue
         ressourceJoueur.put("ptdevictoire",0);
@@ -70,7 +72,6 @@ public class Joueur {
                 }
             });
 
-
             // réception de la merveille
             connexion.on(MESSAGES.ENVOI_DE_MERVEILLE, new Emitter.Listener() {
                 @Override
@@ -96,8 +97,6 @@ public class Joueur {
                 }
             });
 
-
-
             // réception du score
             connexion.on(MESSAGES.ENVOI_DE_SCORE, new Emitter.Listener() {
                 @Override
@@ -118,7 +117,7 @@ public class Joueur {
                     JSONObject mainJSON = (JSONObject)objects[0];
                     try {
                         Main m = new Main();
-                        // la main ne contient qu'une liste de carte, c'est un JSONArray
+                        // la main contient une liste de carte, c'est un JSONArray
                         JSONArray cartesJSON = mainJSON.getJSONArray("cartes");
                         // on recrée chaque carte
                         for(int j = 0 ; j < cartesJSON.length(); j++) {
@@ -134,7 +133,7 @@ public class Joueur {
                             m.ajouterCarte(c);
                         }
                         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
-                        // le joueur a reçu, il joue
+                        // le joueur a reçu ses cartes, il joue
                         jouer(m);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -146,7 +145,7 @@ public class Joueur {
             e.printStackTrace();
         }
     }
-    int tour = 1;
+
     /**
      * @param m, la main du joueur
      * @throws JSONException
@@ -157,10 +156,9 @@ public class Joueur {
         int indiceCarte = 0;
         Carte carteChoisie = m.getCartes().get(indiceCarte);
         JSONObject pieceJointe = new JSONObject(carteChoisie) ;
-        //System.out.println("[TOUR N°" + tour++ + "]: [" + nom + "] joue " + carteChoisie);
         System.out.println("[" + nom + "] joue " + carteChoisie);
-        //nous n'avons pas encore traiter les cartes jaunes
 
+        //Si la carte choisie ne nécessite pas de cout de construction, alors le joueur la jouer gratuitement
         if (carteChoisie.getNbCoutConstruction() == 0) {
             joueCarteSansCout(carteChoisie);
         }
@@ -231,9 +229,6 @@ public class Joueur {
         this.point += pt;
     }
 
-    public int getPoint() {
-        return point;
-    }
 
     public static final void main(String  [] args) {
         Joueur j = new Joueur("toto",0);
