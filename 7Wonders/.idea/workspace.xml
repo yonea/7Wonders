@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e12fe36-3a9d-453f-88ad-f85389a15554" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/joueur/target/test-classes/joueur/JoueurTest$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/joueur/target/test-classes/joueur/JoueurTest$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$5.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7w/target/classes/lanceur/Lanceur.class" afterPath="$PROJECT_DIR$/7w/target/classes/lanceur/Lanceur.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$1.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$2.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$3.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$4.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur.class" afterPath="$PROJECT_DIR$/joueur/target/classes/joueur/Joueur.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/target/test-classes/joueur/JoueurTest.class" afterPath="$PROJECT_DIR$/joueur/target/test-classes/joueur/JoueurTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$1.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$2.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$3.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$4.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie.class" afterPath="$PROJECT_DIR$/moteur/target/classes/moteur/Partie.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/target/test-classes/moteur/PartieTest.class" afterPath="$PROJECT_DIR$/moteur/target/test-classes/moteur/PartieTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7w/src/main/java/lanceur/Lanceur.java" afterPath="$PROJECT_DIR$/7w/src/main/java/lanceur/Lanceur.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java" afterPath="$PROJECT_DIR$/donnees/src/test/java/donnees/MainTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/joueur.iml" afterPath="$PROJECT_DIR$/joueur/joueur.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/pom.xml" afterPath="$PROJECT_DIR$/joueur/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" afterPath="$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java" afterPath="$PROJECT_DIR$/joueur/src/test/java/joueur/JoueurTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/moteur.iml" afterPath="$PROJECT_DIR$/moteur/moteur.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/pom.xml" afterPath="$PROJECT_DIR$/moteur/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" afterPath="$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" afterPath="$PROJECT_DIR$/moteur/src/test/java/moteur/PartieTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/7w/target/" />
     <ignored path="$PROJECT_DIR$/moteur/target/" />
@@ -83,8 +57,8 @@
       <file leaf-file-name="Joueur.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+            <state relative-caret-position="499">
+              <caret line="175" column="64" lean-forward="true" selection-start-line="175" selection-start-column="64" selection-end-line="175" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -105,7 +79,7 @@
       <file leaf-file-name="Deck.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3100">
+            <state relative-caret-position="2345">
               <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding />
             </state>
@@ -115,7 +89,7 @@
       <file leaf-file-name="Carte.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
+            <state relative-caret-position="2425">
               <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -882,7 +856,7 @@
       <workItem from="1556194100160" duration="837000" />
       <workItem from="1556197319630" duration="1559000" />
       <workItem from="1556200456494" duration="1172000" />
-      <workItem from="1556210218694" duration="3568000" />
+      <workItem from="1556210218694" duration="6592000" />
     </task>
     <servers />
   </component>
@@ -919,7 +893,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266964000" />
+    <option name="totallyTimeSpent" value="269988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -934,7 +908,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16433942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19931664" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.85421413" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.99202734" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1255,14 +1229,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3100">
-          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Participant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1375">
@@ -1270,16 +1236,6 @@
           <folding>
             <element signature="e#2383#2384#0" expanded="true" />
             <element signature="e#2437#2438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1294,6 +1250,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Deck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2345">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/moteur/src/main/java/moteur/Partie.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -1305,10 +1269,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/donnees/src/main/java/donnees/Carte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2425">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/joueur/src/main/java/joueur/Joueur.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+        <state relative-caret-position="499">
+          <caret line="175" column="64" lean-forward="true" selection-start-line="175" selection-start-column="64" selection-end-line="175" selection-end-column="64" />
           <folding />
         </state>
       </provider>

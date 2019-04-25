@@ -151,43 +151,66 @@ public class Joueur {
      * @throws JSONException
      */
     private void jouer(Main m) throws JSONException {
+        int indiceCarte = 0;
         System.out.println("\n[" + nom + "]");
         System.out.println("[MAIN]" + m.getCartes());
-        int indiceCarte = 0;
         Carte carteChoisie = m.getCartes().get(indiceCarte);
-        JSONObject pieceJointe = new JSONObject(carteChoisie) ;
-        System.out.println("[" + nom + "] joue " + carteChoisie);
+        JSONObject pieceJointe = new JSONObject(carteChoisie);
 
-        //Si la carte choisie ne nécessite pas de cout de construction, alors le joueur la jouer gratuitement
-        if (carteChoisie.getNbCoutConstruction() == 0) {
-            joueCarteSansCout(carteChoisie);
-        }
-        else {
-            int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+        if(Objects.equals(nom, "Joueur1")){
+            carteChoisie = joueurQuiJoueQueDesCartesCivilsGratuitesSinonDefausse(m);
+            System.out.println("[" + nom + "] joue " + carteChoisie);
+            pieceJointe = new JSONObject(jeuJoueur1(carteChoisie));
+        }else {
+            System.out.println("[" + nom + "] joue " + carteChoisie);
+            //Si la carte choisie ne nécessite pas de cout de construction, alors le joueur la jouer gratuitement
+            if (carteChoisie.getNbCoutConstruction() == 0) {
+                joueCarteSansCout(carteChoisie);
+            } else {
+                int nbCoutConstruction = carteChoisie.getNbCoutConstruction();
+                if (ressourceJoueur.get(carteChoisie.getCoutConstruction()) >= nbCoutConstruction) {
+                    utilisationRessource(carteChoisie);
+                    if (Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
+                        addPt(carteChoisie.getPointDeVictoire());
+                    }
+                } /*else if (ressourceJoueur.get("piece") > 2) {
+                        //le joueur essaie d'acheter la ressource à ces voisins
+                        connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
 
-            if (ressourceJoueur.get(carteChoisie.getCoutConstruction()) >= nbCoutConstruction) {
-                utilisationRessource(carteChoisie);
-                if (Objects.equals(carteChoisie.getCouleurCarte(), "BLEUE")) {
-                    addPt(carteChoisie.getPointDeVictoire());
+                        pieceJointe.put("defausse", true);
+                    }*/ else {
+                    defausserUneCarte(carteChoisie);
+                    pieceJointe.put("defausse", true);
                 }
-            } /*else if (ressourceJoueur.get("piece") > 2) {
-                //le joueur essaie d'acheter la ressource à ces voisins
-                connexion.emit(MESSAGES.ACHETER_RESSOURCE, pieceJointe);
 
-                pieceJointe.put("defausse", true);
-            }*/ else {
-                defausserUneCarte(carteChoisie);
-                pieceJointe.put("defausse", true);
             }
-
         }
-
         connexion.emit(MESSAGES.JE_JOUE, pieceJointe);
         connexion.emit(MESSAGES.RESSOURCE, ressourceJoueur);
         System.out.println("\n[" + nom + "] [RESSOURCE] " + ressourceJoueur);
 
     }
 
+    private Carte jeuJoueur1(Carte carte){
+        if(Objects.equals(carte.getCouleurCarte(), "BLEUE")){
+            joueCarteSansCout(carte);
+        }else{
+            defausserUneCarte(carte);
+            carte.setDefausse(true);
+        }
+        return carte;
+    }
+    private Carte joueurQuiJoueQueDesCartesCivilsGratuitesSinonDefausse(Main m) {
+        Carte carteParDefaut = m.getCartes().get(0);
+        for (int i = 0; i < m.getCartes().size(); i++) {
+            Carte carte = m.getCartes().get(i);
+            if (Objects.equals(carte.getCouleurCarte(), "BLEUE") && carte.getNbCoutConstruction() == 0) {
+                return carte;
+            }
+
+        }
+        return carteParDefaut;
+    }
     /**
      * @param carte represente la carte jouée
      */
