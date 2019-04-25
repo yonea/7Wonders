@@ -273,7 +273,6 @@ public class Partie {
     private void conflitMilitaire(){
         for(int i = 0; i<CONFIG.NB_JOUEURS; i++) {
             comparerLeNombreDeBoucliersDeDeuxJoueurs(i);
-            System.out.println(participants.get(i).getRessourceJoueur());
         }
 
     }
