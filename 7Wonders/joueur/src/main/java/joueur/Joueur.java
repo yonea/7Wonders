@@ -158,14 +158,25 @@ public class Joueur {
         JSONObject pieceJointe = new JSONObject(carteChoisie);
 
         if(Objects.equals(nom, "Joueur1")){
+
             carteChoisie = joueurQuiJoueQueDesCartesCivilsGratuitesSinonDefausse(m);
             System.out.println("[" + nom + "] joue " + carteChoisie);
             pieceJointe = new JSONObject(jeuJoueur1(carteChoisie));
+
         }else if (Objects.equals(nom, "Joueur2")) {
-            carteChoisie = joueurQuiJoueRessourceEtCarteMilitaire(m);
+
+            carteChoisie = joueurQuiJoueRessourceEtCarteMilitaireOuCarteScientifique(m,"ROUGE");
             System.out.println("[" + nom + "] joue " + carteChoisie);
-            pieceJointe = new JSONObject(jeuJoueur2(carteChoisie));
+            pieceJointe = new JSONObject(jeuJoueur2ou3(carteChoisie,"ROUGE"));
+
+        } else if(Objects.equals(nom, "Joueur3")){
+
+            carteChoisie = joueurQuiJoueRessourceEtCarteMilitaireOuCarteScientifique(m,"VERTE");
+            System.out.println("[" + nom + "] joue " + carteChoisie);
+            pieceJointe = new JSONObject(jeuJoueur2ou3(carteChoisie,"VERTE"));
+
         }else {
+
             System.out.println("[" + nom + "] joue " + carteChoisie);
             //Si la carte choisie ne nécessite pas de cout de construction, alors le joueur la jouer gratuitement
             if (carteChoisie.getNbCoutConstruction() == 0) {
@@ -216,13 +227,19 @@ public class Joueur {
         return carteParDefaut;
     }
 
-    private Carte jeuJoueur2(Carte carte){
+    private Carte jeuJoueur2ou3(Carte carte, String couleur){
+        String couleurRessource;
+        if(Objects.equals(couleur, "ROUGE")){
+            couleurRessource = "MARRON";
+        }else
+            couleurRessource = "GRISE";
+
         int nbCoutConstruction = carte.getNbCoutConstruction();
-        if(Objects.equals(carte.getCouleurCarte(), "ROUGE") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction){
+        if(Objects.equals(carte.getCouleurCarte(), couleur) && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction){
             utilisationRessource(carte);
-        }else if (Objects.equals(carte.getCouleurCarte(), "MARRON") && carte.getNbCoutConstruction()==0){
+        }else if (Objects.equals(carte.getCouleurCarte(), couleurRessource) && carte.getNbCoutConstruction()==0){
             joueCarteSansCout(carte);
-        }else if(Objects.equals(carte.getCouleurCarte(), "MARRON") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
+        }else if(Objects.equals(carte.getCouleurCarte(), couleurRessource) && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
             utilisationRessource(carte);
         }else {
             defausserUneCarte(carte);
@@ -230,36 +247,44 @@ public class Joueur {
         }
         return carte;
     }
-    private Carte joueurQuiJoueRessourceEtCarteMilitaire(Main m) {
+    private Carte joueurQuiJoueRessourceEtCarteMilitaireOuCarteScientifique(Main m,String couleur) {
+        String couleurRessource;
+        if(Objects.equals(couleur, "ROUGE")){
+            couleurRessource = "MARRON";
+        }else
+            couleurRessource = "GRISE";
+
         Carte carteParDefaut = m.getCartes().get(0);
         for (int i = 0; i < m.getCartes().size(); i++) {
             Carte carte = m.getCartes().get(i);
             int nbCoutConstruction = carte.getNbCoutConstruction();
-            if (Objects.equals(carte.getCouleurCarte(), "ROUGE") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
+            if (Objects.equals(carte.getCouleurCarte(), couleur) && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
                 return carte;
             }
-            else if(Objects.equals(carte.getCouleurCarte(), "MARRON") && carte.getNbCoutConstruction()==0) {
+            else if(Objects.equals(carte.getCouleurCarte(), couleurRessource) && carte.getNbCoutConstruction()==0) {
                 return carte;
             }
-            else if (Objects.equals(carte.getCouleurCarte(), "MARRON") && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
+            else if (Objects.equals(carte.getCouleurCarte(), couleurRessource) && ressourceJoueur.get(carte.getCoutConstruction()) >= nbCoutConstruction) {
                 return carte;
             }
 
         }
         return carteParDefaut;
     }
+
+
     /**
      * @param carte represente la carte jouée
      */
     public void joueCarteSansCout(Carte carte) {
-        System.out.println("[ "+ nom +"] joue la carte " + carte.getName() + " gratuitement");
+        System.out.println("["+ nom +"] joue la carte " + carte.getName() + " gratuitement");
         ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
     }
     /**
      * @param carte represente la carte jouée qui va servir à mettre a jour le tableau de ressource du joueur en fonction de son effet
      */
     public void utilisationRessource(Carte carte) {
-        System.out.println("[ "+ nom +"] utilise une ressource " + carte.getCoutConstruction() + " pour jouer la carte " + carte.getName());
+        System.out.println("["+ nom +"] utilise une ressource " + carte.getCoutConstruction() + " pour jouer la carte " + carte.getName());
         ressourceJoueur.put(carte.getCoutConstruction(), ressourceJoueur.get(carte.getCoutConstruction()) - carte.getNbCoutConstruction());
         ressourceJoueur.put(carte.getEffetRessource(), ressourceJoueur.get(carte.getEffetRessource()) + carte.getNbRessource());
 
