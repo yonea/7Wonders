@@ -11,7 +11,7 @@ class MainTest {
 
     Carte c1, c2, c3, c4, c5;
     Main m1, m2;
-    private ArrayList<Carte> cartestest ;
+    public ArrayList<Carte> cartestest ;
 
     @BeforeEach
     public void setUp(){

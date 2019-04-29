@@ -247,7 +247,7 @@ public class Partie {
         }
     }
 
-    private boolean tousIndentifiés() {
+    boolean tousIndentifiés() {
         boolean resultat = true;
         for(Participant p : participants) {
             // pas nom, pas identifié
